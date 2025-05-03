@@ -2,7 +2,9 @@
 title: "Hand-on Ex01"
 format: html
 execute:
-  echo: false          
+  echo: false 
+project:
+  type: website        
 ---
 
 ```{r setup, include=FALSE}

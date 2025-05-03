@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Hand-on Ex01",
+    "section": "",
+    "text": "Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort."
+  },
+  {
+    "objectID": "index.html#gender-distribution",
+    "href": "index.html#gender-distribution",
+    "title": "Hand-on Ex01",
+    "section": "",
+    "text": "Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort."
+  },
+  {
+    "objectID": "index.html#subject-score-comparison",
+    "href": "index.html#subject-score-comparison",
+    "title": "Hand-on Ex01",
+    "section": "Subject Score Comparison",
+    "text": "Subject Score Comparison\n\n\n\n\n\n\n\n\n\nEnglish scores show the highest median with a compact distribution, while Science has the lowest median and more outliers. Mathematics demonstrates moderate performance with several low outliers, indicating variable student proficiency across subjects."
+  },
+  {
+    "objectID": "index.html#math-score-distribution",
+    "href": "index.html#math-score-distribution",
+    "title": "Hand-on Ex01",
+    "section": "Math Score Distribution",
+    "text": "Math Score Distribution\n\n\n\n\n\n\n\n\n\nThe mean (red dashed line) sits near the centre of a bell-shaped curve (~66 points), indicating symmetric performance with few extreme scores."
+  },
+  {
+    "objectID": "index.html#class-comparison",
+    "href": "index.html#class-comparison",
+    "title": "Hand-on Ex01",
+    "section": "Class Comparison",
+    "text": "Class Comparison\n\n\n\n\n\n\n\n\n\nClass-level facets reveal differences: class 3A clusters above 70, while 3I shows a wider spread, hinting at varying teaching quality or peer effects."
+  },
+  {
+    "objectID": "index.html#alternative-subject-comparison-view",
+    "href": "index.html#alternative-subject-comparison-view",
+    "title": "Hand-on Ex01",
+    "section": "Alternative Subject Comparison View",
+    "text": "Alternative Subject Comparison View\n\n\n\n\n\n\n\n\n\nFlipping axes improves readability and makes overlap among subjects obvious; English remains top, Science lags with more low outliers. This orientation better highlights score ranges and median differences between subjects, enhancing comparative analysis."
+  }
+]

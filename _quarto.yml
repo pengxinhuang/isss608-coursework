@@ -1,0 +1,3 @@
+project:
+  type: website
+output-dir: _site   # 网站输出到 _site 目录
