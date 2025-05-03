@@ -1,0 +1,80 @@
+---
+title: "Hand-on Ex01"
+format: html
+execute:
+  echo: false          
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+exam <- read_csv("data/Exam_data.csv")
+exam_long <- exam %>% 
+  pivot_longer(cols = c(ENGLISH, MATHS, SCIENCE),
+               names_to = "Subject", values_to = "Score")
+```
+
+## Gender Distribution
+
+```{r gender_bar, message=FALSE}
+ggplot(exam, aes(x = GENDER)) +
+  geom_bar(fill = "steelblue") +
+  labs(title = "Student Gender Distribution", x = NULL, y = "Count") +
+  theme_minimal()
+```
+
+Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort.
+
+## Subject Score Comparison
+
+```{r subject_boxplot, message=FALSE}
+ggplot(exam_long, aes(x = Subject, y = Score, fill = Subject)) +
+  geom_boxplot(alpha = 0.8, width = 0.6, outlier.shape = 21, outlier.size = 1.5) +
+  scale_fill_brewer(palette = "Set2") +
+  labs(title = "Comparison of Subject Scores", x = NULL, y = "Score") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+English scores show the highest median with a compact distribution, while Science has the lowest median and more outliers. Mathematics demonstrates moderate performance with several low outliers, indicating variable student proficiency across subjects.
+
+## Math Score Distribution
+
+```{r math_histogram, message=FALSE}
+ggplot(exam, aes(x = MATHS)) +
+  geom_histogram(binwidth = 5, fill = "#A7C6DA", colour = "white") +
+  geom_vline(aes(xintercept = mean(MATHS)),
+             colour = "red", linewidth = 1.2, linetype = "dashed") +
+  labs(title = "Maths score distribution with mean line",
+       x = "Score", y = "Count") +
+  theme_minimal()
+```
+
+The mean (red dashed line) sits near the centre of a bell-shaped curve (~66 points), indicating symmetric performance with few extreme scores.
+
+## Class Comparison
+
+```{r class_facets, message=FALSE}
+ggplot(exam, aes(x = MATHS)) +
+  geom_histogram(binwidth = 5, fill = "#4E79A7", colour = "white") +
+  facet_wrap(~ CLASS, ncol = 4) +
+  labs(title = "Maths score distribution by class",
+       x = "Score", y = "Count") +
+  theme_minimal(base_size = 10)
+```
+
+Class-level facets reveal differences: class 3A clusters above 70, while 3I shows a wider spread, hinting at varying teaching quality or peer effects.
+
+## Alternative Subject Comparison View
+
+```{r flipped_boxplot, message=FALSE}
+ggplot(exam_long, aes(y = Subject, x = Score, fill = Subject)) +
+  geom_boxplot(alpha = 0.8, width = 0.6, outlier.shape = 21) +
+  scale_fill_brewer(palette = "Set2") +
+  coord_flip() +
+  labs(title = "Subject scores (flipped boxplot)",
+       x = "Score", y = NULL) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+Flipping axes improves readability and makes overlap among subjects obvious; English remains top, Science lags with more low outliers. This orientation better highlights score ranges and median differences between subjects, enhancing comparative analysis.
