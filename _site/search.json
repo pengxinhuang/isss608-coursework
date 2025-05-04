@@ -35,11 +35,39 @@
     "text": "Math Score Distribution\n\n\n\n\n\n\n\n\n\nThe mean (red dashed line) sits near the centre of a bell-shaped curve (~66 points), indicating symmetric performance with few extreme scores."
   },
   {
+    "objectID": "Hand-on_Ex01/index.html#dot-plot-visualization",
+    "href": "Hand-on_Ex01/index.html#dot-plot-visualization",
+    "title": "Hand-on Ex01",
+    "section": "Dot Plot Visualization",
+    "text": "Dot Plot Visualization\n\n\n\n\n\n\n\n\n\nThe dot plot reveals the precise distribution of individual math scores, showing clustering around 65-75 points with relatively few students at extreme ends of the spectrum."
+  },
+  {
     "objectID": "Hand-on_Ex01/index.html#class-comparison",
     "href": "Hand-on_Ex01/index.html#class-comparison",
     "title": "Hand-on Ex01",
     "section": "Class Comparison",
     "text": "Class Comparison\n\n\n\n\n\n\n\n\n\nClass-level facets reveal differences: class 3A clusters above 70, while 3I shows a wider spread, hinting at varying teaching quality or peer effects."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#density-plot-analysis",
+    "href": "Hand-on_Ex01/index.html#density-plot-analysis",
+    "title": "Hand-on Ex01",
+    "section": "Density Plot Analysis",
+    "text": "Density Plot Analysis\n\n\n\n\n\n\n\n\n\nThe density curves highlight subtle gender differences in math performance, with female students showing a more concentrated distribution compared to males who display greater variability, particularly in the middle score range."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#violin-plot-comparison",
+    "href": "Hand-on_Ex01/index.html#violin-plot-comparison",
+    "title": "Hand-on Ex01",
+    "section": "Violin Plot Comparison",
+    "text": "Violin Plot Comparison\n\n\n\n\n\n\n\n\n\nViolin plots effectively illustrate the probability density of scores across genders, showing that while medians are similar, male students exhibit greater variance and a slight bimodal tendency in math performance."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#subject-relationship",
+    "href": "Hand-on_Ex01/index.html#subject-relationship",
+    "title": "Hand-on Ex01",
+    "section": "Subject Relationship",
+    "text": "Subject Relationship\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nThe scatter plot reveals a moderate positive correlation between Math and English scores, suggesting that students who excel in one subject tend to perform well in the other, though numerous outliers indicate exceptions to this pattern."
   },
   {
     "objectID": "Hand-on_Ex01/index.html#alternative-subject-comparison-view",

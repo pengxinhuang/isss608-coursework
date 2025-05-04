@@ -137,7 +137,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#gender-distribution" id="toc-gender-distribution" class="nav-link active" data-scroll-target="#gender-distribution">Gender Distribution</a></li>
   <li><a href="#subject-score-comparison" id="toc-subject-score-comparison" class="nav-link" data-scroll-target="#subject-score-comparison">Subject Score Comparison</a></li>
   <li><a href="#math-score-distribution" id="toc-math-score-distribution" class="nav-link" data-scroll-target="#math-score-distribution">Math Score Distribution</a></li>
+  <li><a href="#dot-plot-visualization" id="toc-dot-plot-visualization" class="nav-link" data-scroll-target="#dot-plot-visualization">Dot Plot Visualization</a></li>
   <li><a href="#class-comparison" id="toc-class-comparison" class="nav-link" data-scroll-target="#class-comparison">Class Comparison</a></li>
+  <li><a href="#density-plot-analysis" id="toc-density-plot-analysis" class="nav-link" data-scroll-target="#density-plot-analysis">Density Plot Analysis</a></li>
+  <li><a href="#violin-plot-comparison" id="toc-violin-plot-comparison" class="nav-link" data-scroll-target="#violin-plot-comparison">Violin Plot Comparison</a></li>
+  <li><a href="#subject-relationship" id="toc-subject-relationship" class="nav-link" data-scroll-target="#subject-relationship">Subject Relationship</a></li>
   <li><a href="#alternative-subject-comparison-view" id="toc-alternative-subject-comparison-view" class="nav-link" data-scroll-target="#alternative-subject-comparison-view">Alternative Subject Comparison View</a></li>
   </ul>
 </nav>
@@ -170,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/gender_bar-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -183,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/subject_boxplot-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -196,12 +200,25 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/math_histogram-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>The mean (red dashed line) sits near the centre of a bell-shaped curve (~66 points), indicating symmetric performance with few extreme scores.</p>
+</section>
+<section id="dot-plot-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="dot-plot-visualization">Dot Plot Visualization</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The dot plot reveals the precise distribution of individual math scores, showing clustering around 65-75 points with relatively few students at extreme ends of the spectrum.</p>
 </section>
 <section id="class-comparison" class="level2">
 <h2 class="anchored" data-anchor-id="class-comparison">Class Comparison</h2>
@@ -209,12 +226,54 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/class_facets-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Class-level facets reveal differences: class 3A clusters above 70, while 3I shows a wider spread, hinting at varying teaching quality or peer effects.</p>
+</section>
+<section id="density-plot-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="density-plot-analysis">Density Plot Analysis</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The density curves highlight subtle gender differences in math performance, with female students showing a more concentrated distribution compared to males who display greater variability, particularly in the middle score range.</p>
+</section>
+<section id="violin-plot-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="violin-plot-comparison">Violin Plot Comparison</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Violin plots effectively illustrate the probability density of scores across genders, showing that while medians are similar, male students exhibit greater variance and a slight bimodal tendency in math performance.</p>
+</section>
+<section id="subject-relationship" class="level2">
+<h2 class="anchored" data-anchor-id="subject-relationship">Subject Relationship</h2>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The scatter plot reveals a moderate positive correlation between Math and English scores, suggesting that students who excel in one subject tend to perform well in the other, though numerous outliers indicate exceptions to this pattern.</p>
 </section>
 <section id="alternative-subject-comparison-view" class="level2">
 <h2 class="anchored" data-anchor-id="alternative-subject-comparison-view">Alternative Subject Comparison View</h2>
@@ -222,7 +281,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/flipped_boxplot-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

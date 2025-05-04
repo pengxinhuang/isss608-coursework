@@ -16,19 +16,16 @@ exam_long <- exam %>%
 ```
 
 ## Gender Distribution
-
-```{r gender_bar, message=FALSE}
+```{r}
 ggplot(exam, aes(x = GENDER)) +
   geom_bar(fill = "steelblue") +
   labs(title = "Student Gender Distribution", x = NULL, y = "Count") +
   theme_minimal()
 ```
-
 Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort.
 
 ## Subject Score Comparison
-
-```{r subject_boxplot, message=FALSE}
+```{r}
 ggplot(exam_long, aes(x = Subject, y = Score, fill = Subject)) +
   geom_boxplot(alpha = 0.8, width = 0.6, outlier.shape = 21, outlier.size = 1.5) +
   scale_fill_brewer(palette = "Set2") +
@@ -36,12 +33,10 @@ ggplot(exam_long, aes(x = Subject, y = Score, fill = Subject)) +
   theme_minimal() +
   theme(legend.position = "none")
 ```
-
 English scores show the highest median with a compact distribution, while Science has the lowest median and more outliers. Mathematics demonstrates moderate performance with several low outliers, indicating variable student proficiency across subjects.
 
 ## Math Score Distribution
-
-```{r math_histogram, message=FALSE}
+```{r}
 ggplot(exam, aes(x = MATHS)) +
   geom_histogram(binwidth = 5, fill = "#A7C6DA", colour = "white") +
   geom_vline(aes(xintercept = mean(MATHS)),
@@ -50,12 +45,20 @@ ggplot(exam, aes(x = MATHS)) +
        x = "Score", y = "Count") +
   theme_minimal()
 ```
+The mean (red dashed line) sits near the centre of a bell-shaped curve (~66 points), indicating symmetric performance with few extreme scores.
 
-The mean (red dashed line) sits near the centre of a bell-shaped curve (\~66 points), indicating symmetric performance with few extreme scores.
+## Dot Plot Visualization
+```{r}
+ggplot(exam, aes(x = MATHS)) +
+  geom_dotplot(binwidth = 2.5, fill = "#69b3a2") +
+  labs(title = "Distribution of Maths Scores", x = "Score", y = NULL) +
+  scale_y_continuous(NULL, breaks = NULL) +
+  theme_minimal()
+```
+The dot plot reveals the precise distribution of individual math scores, showing clustering around 65-75 points with relatively few students at extreme ends of the spectrum.
 
 ## Class Comparison
-
-```{r class_facets, message=FALSE}
+```{r}
 ggplot(exam, aes(x = MATHS)) +
   geom_histogram(binwidth = 5, fill = "#4E79A7", colour = "white") +
   facet_wrap(~ CLASS, ncol = 4) +
@@ -63,12 +66,39 @@ ggplot(exam, aes(x = MATHS)) +
        x = "Score", y = "Count") +
   theme_minimal(base_size = 10)
 ```
-
 Class-level facets reveal differences: class 3A clusters above 70, while 3I shows a wider spread, hinting at varying teaching quality or peer effects.
 
-## Alternative Subject Comparison View
+## Density Plot Analysis
+```{r}
+ggplot(exam, aes(x = MATHS, fill = GENDER)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Density Plot of Maths Scores by Gender", x = "Score", y = "Density") +
+  theme_minimal()
+```
+The density curves highlight subtle gender differences in math performance, with female students showing a more concentrated distribution compared to males who display greater variability, particularly in the middle score range.
 
-```{r flipped_boxplot, message=FALSE}
+## Violin Plot Comparison
+```{r}
+ggplot(exam, aes(x = GENDER, y = MATHS, fill = GENDER)) +
+  geom_violin() +
+  labs(title = "Distribution of Maths Scores by Gender", x = NULL, y = "Maths Score") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+Violin plots effectively illustrate the probability density of scores across genders, showing that while medians are similar, male students exhibit greater variance and a slight bimodal tendency in math performance.
+
+## Subject Relationship
+```{r}
+ggplot(exam, aes(x = MATHS, y = ENGLISH)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "Maths vs English Scores with Trend Line", x = "Maths Score", y = "English Score") +
+  theme_minimal()
+```
+The scatter plot reveals a moderate positive correlation between Math and English scores, suggesting that students who excel in one subject tend to perform well in the other, though numerous outliers indicate exceptions to this pattern.
+
+## Alternative Subject Comparison View
+```{r}
 ggplot(exam_long, aes(y = Subject, x = Score, fill = Subject)) +
   geom_boxplot(alpha = 0.8, width = 0.6, outlier.shape = 21) +
   scale_fill_brewer(palette = "Set2") +
@@ -78,5 +108,4 @@ ggplot(exam_long, aes(y = Subject, x = Score, fill = Subject)) +
   theme_minimal() +
   theme(legend.position = "none")
 ```
-
 Flipping axes improves readability and makes overlap among subjects obvious; English remains top, Science lags with more low outliers. This orientation better highlights score ranges and median differences between subjects, enhancing comparative analysis.
