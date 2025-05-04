@@ -1,3 +1,24 @@
 project:
-  type: website
-output-dir: _site   # 网站输出到 _site 目录
+  type: website          
+  output-dir: _site      
+
+website:
+  title: "ISSS608-VAA"   
+  navbar:
+    left:                
+      - text: "Hands-on Exercise"
+        menu:
+          - text: "Exercise 1"
+            href: "Hand-on_Ex/Ex01/index.html"
+    right:               
+      - href: index.qmd
+        text: Home
+      - about.qmd        
+
+format:
+  html:
+    theme: cosmo         
+    toc: true            
+    css: styles.css      
+
+editor: visual           
