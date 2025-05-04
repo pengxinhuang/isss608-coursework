@@ -1,5 +1,180 @@
 [
   {
+    "objectID": "Take-home_Ex01/index.html",
+    "href": "Take-home_Ex01/index.html",
+    "title": "Take-Home Exercise 1: Singapore Demographic Patterns 2024",
+    "section": "",
+    "text": "This project visualizes Singapore’s demographic structure and distribution in 2024, based on data from the Department of Statistics. The analysis focuses on population distribution across planning areas, age structures, and demographic patterns that reveal Singapore’s urban development and population characteristics."
+  },
+  {
+    "objectID": "Take-home_Ex01/index.html#introduction",
+    "href": "Take-home_Ex01/index.html#introduction",
+    "title": "Take-Home Exercise 1: Singapore Demographic Patterns 2024",
+    "section": "",
+    "text": "This project visualizes Singapore’s demographic structure and distribution in 2024, based on data from the Department of Statistics. The analysis focuses on population distribution across planning areas, age structures, and demographic patterns that reveal Singapore’s urban development and population characteristics."
+  },
+  {
+    "objectID": "Take-home_Ex01/index.html#planning-area-population-distribution",
+    "href": "Take-home_Ex01/index.html#planning-area-population-distribution",
+    "title": "Take-Home Exercise 1: Singapore Demographic Patterns 2024",
+    "section": "Planning Area Population Distribution",
+    "text": "Planning Area Population Distribution\n\n\n\n\n\n\n\n\n\nSingapore’s population is heavily concentrated in a few key planning areas, with Tampines and Bedok housing the largest populations. This pattern reflects decades of urban development policy focused on creating high-density residential hubs in the east and northeast regions, connected by efficient transportation networks. These areas serve as complete townships with integrated amenities, explaining their sustained popularity despite newer developments elsewhere."
+  },
+  {
+    "objectID": "Take-home_Ex01/index.html#age-structure-comparison-across-planning-areas",
+    "href": "Take-home_Ex01/index.html#age-structure-comparison-across-planning-areas",
+    "title": "Take-Home Exercise 1: Singapore Demographic Patterns 2024",
+    "section": "Age Structure Comparison Across Planning Areas",
+    "text": "Age Structure Comparison Across Planning Areas\n\n\n\n\n\n\n\n\n\nThe population pyramids reveal distinct demographic profiles across four strategically selected planning areas. Tampines, representing newer townships, shows a balanced structure with substantial working-age population. Mature estates like Bedok display aging populations with wider tops, reflecting original residents who have aged in place. Bukit Timah, a high-income private housing area, exhibits a unique “sandglass” pattern with fewer young adults, while Outram’s pyramid demonstrates a significant elderly population characteristic of Singapore’s historical urban core."
+  },
+  {
+    "objectID": "Take-home_Ex01/index.html#demographic-balance-elderly-vs.-children-distribution",
+    "href": "Take-home_Ex01/index.html#demographic-balance-elderly-vs.-children-distribution",
+    "title": "Take-Home Exercise 1: Singapore Demographic Patterns 2024",
+    "section": "Demographic Balance: Elderly vs. Children Distribution",
+    "text": "Demographic Balance: Elderly vs. Children Distribution\n\n\n\n\n\n\n\n\n\nThis innovative visualization reveals Singapore’s demographic transition by comparing elderly and children populations across planning areas. Areas above the diagonal line have more elderly than children, with Outram and Bukit Merah showing extreme imbalances (over 3:1 ratio). This pattern reflects Singapore’s rapid aging, particularly in first-generation public housing estates where infrastructure designed for families now serves an elderly majority. These imbalances create challenges for social services, healthcare accessibility, and school planning, requiring targeted policy responses to address these distinct neighborhood-level demographic profiles."
+  },
+  {
+    "objectID": "Take-home_Ex01/index.html#conclusion",
+    "href": "Take-home_Ex01/index.html#conclusion",
+    "title": "Take-Home Exercise 1: Singapore Demographic Patterns 2024",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe visualizations reveal Singapore’s complex demographic landscape in 2024, characterized by distinct spatial patterns in population distribution and age structure. Established planning areas in the east remain heavily populated, while pronounced demographic differences exist between mature and newer estates. These patterns have significant implications for urban planning priorities including: (1) targeted healthcare infrastructure development in aging neighborhoods like Outram and Bukit Merah; (2) transit connectivity improvements to address population concentration in eastern regions; and (3) housing policy adaptations to accommodate evolving household structures across different planning areas."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html",
+    "href": "Hand-on_Ex02/index.html",
+    "title": "Hand-on Ex02",
+    "section": "",
+    "text": "Warning: ggrepel: 287 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps\n\n\n\n\n\n\n\n\n\nThe comparison demonstrates how ggrepel’s text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#improved-annotation-with-ggrepel",
+    "href": "Hand-on_Ex02/index.html#improved-annotation-with-ggrepel",
+    "title": "Hand-on Ex02",
+    "section": "",
+    "text": "Warning: ggrepel: 287 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps\n\n\n\n\n\n\n\n\n\nThe comparison demonstrates how ggrepel’s text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#professional-themes-with-ggthemes",
+    "href": "Hand-on_Ex02/index.html#professional-themes-with-ggthemes",
+    "title": "Hand-on Ex02",
+    "section": "Professional Themes with ggthemes",
+    "text": "Professional Themes with ggthemes\n\n\n\n\n\n\n\n\n\nUsing The Economist theme transforms the histogram into publication-quality visualization with distinctive typography and color palette, demonstrating how themed approaches can lend credibility and professionalism to statistical graphics."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#typography-focused-design",
+    "href": "Hand-on_Ex02/index.html#typography-focused-design",
+    "title": "Hand-on Ex02",
+    "section": "Typography-Focused Design",
+    "text": "Typography-Focused Design\n\n\n\n\n\n\n\n\n\nThe enhanced typography is achieved using ggplot2’s native theming system with carefully adjusted text properties, creating a clean design with proper visual hierarchy and improved readability for reports and presentations."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#composite-figures-with-patchwork",
+    "href": "Hand-on_Ex02/index.html#composite-figures-with-patchwork",
+    "title": "Hand-on Ex02",
+    "section": "Composite Figures with Patchwork",
+    "text": "Composite Figures with Patchwork\n\n\n\n\n\n\n\n\n\nThe side-by-side histograms created with patchwork enable efficient comparison of distributions between mathematics and English scores, revealing differences in central tendency and spread without requiring multiple separate figures."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#multi-row-layout",
+    "href": "Hand-on_Ex02/index.html#multi-row-layout",
+    "title": "Hand-on Ex02",
+    "section": "Multi-Row Layout",
+    "text": "Multi-Row Layout\n\n\n\n\n\n\n\n\n\nThis composite visualization integrates individual subject distributions with their correlation, creating a comprehensive analytical view that would otherwise require multiple separate charts, demonstrating patchwork’s ability to build complex multi-level layouts."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#auto-tagged-composite-figure",
+    "href": "Hand-on_Ex02/index.html#auto-tagged-composite-figure",
+    "title": "Hand-on Ex02",
+    "section": "Auto-Tagged Composite Figure",
+    "text": "Auto-Tagged Composite Figure\n\n\n\n\n\n\n\n\n\nAutomatic tagging adds professional reference points to each panel, making the composite figure suitable for formal reports where specific panels need to be referenced in accompanying text."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#inset-chart",
+    "href": "Hand-on_Ex02/index.html#inset-chart",
+    "title": "Hand-on Ex02",
+    "section": "Inset Chart",
+    "text": "Inset Chart\n\n\n\n\n\n\n\n\n\nThe inset technique efficiently uses space by embedding the English score distribution within the correlation plot, allowing readers to reference the relevant distribution without switching between figures."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#themed-composite-figure",
+    "href": "Hand-on_Ex02/index.html#themed-composite-figure",
+    "title": "Hand-on Ex02",
+    "section": "Themed Composite Figure",
+    "text": "Themed Composite Figure\n\n\n\n\n\n\n\n\n\nCombining patchwork with ggthemes creates professionally styled composite figures with consistent design elements across all panels, demonstrating how multiple extension packages can work together to produce polished statistical graphics."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html",
+    "href": "Hand-on_Ex01/index.html",
+    "title": "Hand-on Ex01",
+    "section": "",
+    "text": "Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#gender-distribution",
+    "href": "Hand-on_Ex01/index.html#gender-distribution",
+    "title": "Hand-on Ex01",
+    "section": "",
+    "text": "Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#subject-score-comparison",
+    "href": "Hand-on_Ex01/index.html#subject-score-comparison",
+    "title": "Hand-on Ex01",
+    "section": "Subject Score Comparison",
+    "text": "Subject Score Comparison\n\n\n\n\n\n\n\n\n\nEnglish scores show the highest median with a compact distribution, while Science has the lowest median and more outliers. Mathematics demonstrates moderate performance with several low outliers, indicating variable student proficiency across subjects."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#math-score-distribution",
+    "href": "Hand-on_Ex01/index.html#math-score-distribution",
+    "title": "Hand-on Ex01",
+    "section": "Math Score Distribution",
+    "text": "Math Score Distribution\n\n\n\n\n\n\n\n\n\nThe mean (red dashed line) sits near the centre of a bell-shaped curve (~66 points), indicating symmetric performance with few extreme scores."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#dot-plot-visualization",
+    "href": "Hand-on_Ex01/index.html#dot-plot-visualization",
+    "title": "Hand-on Ex01",
+    "section": "Dot Plot Visualization",
+    "text": "Dot Plot Visualization\n\n\n\n\n\n\n\n\n\nThe dot plot reveals the precise distribution of individual math scores, showing clustering around 65-75 points with relatively few students at extreme ends of the spectrum."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#class-comparison",
+    "href": "Hand-on_Ex01/index.html#class-comparison",
+    "title": "Hand-on Ex01",
+    "section": "Class Comparison",
+    "text": "Class Comparison\n\n\n\n\n\n\n\n\n\nClass-level facets reveal differences: class 3A clusters above 70, while 3I shows a wider spread, hinting at varying teaching quality or peer effects."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#density-plot-analysis",
+    "href": "Hand-on_Ex01/index.html#density-plot-analysis",
+    "title": "Hand-on Ex01",
+    "section": "Density Plot Analysis",
+    "text": "Density Plot Analysis\n\n\n\n\n\n\n\n\n\nThe density curves highlight subtle gender differences in math performance, with female students showing a more concentrated distribution compared to males who display greater variability, particularly in the middle score range."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#violin-plot-comparison",
+    "href": "Hand-on_Ex01/index.html#violin-plot-comparison",
+    "title": "Hand-on Ex01",
+    "section": "Violin Plot Comparison",
+    "text": "Violin Plot Comparison\n\n\n\n\n\n\n\n\n\nViolin plots effectively illustrate the probability density of scores across genders, showing that while medians are similar, male students exhibit greater variance and a slight bimodal tendency in math performance."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#subject-relationship",
+    "href": "Hand-on_Ex01/index.html#subject-relationship",
+    "title": "Hand-on Ex01",
+    "section": "Subject Relationship",
+    "text": "Subject Relationship\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nThe scatter plot reveals a moderate positive correlation between Math and English scores, suggesting that students who excel in one subject tend to perform well in the other, though numerous outliers indicate exceptions to this pattern."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#alternative-subject-comparison-view",
+    "href": "Hand-on_Ex01/index.html#alternative-subject-comparison-view",
+    "title": "Hand-on Ex01",
+    "section": "Alternative Subject Comparison View",
+    "text": "Alternative Subject Comparison View\n\n\n\n\n\n\n\n\n\nFlipping axes improves readability and makes overlap among subjects obvious; English remains top, Science lags with more low outliers. This orientation better highlights score ranges and median differences between subjects, enhancing comparative analysis."
+  },
+  {
     "objectID": "Hand-on_Ex03/index.html",
     "href": "Hand-on_Ex03/index.html",
     "title": "Hand-on Ex03",
@@ -75,138 +250,5 @@
     "title": "Hand-on Ex03",
     "section": "Enhanced Animation Effects",
     "text": "Enhanced Animation Effects\n\n\n\n\n\n\n\n\n\nThis series of scatter plots captures global development trends at key time points (1952, 1977, and 2002), revealing the relationship between economic performance and life expectancy. Comparing these snapshots illustrates how countries and regions have developed over the half-century period, showing patterns of progress and disparity."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html",
-    "href": "Hand-on_Ex01/index.html",
-    "title": "Hand-on Ex01",
-    "section": "",
-    "text": "Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#gender-distribution",
-    "href": "Hand-on_Ex01/index.html#gender-distribution",
-    "title": "Hand-on Ex01",
-    "section": "",
-    "text": "Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#subject-score-comparison",
-    "href": "Hand-on_Ex01/index.html#subject-score-comparison",
-    "title": "Hand-on Ex01",
-    "section": "Subject Score Comparison",
-    "text": "Subject Score Comparison\n\n\n\n\n\n\n\n\n\nEnglish scores show the highest median with a compact distribution, while Science has the lowest median and more outliers. Mathematics demonstrates moderate performance with several low outliers, indicating variable student proficiency across subjects."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#math-score-distribution",
-    "href": "Hand-on_Ex01/index.html#math-score-distribution",
-    "title": "Hand-on Ex01",
-    "section": "Math Score Distribution",
-    "text": "Math Score Distribution\n\n\n\n\n\n\n\n\n\nThe mean (red dashed line) sits near the centre of a bell-shaped curve (~66 points), indicating symmetric performance with few extreme scores."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#dot-plot-visualization",
-    "href": "Hand-on_Ex01/index.html#dot-plot-visualization",
-    "title": "Hand-on Ex01",
-    "section": "Dot Plot Visualization",
-    "text": "Dot Plot Visualization\n\n\n\n\n\n\n\n\n\nThe dot plot reveals the precise distribution of individual math scores, showing clustering around 65-75 points with relatively few students at extreme ends of the spectrum."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#class-comparison",
-    "href": "Hand-on_Ex01/index.html#class-comparison",
-    "title": "Hand-on Ex01",
-    "section": "Class Comparison",
-    "text": "Class Comparison\n\n\n\n\n\n\n\n\n\nClass-level facets reveal differences: class 3A clusters above 70, while 3I shows a wider spread, hinting at varying teaching quality or peer effects."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#density-plot-analysis",
-    "href": "Hand-on_Ex01/index.html#density-plot-analysis",
-    "title": "Hand-on Ex01",
-    "section": "Density Plot Analysis",
-    "text": "Density Plot Analysis\n\n\n\n\n\n\n\n\n\nThe density curves highlight subtle gender differences in math performance, with female students showing a more concentrated distribution compared to males who display greater variability, particularly in the middle score range."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#violin-plot-comparison",
-    "href": "Hand-on_Ex01/index.html#violin-plot-comparison",
-    "title": "Hand-on Ex01",
-    "section": "Violin Plot Comparison",
-    "text": "Violin Plot Comparison\n\n\n\n\n\n\n\n\n\nViolin plots effectively illustrate the probability density of scores across genders, showing that while medians are similar, male students exhibit greater variance and a slight bimodal tendency in math performance."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#subject-relationship",
-    "href": "Hand-on_Ex01/index.html#subject-relationship",
-    "title": "Hand-on Ex01",
-    "section": "Subject Relationship",
-    "text": "Subject Relationship\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nThe scatter plot reveals a moderate positive correlation between Math and English scores, suggesting that students who excel in one subject tend to perform well in the other, though numerous outliers indicate exceptions to this pattern."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#alternative-subject-comparison-view",
-    "href": "Hand-on_Ex01/index.html#alternative-subject-comparison-view",
-    "title": "Hand-on Ex01",
-    "section": "Alternative Subject Comparison View",
-    "text": "Alternative Subject Comparison View\n\n\n\n\n\n\n\n\n\nFlipping axes improves readability and makes overlap among subjects obvious; English remains top, Science lags with more low outliers. This orientation better highlights score ranges and median differences between subjects, enhancing comparative analysis."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html",
-    "href": "Hand-on_Ex02/index.html",
-    "title": "Hand-on Ex02",
-    "section": "",
-    "text": "Warning: ggrepel: 287 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps\n\n\n\n\n\n\n\n\n\nThe comparison demonstrates how ggrepel’s text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#improved-annotation-with-ggrepel",
-    "href": "Hand-on_Ex02/index.html#improved-annotation-with-ggrepel",
-    "title": "Hand-on Ex02",
-    "section": "",
-    "text": "Warning: ggrepel: 287 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps\n\n\n\n\n\n\n\n\n\nThe comparison demonstrates how ggrepel’s text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#professional-themes-with-ggthemes",
-    "href": "Hand-on_Ex02/index.html#professional-themes-with-ggthemes",
-    "title": "Hand-on Ex02",
-    "section": "Professional Themes with ggthemes",
-    "text": "Professional Themes with ggthemes\n\n\n\n\n\n\n\n\n\nUsing The Economist theme transforms the histogram into publication-quality visualization with distinctive typography and color palette, demonstrating how themed approaches can lend credibility and professionalism to statistical graphics."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#typography-focused-design",
-    "href": "Hand-on_Ex02/index.html#typography-focused-design",
-    "title": "Hand-on Ex02",
-    "section": "Typography-Focused Design",
-    "text": "Typography-Focused Design\n\n\n\n\n\n\n\n\n\nThe enhanced typography is achieved using ggplot2’s native theming system with carefully adjusted text properties, creating a clean design with proper visual hierarchy and improved readability for reports and presentations."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#composite-figures-with-patchwork",
-    "href": "Hand-on_Ex02/index.html#composite-figures-with-patchwork",
-    "title": "Hand-on Ex02",
-    "section": "Composite Figures with Patchwork",
-    "text": "Composite Figures with Patchwork\n\n\n\n\n\n\n\n\n\nThe side-by-side histograms created with patchwork enable efficient comparison of distributions between mathematics and English scores, revealing differences in central tendency and spread without requiring multiple separate figures."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#multi-row-layout",
-    "href": "Hand-on_Ex02/index.html#multi-row-layout",
-    "title": "Hand-on Ex02",
-    "section": "Multi-Row Layout",
-    "text": "Multi-Row Layout\n\n\n\n\n\n\n\n\n\nThis composite visualization integrates individual subject distributions with their correlation, creating a comprehensive analytical view that would otherwise require multiple separate charts, demonstrating patchwork’s ability to build complex multi-level layouts."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#auto-tagged-composite-figure",
-    "href": "Hand-on_Ex02/index.html#auto-tagged-composite-figure",
-    "title": "Hand-on Ex02",
-    "section": "Auto-Tagged Composite Figure",
-    "text": "Auto-Tagged Composite Figure\n\n\n\n\n\n\n\n\n\nAutomatic tagging adds professional reference points to each panel, making the composite figure suitable for formal reports where specific panels need to be referenced in accompanying text."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#inset-chart",
-    "href": "Hand-on_Ex02/index.html#inset-chart",
-    "title": "Hand-on Ex02",
-    "section": "Inset Chart",
-    "text": "Inset Chart\n\n\n\n\n\n\n\n\n\nThe inset technique efficiently uses space by embedding the English score distribution within the correlation plot, allowing readers to reference the relevant distribution without switching between figures."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#themed-composite-figure",
-    "href": "Hand-on_Ex02/index.html#themed-composite-figure",
-    "title": "Hand-on Ex02",
-    "section": "Themed Composite Figure",
-    "text": "Themed Composite Figure\n\n\n\n\n\n\n\n\n\nCombining patchwork with ggthemes creates professionally styled composite figures with consistent design elements across all panels, demonstrating how multiple extension packages can work together to produce polished statistical graphics."
   }
 ]

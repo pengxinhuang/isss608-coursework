@@ -1,7 +1,6 @@
 project:
   type: website          
   output-dir: _site      
-
 website:
   title: "ISSS608-VAA"
   navbar:
@@ -14,11 +13,14 @@ website:
             href: "Hand-on_Ex02/"
           - text: "Exercise 3"
             href: "Hand-on_Ex03/"
+      - text: "Take-home Exercise"
+        menu:
+          - text: "Exercise 1"
+            href: "Take-home_Ex01/"
     right:
       - href: index.qmd                
         text: Home
       - about.qmd                      
-
 format:
   html:
     theme: cosmo

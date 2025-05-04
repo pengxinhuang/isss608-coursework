@@ -1,0 +1,207 @@
+---
+title: "Take-Home Exercise 1: Singapore Demographic Patterns 2024"
+format: html
+editor: visual
+execute:
+  echo: false
+  warning: false
+project:
+  type: website        
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(viridis)
+library(patchwork)
+library(knitr)
+
+pop_data <- read_csv("../data/respopagesex2024.csv")
+
+pop_data <- pop_data %>%
+  mutate(PA = str_to_title(PA))
+
+age_bins <- pop_data %>%
+  mutate(
+    Age = as.numeric(Age),
+    Age_Group = case_when(
+      Age < 5 ~ "0-4",
+      Age >= 5 & Age < 10 ~ "5-9",
+      Age >= 10 & Age < 15 ~ "10-14",
+      Age >= 15 & Age < 20 ~ "15-19",
+      Age >= 20 & Age < 25 ~ "20-24",
+      Age >= 25 & Age < 30 ~ "25-29",
+      Age >= 30 & Age < 35 ~ "30-34",
+      Age >= 35 & Age < 40 ~ "35-39",
+      Age >= 40 & Age < 45 ~ "40-44",
+      Age >= 45 & Age < 50 ~ "45-49",
+      Age >= 50 & Age < 55 ~ "50-54",
+      Age >= 55 & Age < 60 ~ "55-59",
+      Age >= 60 & Age < 65 ~ "60-64",
+      Age >= 65 & Age < 70 ~ "65-69",
+      Age >= 70 & Age < 75 ~ "70-74",
+      Age >= 75 & Age < 80 ~ "75-79",
+      Age >= 80 ~ "80+"
+    )
+  )
+
+pa_summary <- pop_data %>%
+  group_by(PA) %>%
+  summarise(
+    Total_Pop = sum(Pop),
+    Male_Pop = sum(Pop[Sex == "Males"]),
+    Female_Pop = sum(Pop[Sex == "Females"]),
+    Sex_Ratio = Male_Pop / Female_Pop,
+    Median_Age = median(as.numeric(Age), weights = Pop)
+  ) %>%
+  arrange(desc(Total_Pop))
+
+elderly_ratio <- pop_data %>%
+  mutate(Age = as.numeric(Age),
+         Is_Elderly = Age >= 65) %>%
+  group_by(PA, Is_Elderly) %>%
+  summarise(Pop = sum(Pop)) %>%
+  pivot_wider(names_from = Is_Elderly, values_from = Pop) %>%
+  rename(Non_Elderly = `FALSE`, Elderly = `TRUE`) %>%
+  mutate(
+    Total = Non_Elderly + Elderly,
+    Elderly_Ratio = Elderly / Total * 100
+  ) %>%
+  arrange(desc(Elderly_Ratio))
+
+children_ratio <- pop_data %>%
+  mutate(Age = as.numeric(Age),
+         Is_Child = Age < 15) %>%
+  group_by(PA, Is_Child) %>%
+  summarise(Pop = sum(Pop)) %>%
+  pivot_wider(names_from = Is_Child, values_from = Pop) %>%
+  rename(Non_Child = `FALSE`, Child = `TRUE`) %>%
+  mutate(
+    Total = Non_Child + Child,
+    Child_Ratio = Child / Total * 100
+  ) %>%
+  arrange(desc(Child_Ratio))
+```
+## Introduction
+This project visualizes Singapore's demographic structure and distribution in 2024, based on data from the Department of Statistics. The analysis focuses on population distribution across planning areas, age structures, and demographic patterns that reveal Singapore's urban development and population characteristics.
+
+## Planning Area Population Distribution
+```{r}
+# Create planning area population bar chart
+top_10_pa <- pa_summary %>%
+  top_n(10, Total_Pop)
+
+ggplot(top_10_pa, aes(x = reorder(PA, Total_Pop), y = Total_Pop/1000)) +
+  geom_bar(stat = "identity", fill = "#69b3a2") +
+  coord_flip() +
+  labs(
+    title = "Top 10 Most Populated Planning Areas in Singapore (2024)",
+    x = NULL,
+    y = "Population (thousands)",
+    caption = "Data source: Singapore Department of Statistics"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 12),
+    axis.text = element_text(size = 10)
+  )
+```
+Singapore's population is heavily concentrated in a few key planning areas, with Tampines and Bedok housing the largest populations. This pattern reflects decades of urban development policy focused on creating high-density residential hubs in the east and northeast regions, connected by efficient transportation networks. These areas serve as complete townships with integrated amenities, explaining their sustained popularity despite newer developments elsewhere.
+
+## Age Structure Comparison Across Planning Areas
+```{r}
+# Select representative planning areas for population pyramids
+selected_areas <- c("Tampines", "Bedok", "Bukit Timah", "Outram")
+
+# Prepare population pyramid data
+pyramid_data <- age_bins %>%
+  filter(PA %in% selected_areas) %>%
+  group_by(PA, Age_Group, Sex) %>%
+  summarise(Pop = sum(Pop)) %>%
+  mutate(
+    Pop = ifelse(Sex == "Males", -Pop, Pop),
+    Age_Group = factor(Age_Group, levels = c("0-4", "5-9", "10-14", "15-19", "20-24", 
+                                             "25-29", "30-34", "35-39", "40-44", "45-49", 
+                                             "50-54", "55-59", "60-64", "65-69", "70-74", 
+                                             "75-79", "80+"))
+  )
+
+# Create population pyramids
+ggplot(pyramid_data, aes(x = Age_Group, y = Pop, fill = Sex)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  facet_wrap(~ PA, scales = "free_x") +
+  scale_fill_manual(values = c("Males" = "#4E79A7", "Females" = "#F28E2B")) +
+  labs(
+    title = "Population Pyramids of Selected Planning Areas (2024)",
+    subtitle = "Representing new township (Tampines), mature estate (Bedok), high-income area (Bukit Timah),\nand historical district (Outram)",
+    x = NULL,
+    y = "Population",
+    caption = "Data source: Singapore Department of Statistics"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    strip.text = element_text(face = "bold"),
+    plot.title = element_text(face = "bold", size = 12),
+    plot.subtitle = element_text(size = 10)
+  )
+```
+The population pyramids reveal distinct demographic profiles across four strategically selected planning areas. Tampines, representing newer townships, shows a balanced structure with substantial working-age population. Mature estates like Bedok display aging populations with wider tops, reflecting original residents who have aged in place. Bukit Timah, a high-income private housing area, exhibits a unique "sandglass" pattern with fewer young adults, while Outram's pyramid demonstrates a significant elderly population characteristic of Singapore's historical urban core.
+
+## Demographic Balance: Elderly vs. Children Distribution
+```{r}
+# Combine elderly and children data
+demographic_balance <- elderly_ratio %>%
+  select(PA, Elderly_Ratio) %>%
+  left_join(
+    children_ratio %>% select(PA, Child_Ratio),
+    by = "PA"
+  ) %>%
+  mutate(
+    Demographic_Ratio = Elderly_Ratio / Child_Ratio,
+    Balance_Category = case_when(
+      Demographic_Ratio >= 2.0 ~ "Strongly Aging (2.0+)",
+      Demographic_Ratio >= 1.5 ~ "Moderately Aging (1.5-2.0)",
+      Demographic_Ratio >= 1.0 ~ "Slightly Aging (1.0-1.5)",
+      Demographic_Ratio >= 0.67 ~ "Balanced (0.67-1.0)",
+      TRUE ~ "Youth-dominant (<0.67)"
+    ),
+    Balance_Category = factor(Balance_Category, 
+                              levels = c("Youth-dominant (<0.67)", 
+                                         "Balanced (0.67-1.0)", 
+                                         "Slightly Aging (1.0-1.5)", 
+                                         "Moderately Aging (1.5-2.0)", 
+                                         "Strongly Aging (2.0+)"))
+  ) %>%
+  arrange(desc(Demographic_Ratio))
+
+# Select top 20 areas for analysis
+top_20_balance <- demographic_balance %>%
+  head(20)
+
+# Create scatter plot
+ggplot(top_20_balance, aes(x = Child_Ratio, y = Elderly_Ratio, color = Balance_Category)) +
+  geom_point(size = 4, alpha = 0.7) +
+  geom_text(aes(label = PA), hjust = -0.2, vjust = 0.5, size = 3) +
+  geom_abline(slope = 1, linetype = "dashed", color = "gray50") +
+  scale_color_viridis_d(option = "plasma", begin = 0.1, end = 0.9) +
+  labs(
+    title = "Elderly vs. Children Population Balance in Singapore's Planning Areas (2024)",
+    subtitle = "Shows top 20 areas with highest elderly-to-children ratio",
+    x = "Children Population (% under 15 years)",
+    y = "Elderly Population (% 65 years and above)",
+    color = "Demographic Balance",
+    caption = "Data source: Singapore Department of Statistics"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "right",
+    plot.title = element_text(face = "bold", size = 12),
+    plot.subtitle = element_text(size = 10)
+  )
+```
+This innovative visualization reveals Singapore's demographic transition by comparing elderly and children populations across planning areas. Areas above the diagonal line have more elderly than children, with Outram and Bukit Merah showing extreme imbalances (over 3:1 ratio). This pattern reflects Singapore's rapid aging, particularly in first-generation public housing estates where infrastructure designed for families now serves an elderly majority. These imbalances create challenges for social services, healthcare accessibility, and school planning, requiring targeted policy responses to address these distinct neighborhood-level demographic profiles.
+
+## Conclusion
+The visualizations reveal Singapore's complex demographic landscape in 2024, characterized by distinct spatial patterns in population distribution and age structure. Established planning areas in the east remain heavily populated, while pronounced demographic differences exist between mature and newer estates. These patterns have significant implications for urban planning priorities including: (1) targeted healthcare infrastructure development in aging neighborhoods like Outram and Bukit Merah; (2) transit connectivity improvements to address population concentration in eastern regions; and (3) housing policy adaptations to accommodate evolving household structures across different planning areas.

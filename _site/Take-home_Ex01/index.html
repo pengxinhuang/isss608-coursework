@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Hand-on Ex01 – ISSS608-VAA</title>
+<title>Take-Home Exercise 1: Singapore Demographic Patterns 2024 – ISSS608-VAA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -145,15 +145,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#gender-distribution" id="toc-gender-distribution" class="nav-link active" data-scroll-target="#gender-distribution">Gender Distribution</a></li>
-  <li><a href="#subject-score-comparison" id="toc-subject-score-comparison" class="nav-link" data-scroll-target="#subject-score-comparison">Subject Score Comparison</a></li>
-  <li><a href="#math-score-distribution" id="toc-math-score-distribution" class="nav-link" data-scroll-target="#math-score-distribution">Math Score Distribution</a></li>
-  <li><a href="#dot-plot-visualization" id="toc-dot-plot-visualization" class="nav-link" data-scroll-target="#dot-plot-visualization">Dot Plot Visualization</a></li>
-  <li><a href="#class-comparison" id="toc-class-comparison" class="nav-link" data-scroll-target="#class-comparison">Class Comparison</a></li>
-  <li><a href="#density-plot-analysis" id="toc-density-plot-analysis" class="nav-link" data-scroll-target="#density-plot-analysis">Density Plot Analysis</a></li>
-  <li><a href="#violin-plot-comparison" id="toc-violin-plot-comparison" class="nav-link" data-scroll-target="#violin-plot-comparison">Violin Plot Comparison</a></li>
-  <li><a href="#subject-relationship" id="toc-subject-relationship" class="nav-link" data-scroll-target="#subject-relationship">Subject Relationship</a></li>
-  <li><a href="#alternative-subject-comparison-view" id="toc-alternative-subject-comparison-view" class="nav-link" data-scroll-target="#alternative-subject-comparison-view">Alternative Subject Comparison View</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#planning-area-population-distribution" id="toc-planning-area-population-distribution" class="nav-link" data-scroll-target="#planning-area-population-distribution">Planning Area Population Distribution</a></li>
+  <li><a href="#age-structure-comparison-across-planning-areas" id="toc-age-structure-comparison-across-planning-areas" class="nav-link" data-scroll-target="#age-structure-comparison-across-planning-areas">Age Structure Comparison Across Planning Areas</a></li>
+  <li><a href="#demographic-balance-elderly-vs.-children-distribution" id="toc-demographic-balance-elderly-vs.-children-distribution" class="nav-link" data-scroll-target="#demographic-balance-elderly-vs.-children-distribution">Demographic Balance: Elderly vs.&nbsp;Children Distribution</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -162,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Hand-on Ex01</h1>
+<h1 class="title">Take-Home Exercise 1: Singapore Demographic Patterns 2024</h1>
 </div>
 
 
@@ -179,8 +175,12 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="gender-distribution" class="level2">
-<h2 class="anchored" data-anchor-id="gender-distribution">Gender Distribution</h2>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This project visualizes Singapore’s demographic structure and distribution in 2024, based on data from the Department of Statistics. The analysis focuses on population distribution across planning areas, age structures, and demographic patterns that reveal Singapore’s urban development and population characteristics.</p>
+</section>
+<section id="planning-area-population-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="planning-area-population-distribution">Planning Area Population Distribution</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -190,10 +190,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort.</p>
+<p>Singapore’s population is heavily concentrated in a few key planning areas, with Tampines and Bedok housing the largest populations. This pattern reflects decades of urban development policy focused on creating high-density residential hubs in the east and northeast regions, connected by efficient transportation networks. These areas serve as complete townships with integrated amenities, explaining their sustained popularity despite newer developments elsewhere.</p>
 </section>
-<section id="subject-score-comparison" class="level2">
-<h2 class="anchored" data-anchor-id="subject-score-comparison">Subject Score Comparison</h2>
+<section id="age-structure-comparison-across-planning-areas" class="level2">
+<h2 class="anchored" data-anchor-id="age-structure-comparison-across-planning-areas">Age Structure Comparison Across Planning Areas</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -203,10 +203,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>English scores show the highest median with a compact distribution, while Science has the lowest median and more outliers. Mathematics demonstrates moderate performance with several low outliers, indicating variable student proficiency across subjects.</p>
+<p>The population pyramids reveal distinct demographic profiles across four strategically selected planning areas. Tampines, representing newer townships, shows a balanced structure with substantial working-age population. Mature estates like Bedok display aging populations with wider tops, reflecting original residents who have aged in place. Bukit Timah, a high-income private housing area, exhibits a unique “sandglass” pattern with fewer young adults, while Outram’s pyramid demonstrates a significant elderly population characteristic of Singapore’s historical urban core.</p>
 </section>
-<section id="math-score-distribution" class="level2">
-<h2 class="anchored" data-anchor-id="math-score-distribution">Math Score Distribution</h2>
+<section id="demographic-balance-elderly-vs.-children-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="demographic-balance-elderly-vs.-children-distribution">Demographic Balance: Elderly vs.&nbsp;Children Distribution</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -216,88 +216,11 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>The mean (red dashed line) sits near the centre of a bell-shaped curve (~66 points), indicating symmetric performance with few extreme scores.</p>
+<p>This innovative visualization reveals Singapore’s demographic transition by comparing elderly and children populations across planning areas. Areas above the diagonal line have more elderly than children, with Outram and Bukit Merah showing extreme imbalances (over 3:1 ratio). This pattern reflects Singapore’s rapid aging, particularly in first-generation public housing estates where infrastructure designed for families now serves an elderly majority. These imbalances create challenges for social services, healthcare accessibility, and school planning, requiring targeted policy responses to address these distinct neighborhood-level demographic profiles.</p>
 </section>
-<section id="dot-plot-visualization" class="level2">
-<h2 class="anchored" data-anchor-id="dot-plot-visualization">Dot Plot Visualization</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The dot plot reveals the precise distribution of individual math scores, showing clustering around 65-75 points with relatively few students at extreme ends of the spectrum.</p>
-</section>
-<section id="class-comparison" class="level2">
-<h2 class="anchored" data-anchor-id="class-comparison">Class Comparison</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Class-level facets reveal differences: class 3A clusters above 70, while 3I shows a wider spread, hinting at varying teaching quality or peer effects.</p>
-</section>
-<section id="density-plot-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="density-plot-analysis">Density Plot Analysis</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The density curves highlight subtle gender differences in math performance, with female students showing a more concentrated distribution compared to males who display greater variability, particularly in the middle score range.</p>
-</section>
-<section id="violin-plot-comparison" class="level2">
-<h2 class="anchored" data-anchor-id="violin-plot-comparison">Violin Plot Comparison</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Violin plots effectively illustrate the probability density of scores across genders, showing that while medians are similar, male students exhibit greater variance and a slight bimodal tendency in math performance.</p>
-</section>
-<section id="subject-relationship" class="level2">
-<h2 class="anchored" data-anchor-id="subject-relationship">Subject Relationship</h2>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The scatter plot reveals a moderate positive correlation between Math and English scores, suggesting that students who excel in one subject tend to perform well in the other, though numerous outliers indicate exceptions to this pattern.</p>
-</section>
-<section id="alternative-subject-comparison-view" class="level2">
-<h2 class="anchored" data-anchor-id="alternative-subject-comparison-view">Alternative Subject Comparison View</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Flipping axes improves readability and makes overlap among subjects obvious; English remains top, Science lags with more low outliers. This orientation better highlights score ranges and median differences between subjects, enhancing comparative analysis.</p>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The visualizations reveal Singapore’s complex demographic landscape in 2024, characterized by distinct spatial patterns in population distribution and age structure. Established planning areas in the east remain heavily populated, while pronounced demographic differences exist between mature and newer estates. These patterns have significant implications for urban planning priorities including: (1) targeted healthcare infrastructure development in aging neighborhoods like Outram and Bukit Merah; (2) transit connectivity improvements to address population concentration in eastern regions; and (3) housing policy adaptations to accommodate evolving household structures across different planning areas.</p>
 
 
 </section>
