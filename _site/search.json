@@ -4,7 +4,77 @@
     "href": "Hand-on_Ex03/index.html",
     "title": "Hand-on Ex03",
     "section": "",
-    "text": "1 Interactive scatter (ggiraph)\n\n\n\n\n\n\nHovering a point reveals the student’s ID and exact scores; dense mid-range clusters become easier to inspect without clutter.\n2 Correlation matrix\n\n\n\n\n\n\n\n\n\nAll three subjects correlate positively; English–Maths is strongest (~ 0.73) while Science pairs are slightly weaker.\n3 Animated mean score by class (gganimate)\n\n\n\n\n\n\n\n\n\nThe animation highlights differences among classes: some consistently outperform others, hinting at varying pedagogical effectiveness."
+    "text": "This interactive scatter plot reveals student IDs on hover, enabling precise identification of individual performance without cluttering the visualization with permanent labels, enhancing analysis efficiency."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#interactive-tooltip-visualization",
+    "href": "Hand-on_Ex03/index.html#interactive-tooltip-visualization",
+    "title": "Hand-on Ex03",
+    "section": "",
+    "text": "This interactive scatter plot reveals student IDs on hover, enabling precise identification of individual performance without cluttering the visualization with permanent labels, enhancing analysis efficiency."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#custom-tooltip-styling",
+    "href": "Hand-on_Ex03/index.html#custom-tooltip-styling",
+    "title": "Hand-on Ex03",
+    "section": "Custom Tooltip Styling",
+    "text": "Custom Tooltip Styling\n\n\n\n\n\n\nEnhanced tooltips provide comprehensive student information on hover, combining multiple data fields in a styled format for improved context and readability during exploratory data analysis."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#hover-highlighting-effect",
+    "href": "Hand-on_Ex03/index.html#hover-highlighting-effect",
+    "title": "Hand-on Ex03",
+    "section": "Hover Highlighting Effect",
+    "text": "Hover Highlighting Effect\n\n\n\n\n\n\nClass-based highlighting visually groups students when hovering over any class member, facilitating pattern recognition across the distribution and enabling instant identification of class performance characteristics."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#coordinated-multiple-views",
+    "href": "Hand-on_Ex03/index.html#coordinated-multiple-views",
+    "title": "Hand-on Ex03",
+    "section": "Coordinated Multiple Views",
+    "text": "Coordinated Multiple Views\n\n\n\n\n\n\nThese coordinated views enable cross-subject analysis by highlighting the same student across both distributions simultaneously, facilitating pattern identification and outlier detection across subjects at the individual level."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#plotly-interactive-visualization",
+    "href": "Hand-on_Ex03/index.html#plotly-interactive-visualization",
+    "title": "Hand-on Ex03",
+    "section": "Plotly Interactive Visualization",
+    "text": "Plotly Interactive Visualization\n\n\n\n\n\n\nUsing ggplotly transforms static visualizations into interactive ones with minimal code changes, adding tooltips, zoom capabilities, and filtering options that enhance exploratory data analysis beyond what’s possible with static displays."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#plotly-coordinated-views",
+    "href": "Hand-on_Ex03/index.html#plotly-coordinated-views",
+    "title": "Hand-on Ex03",
+    "section": "Plotly Coordinated Views",
+    "text": "Plotly Coordinated Views\n\n\n\n\n\n\nThis linked visualization allows selection in one plot to highlight corresponding points in the other, enabling multi-dimensional performance analysis across subjects and revealing relationships that might be missed in single-view analysis."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#interactive-data-table",
+    "href": "Hand-on_Ex03/index.html#interactive-data-table",
+    "title": "Hand-on Ex03",
+    "section": "Interactive Data Table",
+    "text": "Interactive Data Table\n\n\n\n\n\n\nThe interactive data table allows sorting, filtering, and paginating through the complete dataset, complementing visualizations with the ability to inspect and analyze individual records in detail."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#basic-animation",
+    "href": "Hand-on_Ex03/index.html#basic-animation",
+    "title": "Hand-on Ex03",
+    "section": "Basic Animation",
+    "text": "Basic Animation\n\n\n\n\n\n\n\n\n\nThis multi-panel visualization shows class performance across different subjects, allowing comparison of achievement patterns between classes. The charts reveal which classes maintain consistent performance across disciplines versus those showing significant subject-specific strengths or weaknesses."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#animated-scatter-plot",
+    "href": "Hand-on_Ex03/index.html#animated-scatter-plot",
+    "title": "Hand-on Ex03",
+    "section": "Animated Scatter Plot",
+    "text": "Animated Scatter Plot\n\n\n\n\n\n\nThe animated scatter plot visualizes global development trends over time, revealing the dynamic relationship between economic performance and quality of life metrics while enabling interactive exploration of specific countries and regions."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#enhanced-animation-effects",
+    "href": "Hand-on_Ex03/index.html#enhanced-animation-effects",
+    "title": "Hand-on Ex03",
+    "section": "Enhanced Animation Effects",
+    "text": "Enhanced Animation Effects\n\n\n\n\n\n\n\n\n\nThis series of scatter plots captures global development trends at key time points (1952, 1977, and 2002), revealing the relationship between economic performance and life expectancy. Comparing these snapshots illustrates how countries and regions have developed over the half-century period, showing patterns of progress and disparity."
   },
   {
     "objectID": "Hand-on_Ex01/index.html",
@@ -81,34 +151,62 @@
     "href": "Hand-on_Ex02/index.html",
     "title": "Hand-on Ex02",
     "section": "",
-    "text": "Math and Science scores exhibit a moderate positive trend; most students cluster between 50-90 in both subjects, with a handful of low-Math/low-Science outliers."
+    "text": "Warning: ggrepel: 287 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps\n\n\n\n\n\n\n\n\n\nThe comparison demonstrates how ggrepel’s text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other."
   },
   {
-    "objectID": "Hand-on_Ex02/index.html#math-vs-science-relationship",
-    "href": "Hand-on_Ex02/index.html#math-vs-science-relationship",
+    "objectID": "Hand-on_Ex02/index.html#improved-annotation-with-ggrepel",
+    "href": "Hand-on_Ex02/index.html#improved-annotation-with-ggrepel",
     "title": "Hand-on Ex02",
     "section": "",
-    "text": "Math and Science scores exhibit a moderate positive trend; most students cluster between 50-90 in both subjects, with a handful of low-Math/low-Science outliers."
+    "text": "Warning: ggrepel: 287 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps\n\n\n\n\n\n\n\n\n\nThe comparison demonstrates how ggrepel’s text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other."
   },
   {
-    "objectID": "Hand-on_Ex02/index.html#correlation-matrix-3-subjects",
-    "href": "Hand-on_Ex02/index.html#correlation-matrix-3-subjects",
+    "objectID": "Hand-on_Ex02/index.html#professional-themes-with-ggthemes",
+    "href": "Hand-on_Ex02/index.html#professional-themes-with-ggthemes",
     "title": "Hand-on Ex02",
-    "section": "2 Correlation Matrix (3 subjects)",
-    "text": "2 Correlation Matrix (3 subjects)\n\n\n\n\n\n\n\n\n\nAll three subjects correlate positively; English-Maths is strongest (≈0.73), while Science pairs are slightly weaker, hinting that language skills may bolster overall academic performance."
+    "section": "Professional Themes with ggthemes",
+    "text": "Professional Themes with ggthemes\n\n\n\n\n\n\n\n\n\nUsing The Economist theme transforms the histogram into publication-quality visualization with distinctive typography and color palette, demonstrating how themed approaches can lend credibility and professionalism to statistical graphics."
   },
   {
-    "objectID": "Hand-on_Ex02/index.html#gender-coloured-scatter",
-    "href": "Hand-on_Ex02/index.html#gender-coloured-scatter",
+    "objectID": "Hand-on_Ex02/index.html#typography-focused-design",
+    "href": "Hand-on_Ex02/index.html#typography-focused-design",
     "title": "Hand-on Ex02",
-    "section": "3 Gender-coloured Scatter",
-    "text": "3 Gender-coloured Scatter\n\n\n\n\n\n\n\n\n\nTrend lines are similar for both genders, suggesting gender does not materially affect the Maths-Science relationship; however, males show a few more high-Math outliers."
+    "section": "Typography-Focused Design",
+    "text": "Typography-Focused Design\n\n\n\n\n\n\n\n\n\nThe enhanced typography is achieved using ggplot2’s native theming system with carefully adjusted text properties, creating a clean design with proper visual hierarchy and improved readability for reports and presentations."
   },
   {
-    "objectID": "Hand-on_Ex02/index.html#simple-regression-table",
-    "href": "Hand-on_Ex02/index.html#simple-regression-table",
+    "objectID": "Hand-on_Ex02/index.html#composite-figures-with-patchwork",
+    "href": "Hand-on_Ex02/index.html#composite-figures-with-patchwork",
     "title": "Hand-on Ex02",
-    "section": "4 Simple Regression Table",
-    "text": "4 Simple Regression Table\n\n\n# A tibble: 3 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)   -9.13     1.95       -4.67 4.47e- 6\n2 MATHS          0.411    0.0373     11.0  3.87e-24\n3 ENGLISH        0.622    0.0507     12.3  1.28e-28\n\n\nThe multiple-linear model explains ~60 % of variance in Science scores; Maths (β≈0.46) and English (β≈0.38) both contribute significantly (p &lt; 0.001)."
+    "section": "Composite Figures with Patchwork",
+    "text": "Composite Figures with Patchwork\n\n\n\n\n\n\n\n\n\nThe side-by-side histograms created with patchwork enable efficient comparison of distributions between mathematics and English scores, revealing differences in central tendency and spread without requiring multiple separate figures."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#multi-row-layout",
+    "href": "Hand-on_Ex02/index.html#multi-row-layout",
+    "title": "Hand-on Ex02",
+    "section": "Multi-Row Layout",
+    "text": "Multi-Row Layout\n\n\n\n\n\n\n\n\n\nThis composite visualization integrates individual subject distributions with their correlation, creating a comprehensive analytical view that would otherwise require multiple separate charts, demonstrating patchwork’s ability to build complex multi-level layouts."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#auto-tagged-composite-figure",
+    "href": "Hand-on_Ex02/index.html#auto-tagged-composite-figure",
+    "title": "Hand-on Ex02",
+    "section": "Auto-Tagged Composite Figure",
+    "text": "Auto-Tagged Composite Figure\n\n\n\n\n\n\n\n\n\nAutomatic tagging adds professional reference points to each panel, making the composite figure suitable for formal reports where specific panels need to be referenced in accompanying text."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#inset-chart",
+    "href": "Hand-on_Ex02/index.html#inset-chart",
+    "title": "Hand-on Ex02",
+    "section": "Inset Chart",
+    "text": "Inset Chart\n\n\n\n\n\n\n\n\n\nThe inset technique efficiently uses space by embedding the English score distribution within the correlation plot, allowing readers to reference the relevant distribution without switching between figures."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#themed-composite-figure",
+    "href": "Hand-on_Ex02/index.html#themed-composite-figure",
+    "title": "Hand-on Ex02",
+    "section": "Themed Composite Figure",
+    "text": "Themed Composite Figure\n\n\n\n\n\n\n\n\n\nCombining patchwork with ggthemes creates professionally styled composite figures with consistent design elements across all panels, demonstrating how multiple extension packages can work together to produce polished statistical graphics."
   }
 ]

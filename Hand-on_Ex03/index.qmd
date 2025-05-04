@@ -7,78 +7,229 @@ execute:
 
 ```{r setup, include=FALSE}
 library(tidyverse)
-library(ggiraph)      # interactive
-library(gganimate)    # animation
-library(reshape2)     # heat map
-library(gifski)       # GIF renderer
+library(ggiraph)
+library(plotly)
+library(DT)
+library(patchwork)
+library(gganimate)
+library(gifski)
+library(gapminder)      
 
 exam <- read_csv("../data/Exam_data.csv")
-
-num_vars <- exam %>% 
-  select(ENGLISH, MATHS, SCIENCE)
 ```
 
-1 Interactive scatter (ggiraph)
+## Interactive Tooltip Visualization
+```{r tooltip, message=FALSE}
+p <- ggplot(data=exam, aes(x = MATHS, y = ENGLISH)) +
+  geom_point_interactive(aes(tooltip = ID), size = 2) +
+  labs(title = "Interactive Scatter Plot with Student ID Tooltips")
 
+girafe(ggobj = p, width_svg = 8, height_svg = 6)
+```
+This interactive scatter plot reveals student IDs on hover, enabling precise identification of individual performance without cluttering the visualization with permanent labels, enhancing analysis efficiency.
+
+## Custom Tooltip Styling
 ```{r}
-plt <- ggplot(
-  exam,
-  aes(
-    x = MATHS, y = SCIENCE,
-    tooltip = paste0("ID: ", ID,
-                     "\nMaths: ", MATHS,
-                     "\nScience: ", SCIENCE),
-    data_id = ID
+exam$tooltip <- c(paste0("Student ID: ", exam$ID, 
+                         "\nClass: ", exam$CLASS, 
+                         "\nMath: ", exam$MATHS,
+                         "\nEnglish: ", exam$ENGLISH))
+
+p <- ggplot(data=exam, aes(x = MATHS, y = ENGLISH)) +
+  geom_point_interactive(aes(tooltip = tooltip), size = 2) +
+  labs(title = "Enhanced Interactive Scatter Plot")
+
+tooltip_css <- "background-color:#f2f2f2; font-style:bold; color:black; padding:5px; border-radius:3px;"
+
+girafe(
+  ggobj = p, 
+  width_svg = 8, 
+  height_svg = 6,
+  options = list(opts_tooltip(css = tooltip_css))
+)
+```
+Enhanced tooltips provide comprehensive student information on hover, combining multiple data fields in a styled format for improved context and readability during exploratory data analysis.
+
+## Hover Highlighting Effect
+```{r}
+p <- ggplot(data=exam, aes(x = MATHS)) +
+  geom_dotplot_interactive(
+    aes(data_id = CLASS),
+    stackgroups = TRUE,
+    binwidth = 1,
+    method = "histodot") +
+  scale_y_continuous(NULL, breaks = NULL) +
+  labs(title = "Math Scores by Class with Highlight Interaction")
+
+girafe(
+  ggobj = p,
+  width_svg = 8,
+  height_svg = 6,
+  options = list(
+    opts_hover(css = "fill: #ff0000;"),
+    opts_hover_inv(css = "opacity:0.2;")
   )
-) +
-  geom_point_interactive(alpha = 0.7, colour = "#2A9D8F") +
-  labs(title = "Interactive Maths vs Science",
-       x = "Maths", y = "Science") +
+)
+```
+Class-based highlighting visually groups students when hovering over any class member, facilitating pattern recognition across the distribution and enabling instant identification of class performance characteristics.
+
+## Coordinated Multiple Views
+```{r}
+p1 <- ggplot(data=exam, aes(x = MATHS)) +
+  geom_dotplot_interactive(
+    aes(data_id = ID),
+    stackgroups = TRUE,
+    binwidth = 1,
+    method = "histodot") +
+  coord_cartesian(xlim=c(0,100)) +
+  scale_y_continuous(NULL, breaks = NULL) +
+  labs(title = "Math Scores Distribution")
+
+p2 <- ggplot(data=exam, aes(x = ENGLISH)) +
+  geom_dotplot_interactive(
+    aes(data_id = ID),
+    stackgroups = TRUE,
+    binwidth = 1,
+    method = "histodot") +
+  coord_cartesian(xlim=c(0,100)) +
+  scale_y_continuous(NULL, breaks = NULL) +
+  labs(title = "English Scores Distribution")
+
+girafe(code = print(p1 + p2),
+  width_svg = 8,
+  height_svg = 4,
+  options = list(
+    opts_hover(css = "fill: #ff0000;"),
+    opts_hover_inv(css = "opacity:0.2;")
+  )
+)
+```
+These coordinated views enable cross-subject analysis by highlighting the same student across both distributions simultaneously, facilitating pattern identification and outlier detection across subjects at the individual level.
+
+## Plotly Interactive Visualization
+```{r}
+p <- ggplot(data=exam, aes(x = MATHS, y = ENGLISH, color = GENDER)) +
+  geom_point() +
+  labs(title = "Math vs English Performance by Gender") +
   theme_minimal()
 
-girafe(ggobj = plt)
+ggplotly(p, tooltip = c("x", "y", "colour"))
 ```
+Using ggplotly transforms static visualizations into interactive ones with minimal code changes, adding tooltips, zoom capabilities, and filtering options that enhance exploratory data analysis beyond what's possible with static displays.
 
-Hovering a point reveals the student’s ID and exact scores; dense mid-range clusters become easier to inspect without clutter.
-
-2 Correlation matrix
-
+## Plotly Coordinated Views
 ```{r}
-corr <- round(cor(num_vars), 2) |> 
-  melt(varnames = c("Var1", "Var2"), value.name = "Corr")
+d <- highlight_key(exam)
 
-ggplot(corr, aes(Var1, Var2, fill = Corr)) +
-  geom_tile() +
-  geom_text(aes(label = Corr), colour = "white", size = 3) +
-  scale_fill_gradient2(low = "#de2d26", mid = "white",
-                       high = "#08519c", midpoint = 0) +
-  labs(title = "Correlation matrix") +
-  theme_minimal() +
-  theme(axis.title = element_blank())
+p1 <- ggplot(data=d, aes(x = MATHS, y = ENGLISH)) +
+  geom_point(size=1) +
+  coord_cartesian(xlim=c(0,100), ylim=c(0,100)) +
+  labs(title = "Math vs English")
+
+p2 <- ggplot(data=d, aes(x = MATHS, y = SCIENCE)) +
+  geom_point(size=1) +
+  coord_cartesian(xlim=c(0,100), ylim=c(0,100)) +
+  labs(title = "Math vs Science")
+
+subplot(ggplotly(p1), ggplotly(p2))
 ```
+This linked visualization allows selection in one plot to highlight corresponding points in the other, enabling multi-dimensional performance analysis across subjects and revealing relationships that might be missed in single-view analysis.
 
-All three subjects correlate positively; English–Maths is strongest (\~ 0.73) while Science pairs are slightly weaker.
-
-3 Animated mean score by class (gganimate)
-
+## Interactive Data Table
 ```{r}
-class_avg <- exam %>% 
-  group_by(CLASS) %>% 
-  summarise(avg = mean(MATHS, na.rm = TRUE))
+exam_subset <- exam %>% 
+  select(ID, CLASS, GENDER, RACE, MATHS, ENGLISH, SCIENCE)
 
-p_class <- ggplot(class_avg, aes(CLASS, avg)) +
-  geom_col(fill = "#3182bd", alpha = 0.8) +
-  geom_text(aes(label = round(avg, 1)), vjust = -0.5,
-            colour = "#de2d26") +
-  labs(title = "Average Maths score — {closest_state}",
-       x = "Class", y = "Average score") +
-  theme_minimal() +
-  transition_states(CLASS, transition_length = 2,
-                    state_length = 1) +
-  enter_fade() + exit_fade()
-
-animate(p_class, nframes = 100, fps = 10,
-        renderer = gifski_renderer())
+datatable(exam_subset, 
+          class = "display", 
+          filter = "top", 
+          options = list(pageLength = 10, 
+                         scrollX = TRUE))
 ```
+The interactive data table allows sorting, filtering, and paginating through the complete dataset, complementing visualizations with the ability to inspect and analyze individual records in detail.
 
-The animation highlights differences among classes: some consistently outperform others, hinting at varying pedagogical effectiveness.
+## Basic Animation
+```{r}
+class_stats <- exam %>%
+  group_by(CLASS) %>%
+  summarise(
+    MEAN_MATHS = mean(MATHS),
+    MEAN_ENGLISH = mean(ENGLISH),
+    MEAN_SCIENCE = mean(SCIENCE),
+    COUNT = n()
+  )
+class_stats_long <- class_stats %>%
+  pivot_longer(
+    cols = starts_with("MEAN_"),
+    names_to = "SUBJECT",
+    values_to = "SCORE"
+  ) %>%
+  mutate(SUBJECT = gsub("MEAN_", "", SUBJECT))
+
+p_math <- class_stats_long %>% 
+  filter(SUBJECT == "MATHS") %>%
+  ggplot(aes(x = CLASS, y = SCORE, fill = CLASS)) +
+  geom_col() +
+  labs(title = "Average Math Score by Class") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  coord_cartesian(ylim = c(0, 100))
+
+p_english <- class_stats_long %>% 
+  filter(SUBJECT == "ENGLISH") %>%
+  ggplot(aes(x = CLASS, y = SCORE, fill = CLASS)) +
+  geom_col() +
+  labs(title = "Average English Score by Class") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  coord_cartesian(ylim = c(0, 100))
+
+p_science <- class_stats_long %>% 
+  filter(SUBJECT == "SCIENCE") %>%
+  ggplot(aes(x = CLASS, y = SCORE, fill = CLASS)) +
+  geom_col() +
+  labs(title = "Average Science Score by Class") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  coord_cartesian(ylim = c(0, 100))
+
+p_math / p_english / p_science
+```
+This multi-panel visualization shows class performance across different subjects, allowing comparison of achievement patterns between classes. The charts reveal which classes maintain consistent performance across disciplines versus those showing significant subject-specific strengths or weaknesses.
+
+## Animated Scatter Plot
+```{r}
+gg <- ggplot(gapminder, 
+             aes(x = gdpPercap, y = lifeExp, 
+                 size = pop, color = continent,
+                 frame = year, ids = country)) +
+  geom_point(alpha = 0.7) +
+  scale_x_log10() +
+  scale_size(range = c(2, 12)) +
+  labs(title = "GDP vs Life Expectancy: {frame_time}", 
+       x = "GDP per capita (log scale)", y = "Life Expectancy")
+
+ggplotly(gg)
+```
+The animated scatter plot visualizes global development trends over time, revealing the dynamic relationship between economic performance and quality of life metrics while enabling interactive exploration of specific countries and regions.
+
+## Enhanced Animation Effects
+```{r}
+years_to_show <- c(1952, 1977, 2002)
+
+static_plots <- lapply(years_to_show, function(yr) {
+  gapminder %>% 
+    filter(year == yr) %>%
+    ggplot(aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)) +
+    geom_point(alpha = 0.7) +
+    scale_x_log10() +
+    scale_size(range = c(2, 12)) +
+    labs(title = paste("GDP vs Life Expectancy in", yr),
+         x = "GDP per capita (log scale)", y = "Life Expectancy") +
+    theme_minimal()
+})
+
+library(patchwork)
+wrap_plots(static_plots, ncol = 1)
+```
+This series of scatter plots captures global development trends at key time points (1952, 1977, and 2002), revealing the relationship between economic performance and life expectancy. Comparing these snapshots illustrates how countries and regions have developed over the half-century period, showing patterns of progress and disparity.

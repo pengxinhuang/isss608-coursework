@@ -7,61 +7,105 @@ execute:
 
 ```{r setup, include=FALSE}
 library(tidyverse)
+library(ggrepel)
+library(ggthemes)
+library(patchwork)
 exam <- read_csv("../data/Exam_data.csv")
-
-num_vars <- exam %>% 
-  select(ENGLISH, MATHS, SCIENCE)
 ```
 
-## 1 Math vs Science Relationship
-
-```{r scatter_ms, message=FALSE}
-ggplot(exam, aes(x = MATHS, y = SCIENCE)) +
-  geom_point(alpha = .6, colour = "#3182bd") +
-  geom_smooth(method = "lm", colour = "red", se = FALSE) +
-  labs(title = "Maths vs Science scores",
-       x = "Maths", y = "Science") +
+## Improved Annotation with ggrepel
+```{r}
+p1 <- ggplot(exam, aes(x = MATHS, y = ENGLISH)) +
+  geom_point() +
+  geom_text(aes(label = ID), size = 2.5) +
+  labs(title = "Standard Text Labels",
+       x = "Maths Score", y = "English Score") +
   theme_minimal()
+
+p2 <- ggplot(exam, aes(x = MATHS, y = ENGLISH)) +
+  geom_point() +
+  geom_text_repel(aes(label = ID), size = 2.5, max.overlaps = 15) +
+  labs(title = "ggrepel Text Labels",
+       x = "Maths Score", y = "English Score") +
+  theme_minimal()
+
+p1 + p2
 ```
+The comparison demonstrates how ggrepel's text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other.
 
-Math and Science scores exhibit a **moderate positive trend**; most students cluster between 50-90 in both subjects, with a handful of low-Math/low-Science outliers.
+## Professional Themes with ggthemes
+```{r}
+ggplot(exam, aes(x = MATHS, fill = GENDER)) +
+  geom_histogram(bins = 20, position = "identity", alpha = 0.5) +
+  labs(title = "Maths Score Distribution by Gender", 
+       x = "Score", y = "Count") +
+  theme_economist() +
+  scale_fill_economist()
+```
+Using The Economist theme transforms the histogram into publication-quality visualization with distinctive typography and color palette, demonstrating how themed approaches can lend credibility and professionalism to statistical graphics.
 
-## 2 Correlation Matrix (3 subjects)
-
-```{r corr_heat, message=FALSE}
-library(reshape2)
-corr_mat <- round(cor(num_vars), 2) |> 
-  melt(varnames = c("Var1","Var2"), value.name = "Corr")
-
-ggplot(corr_mat, aes(Var1, Var2, fill = Corr)) +
-  geom_tile() +
-  geom_text(aes(label = Corr), colour = "white") +
-  scale_fill_gradient2(low = "#de2d26", mid = "white",
-                       high = "#08519c", midpoint = 0) +
-  labs(title = "Correlation matrix") +
+## Typography-Focused Design
+```{r}
+ggplot(exam, aes(x = MATHS)) +
+  geom_histogram(binwidth = 5, fill = "#A7C6DA", colour = "white") +
+  labs(title = "Maths Score Distribution", 
+       subtitle = "Enhanced typography for readability",
+       x = "Score", y = "Count") +
   theme_minimal() +
-  theme(axis.title = element_blank())
+  theme(
+    plot.title = element_text(size = 16, face = "bold"),
+    plot.subtitle = element_text(size = 12),
+    axis.title = element_text(size = 14),
+    text = element_text(family = "sans")
+  )
 ```
+The enhanced typography is achieved using ggplot2's native theming system with carefully adjusted text properties, creating a clean design with proper visual hierarchy and improved readability for reports and presentations.
 
-All three subjects correlate positively; English-Maths is strongest (≈0.73), while Science pairs are slightly weaker, hinting that language skills may bolster overall academic performance.
-
-## 3 Gender-coloured Scatter
-
-```{r scatter_gender, message=FALSE}
-ggplot(exam, aes(MATHS, SCIENCE, colour = GENDER)) +
-  geom_point(alpha = .7) +
-  geom_smooth(method = "lm", se = FALSE) +
-  labs(title = "Maths vs Science by gender") +
+## Composite Figures with Patchwork
+```{r}
+p1 <- ggplot(exam, aes(x = MATHS)) +
+  geom_histogram(bins = 20, fill = "lightblue") +
+  labs(title = "Maths Scores") +
   theme_minimal()
+
+p2 <- ggplot(exam, aes(x = ENGLISH)) +
+  geom_histogram(bins = 20, fill = "lightgreen") +
+  labs(title = "English Scores") +
+  theme_minimal()
+
+p1 + p2
 ```
+The side-by-side histograms created with patchwork enable efficient comparison of distributions between mathematics and English scores, revealing differences in central tendency and spread without requiring multiple separate figures.
 
-Trend lines are similar for both genders, suggesting gender does **not** materially affect the Maths-Science relationship; however, males show a few more high-Math outliers.
+## Multi-Row Layout
+```{r}
+p3 <- ggplot(exam, aes(x = MATHS, y = ENGLISH)) +
+  geom_point() +
+  labs(title = "Score Correlation") +
+  theme_minimal()
 
-## 4 Simple Regression Table
-
-```{r reg_table, message=FALSE}
-model <- lm(SCIENCE ~ MATHS + ENGLISH, data = exam)
-broom::tidy(model)
+(p1 + p2) / p3
 ```
+This composite visualization integrates individual subject distributions with their correlation, creating a comprehensive analytical view that would otherwise require multiple separate charts, demonstrating patchwork's ability to build complex multi-level layouts.
 
-The multiple-linear model explains **\~60 %** of variance in Science scores; Maths (β≈0.46) and English (β≈0.38) both contribute significantly (p \< 0.001).
+## Auto-Tagged Composite Figure
+```{r}
+((p1 + p2) / p3) + plot_annotation(tag_levels = 'A')
+```
+Automatic tagging adds professional reference points to each panel, making the composite figure suitable for formal reports where specific panels need to be referenced in accompanying text.
+
+## Inset Chart
+```{r}
+p3 + inset_element(p2, left = 0.6, bottom = 0.6, right = 1, top = 1)
+```
+The inset technique efficiently uses space by embedding the English score distribution within the correlation plot, allowing readers to reference the relevant distribution without switching between figures.
+
+## Themed Composite Figure
+```{r}
+p1_themed <- p1 + theme_economist()
+p2_themed <- p2 + theme_economist()
+p3_themed <- p3 + theme_economist()
+
+(p1_themed + p2_themed) / p3_themed
+```
+Combining patchwork with ggthemes creates professionally styled composite figures with consistent design elements across all panels, demonstrating how multiple extension packages can work together to produce polished statistical graphics.

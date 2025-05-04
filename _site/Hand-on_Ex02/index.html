@@ -134,10 +134,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#math-vs-science-relationship" id="toc-math-vs-science-relationship" class="nav-link active" data-scroll-target="#math-vs-science-relationship">1 Math vs Science Relationship</a></li>
-  <li><a href="#correlation-matrix-3-subjects" id="toc-correlation-matrix-3-subjects" class="nav-link" data-scroll-target="#correlation-matrix-3-subjects">2 Correlation Matrix (3 subjects)</a></li>
-  <li><a href="#gender-coloured-scatter" id="toc-gender-coloured-scatter" class="nav-link" data-scroll-target="#gender-coloured-scatter">3 Gender-coloured Scatter</a></li>
-  <li><a href="#simple-regression-table" id="toc-simple-regression-table" class="nav-link" data-scroll-target="#simple-regression-table">4 Simple Regression Table</a></li>
+  <li><a href="#improved-annotation-with-ggrepel" id="toc-improved-annotation-with-ggrepel" class="nav-link active" data-scroll-target="#improved-annotation-with-ggrepel">Improved Annotation with ggrepel</a></li>
+  <li><a href="#professional-themes-with-ggthemes" id="toc-professional-themes-with-ggthemes" class="nav-link" data-scroll-target="#professional-themes-with-ggthemes">Professional Themes with ggthemes</a></li>
+  <li><a href="#typography-focused-design" id="toc-typography-focused-design" class="nav-link" data-scroll-target="#typography-focused-design">Typography-Focused Design</a></li>
+  <li><a href="#composite-figures-with-patchwork" id="toc-composite-figures-with-patchwork" class="nav-link" data-scroll-target="#composite-figures-with-patchwork">Composite Figures with Patchwork</a></li>
+  <li><a href="#multi-row-layout" id="toc-multi-row-layout" class="nav-link" data-scroll-target="#multi-row-layout">Multi-Row Layout</a></li>
+  <li><a href="#auto-tagged-composite-figure" id="toc-auto-tagged-composite-figure" class="nav-link" data-scroll-target="#auto-tagged-composite-figure">Auto-Tagged Composite Figure</a></li>
+  <li><a href="#inset-chart" id="toc-inset-chart" class="nav-link" data-scroll-target="#inset-chart">Inset Chart</a></li>
+  <li><a href="#themed-composite-figure" id="toc-themed-composite-figure" class="nav-link" data-scroll-target="#themed-composite-figure">Themed Composite Figure</a></li>
   </ul>
 </nav>
     </div>
@@ -163,58 +167,113 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="math-vs-science-relationship" class="level2">
-<h2 class="anchored" data-anchor-id="math-vs-science-relationship">1 Math vs Science Relationship</h2>
+<section id="improved-annotation-with-ggrepel" class="level2">
+<h2 class="anchored" data-anchor-id="improved-annotation-with-ggrepel">Improved Annotation with ggrepel</h2>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: ggrepel: 287 unlabeled data points (too many overlaps). Consider
+increasing max.overlaps</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/scatter_ms-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Math and Science scores exhibit a <strong>moderate positive trend</strong>; most students cluster between 50-90 in both subjects, with a handful of low-Math/low-Science outliers.</p>
+<p>The comparison demonstrates how ggrepel’s text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other.</p>
 </section>
-<section id="correlation-matrix-3-subjects" class="level2">
-<h2 class="anchored" data-anchor-id="correlation-matrix-3-subjects">2 Correlation Matrix (3 subjects)</h2>
+<section id="professional-themes-with-ggthemes" class="level2">
+<h2 class="anchored" data-anchor-id="professional-themes-with-ggthemes">Professional Themes with ggthemes</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/corr_heat-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>All three subjects correlate positively; English-Maths is strongest (≈0.73), while Science pairs are slightly weaker, hinting that language skills may bolster overall academic performance.</p>
+<p>Using The Economist theme transforms the histogram into publication-quality visualization with distinctive typography and color palette, demonstrating how themed approaches can lend credibility and professionalism to statistical graphics.</p>
 </section>
-<section id="gender-coloured-scatter" class="level2">
-<h2 class="anchored" data-anchor-id="gender-coloured-scatter">3 Gender-coloured Scatter</h2>
+<section id="typography-focused-design" class="level2">
+<h2 class="anchored" data-anchor-id="typography-focused-design">Typography-Focused Design</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/scatter_gender-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Trend lines are similar for both genders, suggesting gender does <strong>not</strong> materially affect the Maths-Science relationship; however, males show a few more high-Math outliers.</p>
+<p>The enhanced typography is achieved using ggplot2’s native theming system with carefully adjusted text properties, creating a clean design with proper visual hierarchy and improved readability for reports and presentations.</p>
 </section>
-<section id="simple-regression-table" class="level2">
-<h2 class="anchored" data-anchor-id="simple-regression-table">4 Simple Regression Table</h2>
+<section id="composite-figures-with-patchwork" class="level2">
+<h2 class="anchored" data-anchor-id="composite-figures-with-patchwork">Composite Figures with Patchwork</h2>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 5
-  term        estimate std.error statistic  p.value
-  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)   -9.13     1.95       -4.67 4.47e- 6
-2 MATHS          0.411    0.0373     11.0  3.87e-24
-3 ENGLISH        0.622    0.0507     12.3  1.28e-28</code></pre>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>The multiple-linear model explains <strong>~60 %</strong> of variance in Science scores; Maths (β≈0.46) and English (β≈0.38) both contribute significantly (p &lt; 0.001).</p>
+</div>
+<p>The side-by-side histograms created with patchwork enable efficient comparison of distributions between mathematics and English scores, revealing differences in central tendency and spread without requiring multiple separate figures.</p>
+</section>
+<section id="multi-row-layout" class="level2">
+<h2 class="anchored" data-anchor-id="multi-row-layout">Multi-Row Layout</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This composite visualization integrates individual subject distributions with their correlation, creating a comprehensive analytical view that would otherwise require multiple separate charts, demonstrating patchwork’s ability to build complex multi-level layouts.</p>
+</section>
+<section id="auto-tagged-composite-figure" class="level2">
+<h2 class="anchored" data-anchor-id="auto-tagged-composite-figure">Auto-Tagged Composite Figure</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Automatic tagging adds professional reference points to each panel, making the composite figure suitable for formal reports where specific panels need to be referenced in accompanying text.</p>
+</section>
+<section id="inset-chart" class="level2">
+<h2 class="anchored" data-anchor-id="inset-chart">Inset Chart</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The inset technique efficiently uses space by embedding the English score distribution within the correlation plot, allowing readers to reference the relevant distribution without switching between figures.</p>
+</section>
+<section id="themed-composite-figure" class="level2">
+<h2 class="anchored" data-anchor-id="themed-composite-figure">Themed Composite Figure</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Combining patchwork with ggthemes creates professionally styled composite figures with consistent design elements across all panels, demonstrating how multiple extension packages can work together to produce polished statistical graphics.</p>
 
 
 </section>
