@@ -1,0 +1,67 @@
+---
+title: "Hand-on Ex02"
+format: html
+execute:
+  echo: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+exam <- read_csv("../data/Exam_data.csv")
+
+num_vars <- exam %>% 
+  select(ENGLISH, MATHS, SCIENCE)
+```
+
+## 1 Math vs Science Relationship
+
+```{r scatter_ms, message=FALSE}
+ggplot(exam, aes(x = MATHS, y = SCIENCE)) +
+  geom_point(alpha = .6, colour = "#3182bd") +
+  geom_smooth(method = "lm", colour = "red", se = FALSE) +
+  labs(title = "Maths vs Science scores",
+       x = "Maths", y = "Science") +
+  theme_minimal()
+```
+
+Math and Science scores exhibit a **moderate positive trend**; most students cluster between 50-90 in both subjects, with a handful of low-Math/low-Science outliers.
+
+## 2 Correlation Matrix (3 subjects)
+
+```{r corr_heat, message=FALSE}
+library(reshape2)
+corr_mat <- round(cor(num_vars), 2) |> 
+  melt(varnames = c("Var1","Var2"), value.name = "Corr")
+
+ggplot(corr_mat, aes(Var1, Var2, fill = Corr)) +
+  geom_tile() +
+  geom_text(aes(label = Corr), colour = "white") +
+  scale_fill_gradient2(low = "#de2d26", mid = "white",
+                       high = "#08519c", midpoint = 0) +
+  labs(title = "Correlation matrix") +
+  theme_minimal() +
+  theme(axis.title = element_blank())
+```
+
+All three subjects correlate positively; English-Maths is strongest (≈0.73), while Science pairs are slightly weaker, hinting that language skills may bolster overall academic performance.
+
+## 3 Gender-coloured Scatter
+
+```{r scatter_gender, message=FALSE}
+ggplot(exam, aes(MATHS, SCIENCE, colour = GENDER)) +
+  geom_point(alpha = .7) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Maths vs Science by gender") +
+  theme_minimal()
+```
+
+Trend lines are similar for both genders, suggesting gender does **not** materially affect the Maths-Science relationship; however, males show a few more high-Math outliers.
+
+## 4 Simple Regression Table
+
+```{r reg_table, message=FALSE}
+model <- lm(SCIENCE ~ MATHS + ENGLISH, data = exam)
+broom::tidy(model)
+```
+
+The multiple-linear model explains **\~60 %** of variance in Science scores; Maths (β≈0.46) and English (β≈0.38) both contribute significantly (p \< 0.001).

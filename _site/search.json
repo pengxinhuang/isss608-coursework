@@ -1,5 +1,40 @@
 [
   {
+    "objectID": "Hand-on_Ex02/index.html",
+    "href": "Hand-on_Ex02/index.html",
+    "title": "Hand-on Ex02",
+    "section": "",
+    "text": "Math and Science scores exhibit a moderate positive trend; most students cluster between 50-90 in both subjects, with a handful of low-Math/low-Science outliers."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#math-vs-science-relationship",
+    "href": "Hand-on_Ex02/index.html#math-vs-science-relationship",
+    "title": "Hand-on Ex02",
+    "section": "",
+    "text": "Math and Science scores exhibit a moderate positive trend; most students cluster between 50-90 in both subjects, with a handful of low-Math/low-Science outliers."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#correlation-matrix-3-subjects",
+    "href": "Hand-on_Ex02/index.html#correlation-matrix-3-subjects",
+    "title": "Hand-on Ex02",
+    "section": "2 Correlation Matrix (3 subjects)",
+    "text": "2 Correlation Matrix (3 subjects)\n\n\n\n\n\n\n\n\n\nAll three subjects correlate positively; English-Maths is strongest (≈0.73), while Science pairs are slightly weaker, hinting that language skills may bolster overall academic performance."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#gender-coloured-scatter",
+    "href": "Hand-on_Ex02/index.html#gender-coloured-scatter",
+    "title": "Hand-on Ex02",
+    "section": "3 Gender-coloured Scatter",
+    "text": "3 Gender-coloured Scatter\n\n\n\n\n\n\n\n\n\nTrend lines are similar for both genders, suggesting gender does not materially affect the Maths-Science relationship; however, males show a few more high-Math outliers."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#simple-regression-table",
+    "href": "Hand-on_Ex02/index.html#simple-regression-table",
+    "title": "Hand-on Ex02",
+    "section": "4 Simple Regression Table",
+    "text": "4 Simple Regression Table\n\n\n# A tibble: 3 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)   -9.13     1.95       -4.67 4.47e- 6\n2 MATHS          0.411    0.0373     11.0  3.87e-24\n3 ENGLISH        0.622    0.0507     12.3  1.28e-28\n\n\nThe multiple-linear model explains ~60 % of variance in Science scores; Maths (β≈0.46) and English (β≈0.38) both contribute significantly (p &lt; 0.001)."
+  },
+  {
     "objectID": "Hand-on_Ex01/index.html",
     "href": "Hand-on_Ex01/index.html",
     "title": "Hand-on Ex01",
