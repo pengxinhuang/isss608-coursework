@@ -1,0 +1,84 @@
+---
+title: "Hand-on Ex03"
+format: html
+execute:
+  echo: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(ggiraph)      # interactive
+library(gganimate)    # animation
+library(reshape2)     # heat map
+library(gifski)       # GIF renderer
+
+exam <- read_csv("../data/Exam_data.csv")
+
+num_vars <- exam %>% 
+  select(ENGLISH, MATHS, SCIENCE)
+```
+
+1 Interactive scatter (ggiraph)
+
+```{r}
+plt <- ggplot(
+  exam,
+  aes(
+    x = MATHS, y = SCIENCE,
+    tooltip = paste0("ID: ", ID,
+                     "\nMaths: ", MATHS,
+                     "\nScience: ", SCIENCE),
+    data_id = ID
+  )
+) +
+  geom_point_interactive(alpha = 0.7, colour = "#2A9D8F") +
+  labs(title = "Interactive Maths vs Science",
+       x = "Maths", y = "Science") +
+  theme_minimal()
+
+girafe(ggobj = plt)
+```
+
+Hovering a point reveals the student’s ID and exact scores; dense mid-range clusters become easier to inspect without clutter.
+
+2 Correlation matrix
+
+```{r}
+corr <- round(cor(num_vars), 2) |> 
+  melt(varnames = c("Var1", "Var2"), value.name = "Corr")
+
+ggplot(corr, aes(Var1, Var2, fill = Corr)) +
+  geom_tile() +
+  geom_text(aes(label = Corr), colour = "white", size = 3) +
+  scale_fill_gradient2(low = "#de2d26", mid = "white",
+                       high = "#08519c", midpoint = 0) +
+  labs(title = "Correlation matrix") +
+  theme_minimal() +
+  theme(axis.title = element_blank())
+```
+
+All three subjects correlate positively; English–Maths is strongest (\~ 0.73) while Science pairs are slightly weaker.
+
+3 Animated mean score by class (gganimate)
+
+```{r}
+class_avg <- exam %>% 
+  group_by(CLASS) %>% 
+  summarise(avg = mean(MATHS, na.rm = TRUE))
+
+p_class <- ggplot(class_avg, aes(CLASS, avg)) +
+  geom_col(fill = "#3182bd", alpha = 0.8) +
+  geom_text(aes(label = round(avg, 1)), vjust = -0.5,
+            colour = "#de2d26") +
+  labs(title = "Average Maths score — {closest_state}",
+       x = "Class", y = "Average score") +
+  theme_minimal() +
+  transition_states(CLASS, transition_length = 2,
+                    state_length = 1) +
+  enter_fade() + exit_fade()
+
+animate(p_class, nframes = 100, fps = 10,
+        renderer = gifski_renderer())
+```
+
+The animation highlights differences among classes: some consistently outperform others, hinting at varying pedagogical effectiveness.
