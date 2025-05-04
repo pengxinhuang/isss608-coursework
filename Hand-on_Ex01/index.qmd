@@ -9,7 +9,7 @@ project:
 
 ```{r setup, include=FALSE}
 library(tidyverse)
-exam <- read_csv("data/Exam_data.csv")
+exam <- read_csv("../data/Exam_data.csv")
 exam_long <- exam %>% 
   pivot_longer(cols = c(ENGLISH, MATHS, SCIENCE),
                names_to = "Subject", values_to = "Score")
@@ -51,7 +51,7 @@ ggplot(exam, aes(x = MATHS)) +
   theme_minimal()
 ```
 
-The mean (red dashed line) sits near the centre of a bell-shaped curve (~66 points), indicating symmetric performance with few extreme scores.
+The mean (red dashed line) sits near the centre of a bell-shaped curve (\~66 points), indicating symmetric performance with few extreme scores.
 
 ## Class Comparison
 
