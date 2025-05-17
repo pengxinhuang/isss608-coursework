@@ -3,7 +3,7 @@ title: "Take-Home Exercise 1: Singapore Demographic Patterns 2024"
 format: html
 editor: visual
 execute:
-  echo: false
+  echo: true
   warning: false
 project:
   type: website        
@@ -81,10 +81,13 @@ children_ratio <- pop_data %>%
   ) %>%
   arrange(desc(Child_Ratio))
 ```
+
 ## Introduction
+
 This project visualizes Singapore's demographic structure and distribution in 2024, based on data from the Department of Statistics. The analysis focuses on population distribution across planning areas, age structures, and demographic patterns that reveal Singapore's urban development and population characteristics.
 
 ## Planning Area Population Distribution
+
 ```{r}
 # Create planning area population bar chart
 top_10_pa <- pa_summary %>%
@@ -105,9 +108,11 @@ ggplot(top_10_pa, aes(x = reorder(PA, Total_Pop), y = Total_Pop/1000)) +
     axis.text = element_text(size = 10)
   )
 ```
+
 Singapore's population is heavily concentrated in a few key planning areas, with Tampines and Bedok housing the largest populations. This pattern reflects decades of urban development policy focused on creating high-density residential hubs in the east and northeast regions, connected by efficient transportation networks. These areas serve as complete townships with integrated amenities, explaining their sustained popularity despite newer developments elsewhere.
 
 ## Age Structure Comparison Across Planning Areas
+
 ```{r}
 # Select representative planning areas for population pyramids
 selected_areas <- c("Tampines", "Bedok", "Bukit Timah", "Outram")
@@ -147,9 +152,11 @@ ggplot(pyramid_data, aes(x = Age_Group, y = Pop, fill = Sex)) +
     plot.subtitle = element_text(size = 10)
   )
 ```
+
 The population pyramids reveal distinct demographic profiles across four strategically selected planning areas. Tampines, representing newer townships, shows a balanced structure with substantial working-age population. Mature estates like Bedok display aging populations with wider tops, reflecting original residents who have aged in place. Bukit Timah, a high-income private housing area, exhibits a unique "sandglass" pattern with fewer young adults, while Outram's pyramid demonstrates a significant elderly population characteristic of Singapore's historical urban core.
 
 ## Demographic Balance: Elderly vs. Children Distribution
+
 ```{r}
 # Combine elderly and children data
 demographic_balance <- elderly_ratio %>%
@@ -201,7 +208,53 @@ ggplot(top_20_balance, aes(x = Child_Ratio, y = Elderly_Ratio, color = Balance_C
     plot.subtitle = element_text(size = 10)
   )
 ```
+
 This innovative visualization reveals Singapore's demographic transition by comparing elderly and children populations across planning areas. Areas above the diagonal line have more elderly than children, with Outram and Bukit Merah showing extreme imbalances (over 3:1 ratio). This pattern reflects Singapore's rapid aging, particularly in first-generation public housing estates where infrastructure designed for families now serves an elderly majority. These imbalances create challenges for social services, healthcare accessibility, and school planning, requiring targeted policy responses to address these distinct neighborhood-level demographic profiles.
 
 ## Conclusion
+
 The visualizations reveal Singapore's complex demographic landscape in 2024, characterized by distinct spatial patterns in population distribution and age structure. Established planning areas in the east remain heavily populated, while pronounced demographic differences exist between mature and newer estates. These patterns have significant implications for urban planning priorities including: (1) targeted healthcare infrastructure development in aging neighborhoods like Outram and Bukit Merah; (2) transit connectivity improvements to address population concentration in eastern regions; and (3) housing policy adaptations to accommodate evolving household structures across different planning areas.
+
+## Peer Review – Take-home Exercise 1 (Rajesh)
+
+### Original visualisation
+
+![Original chart by Rajesh](original_rajesh.png)
+
+### Strengths
+1. **Clear narrative** – three charts move logically from overall age structure to spatial distribution and gender ratio.  
+2. **Chart–data fit** – population pyramid, ranked bar chart and gender-ratio plot suit their respective messages.  
+3. **Self-contained labels** – titles, subtitles and axes allow non-experts to grasp each visual quickly.
+
+### Areas for improvement
+1. **Colour consistency** – each chart uses a different palette, breaking visual unity.  
+2. **Crowded pyramid labels** – annual age ticks overlap; grouping by five-year bands would improve readability.  
+3. **Gender-ratio baseline** – adding a reference line at M∕F = 1 lets readers spot imbalanced areas instantly.
+
+### Make-over (gender-ratio chart)
+
+```{r gender_makeover, message=FALSE, warning=FALSE, fig.height=10, fig.width=7}
+library(tidyverse)
+library(ggthemes)
+
+gender_plot <- demographic_balance %>% 
+  ggplot(aes(x = reorder(PA, Demographic_Ratio), 
+             y = Demographic_Ratio, 
+             fill = Demographic_Ratio > 1)) + 
+  geom_col(show.legend = FALSE) + 
+  geom_hline(yintercept = 1, linetype = "dashed") + 
+  scale_fill_manual(values = c("#4E79A7", "#E15759")) + 
+  labs(title = "Gender ratio by planning area (M/F)", 
+       subtitle = "Bars above the dashed line indicate more males than females", 
+       x = NULL, 
+       y = "Male : Female") + 
+  coord_flip() + 
+  theme_economist() +
+  theme(
+    axis.text.y = element_text(size = 7),
+    plot.margin = margin(t = 5, r = 5, b = 5, l = 20, unit = "pt"),
+    text = element_text(size = 9)
+  )
+
+gender_plot
+```
