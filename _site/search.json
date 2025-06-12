@@ -11,7 +11,7 @@
     "href": "Take-home_Ex02/index.html#sailor-shifts-profile",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "3.1 Sailor Shift’s Profile",
-    "text": "3.1 Sailor Shift’s Profile\n\n\nSailor Shift found in the network!\n\n\nKey metrics:\n\n\n- PageRank: 0.00065 (Rank #1 in network)\n\n\n- Degree: 60 \n\n\n- Community: 7 \n\n\n- Total connections: 60 \n\n\n- Connection types:\n\n\n\n   DirectlySamples          InStyleOf   InterpolatesFrom LyricalReferenceTo \n                 2                  4                  2                  3 \n        LyricistOf           MemberOf        PerformerOf         ProducerOf \n                21                  1                 26                  1"
+    "text": "3.1 Sailor Shift’s Profile\n\n\nSailor Shift found in the network!\n\n\nKey metrics:\n\n\n- PageRank: 0.00065 (Rank #1 in network)\n\n\n- Degree: 60 \n\n\n- Community: 9 \n\n\n- Total connections: 60 \n\n\n- Connection types:\n\n\n\n   DirectlySamples          InStyleOf   InterpolatesFrom LyricalReferenceTo \n                 2                  4                  2                  3 \n        LyricistOf           MemberOf        PerformerOf         ProducerOf \n                21                  1                 26                  1"
   },
   {
     "objectID": "Take-home_Ex02/index.html#sailor-shifts-career-timeline",
