@@ -11,28 +11,28 @@
     "href": "Take-home_Ex02/index.html#sailor-shifts-profile",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "3.1 Sailor Shift’s Profile",
-    "text": "3.1 Sailor Shift’s Profile\n\n\n✓ Sailor Shift found in the network!\n\n\nKey metrics:\n\n\n- PageRank: 0.00065 (Rank #1 in network)\n\n\n- Degree: 60 \n\n\n- Community: 14 \n\n\n- Total connections: 60 \n\n\n- Connection types:\n\n\n\n   DirectlySamples          InStyleOf   InterpolatesFrom LyricalReferenceTo \n                 2                  4                  2                  3 \n        LyricistOf           MemberOf        PerformerOf         ProducerOf \n                21                  1                 26                  1"
+    "text": "3.1 Sailor Shift’s Profile\n\n\n✓ Sailor Shift found in the network!\n\n\nKey metrics:\n\n\n- PageRank: 0.00065 (Rank #1 in network)\n\n\n- Degree: 60 \n\n\n- Community: 12 \n\n\n- Total connections: 60 \n\n\n- Connection types:\n\n\n\n   DirectlySamples          InStyleOf   InterpolatesFrom LyricalReferenceTo \n                 2                  4                  2                  3 \n        LyricistOf           MemberOf        PerformerOf         ProducerOf \n                21                  1                 26                  1"
   },
   {
     "objectID": "Take-home_Ex02/index.html#sailor-shifts-career-timeline",
     "href": "Take-home_Ex02/index.html#sailor-shifts-career-timeline",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "3.2 Sailor Shift’s Career Timeline",
-    "text": "3.2 Sailor Shift’s Career Timeline"
+    "text": "3.2 Sailor Shift’s Career Timeline\n\n\n\n\n\n\nNote\n\n\n\nSailor Shift’s career shows three distinct roles: as a lyricist (2024-2040), performer (2028-2040), and producer, demonstrating exceptional versatility in the Oceanus Folk music scene."
   },
   {
     "objectID": "Take-home_Ex02/index.html#collaboration-network-evolution",
     "href": "Take-home_Ex02/index.html#collaboration-network-evolution",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "3.3 Collaboration Network Evolution",
-    "text": "3.3 Collaboration Network Evolution"
+    "text": "3.3 Collaboration Network Evolution\n\n\n\n\n\n\nNote\n\n\n\nSailor Shift’s key collaborators include Seraphina Vale (Cassian Storm) and Jaye Finch (Claire Holmes), both highly influential artists in the Oceanus Folk movement."
   },
   {
     "objectID": "Take-home_Ex02/index.html#influence-propagation-analysis",
     "href": "Take-home_Ex02/index.html#influence-propagation-analysis",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "3.4 Influence Propagation Analysis",
-    "text": "3.4 Influence Propagation Analysis"
+    "text": "3.4 Influence Propagation Analysis\n\n\n\n\n\n\nNote\n\n\n\nSailor Shift is a member of a band with Maya Jensen, Lila “Lilly” Hartman, Jade Thompson, and Sophie Ramirez. Through their 47 works (songs and albums), they connect with 25 other artists in the music network, forming a rich collaborative ecosystem."
   },
   {
     "objectID": "Take-home_Ex02/index.html#oceanus-folk-overview",
@@ -46,14 +46,14 @@
     "href": "Take-home_Ex02/index.html#temporal-spread-analysis",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "4.2 Temporal Spread Analysis",
-    "text": "4.2 Temporal Spread Analysis"
+    "text": "4.2 Temporal Spread Analysis\n\n\n\n\n\n\nImportant\n\n\n\nOceanus Folk experienced its biggest surge in 2023 with 34 new songs, followed by another peak in 2026 (25 songs). The genre shows volatile but persistent growth, with recent years (2025-2040) averaging 8.7 songs per year despite high volatility."
   },
   {
     "objectID": "Take-home_Ex02/index.html#genre-cross-pollination-network",
     "href": "Take-home_Ex02/index.html#genre-cross-pollination-network",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "4.3 Genre Cross-Pollination Network",
-    "text": "4.3 Genre Cross-Pollination Network"
+    "text": "4.3 Genre Cross-Pollination Network\n\n\n\n\n\n\nNote\n\n\n\nOceanus Folk artists frequently cross into other genres, particularly Dream Pop and Indie Folk, showing the genre’s versatility and mainstream appeal. This cross-pollination is key to its global spread."
   },
   {
     "objectID": "Take-home_Ex02/index.html#key-propagators-of-oceanus-folk",
@@ -74,7 +74,7 @@
     "href": "Take-home_Ex02/index.html#predictive-model",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "5.2 Predictive Model",
-    "text": "5.2 Predictive Model"
+    "text": "5.2 Predictive Model\n\n\n\n\n\n\nImportant\n\n\n\nOur model identifies artists with recent momentum (post-2030 activity) who haven’t yet reached superstar status (PageRank &lt; 0.0002, approximately below top 2% of all artists). The top rising stars combine versatility, network connections, and consistent output."
   },
   {
     "objectID": "Take-home_Ex02/index.html#rising-stars-characteristics",
@@ -95,21 +95,21 @@
     "href": "Take-home_Ex02/index.html#key-findings",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "6.1 Key Findings",
-    "text": "6.1 Key Findings\n\nSailor Shift’s Success Factors\n\n\n1. **Network Position**: Sailor Shift has the highest PageRank ( 0.00065 ) in the entire network\n\n\n2. **Collaboration Strategy**: Connected to 60 other nodes through diverse relationship types\n\n\n3. **Career Evolution**: Analysis shows consistent activity from early career to present\n\n\n\n\nOceanus Folk Global Spread\n\n\n1. **Growth Pattern**: Oceanus Folk shows exponential growth, especially after 2013 2020 \n\n\n2. **Total Reach**: 305 songs spanning 40 years (1992-2032)\n\n\n3. **Key Propagators**: Top artists have successfully cross-pollinated with other genres\n\n\n\n\nRising Stars Predictions\n\n\nTop 3 Predicted Rising Stars:\n\n\n1. **Kael Storm**: Potential score = 47.25\n2. **Bea Azure**: Potential score = 41.83\n3. **Seraphina Vale**: Potential score = 32.51"
+    "text": "6.1 Key Findings\n\nSailor Shift’s Success Factors\n\n\n1. **Network Position**: Sailor Shift has the highest PageRank ( 0.00065 ) in the entire network\n\n\n2. **Collaboration Strategy**: Connected to 60 other nodes through diverse relationship types\n\n\n3. **Career Evolution**: Triple role as lyricist (since 2024), performer (since 2028), and producer\n\n\n4. **Band Membership**: Part of a 5-member band with Maya Jensen, Lila Hartman, Jade Thompson, and Sophie Ramirez\n\n\n5. **Work Network**: Connected to 25 other artists through shared songs and albums\n\n\n\n\nOceanus Folk Global Spread\n\n\n1. **Growth Pattern**: Oceanus Folk peaked in 2023 with 34 new releases\n\n\n2. **Total Reach**: 305 songs spanning 40 years (1992-2040)\n\n\n3. **Recent Growth**: From 2020 to 2040, the genre grew by 2.7 times\n\n\n4. **Cross-Genre Influence**: Strong connections with Dream Pop and Indie Folk\n\n\n\n\nRising Stars Predictions\n\n\nTop 5 Predicted Rising Stars (2030-2040):\n\n\n1. **Andrew Williams**: Potential score = 3.55 (Veteran)\n2. **Brian Wright**: Potential score = 3.2 (Veteran)\n3. **Kael Storm**: Potential score = 2.67 (Established)\n4. **Bea Azure**: Potential score = 2.36 (Established)\n5. **Jaye Finch**: Potential score = 2.34 (Established)"
   },
   {
     "objectID": "Take-home_Ex02/index.html#recommendations",
     "href": "Take-home_Ex02/index.html#recommendations",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "6.2 Recommendations",
-    "text": "6.2 Recommendations\n\nFor Record Labels: Focus on artists with high versatility scores and emerging momentum\nFor Artists: Collaborate across genre boundaries to increase influence\nFor Investors: Monitor communities 5 and 6 for emerging talent"
+    "text": "6.2 Recommendations\n\nFor Record Labels: Focus on artists like Andrew Williams and Brian Wright who show high network connectivity\nFor Artists: Follow Sailor Shift’s model - combine multiple roles (performer, lyricist, producer) for maximum impact\nFor Investors: Monitor Communities 1 and 2 where most rising stars are concentrated\nGenre Strategy: Oceanus Folk artists should consider cross-genre collaborations, especially with Dream Pop"
   },
   {
     "objectID": "Take-home_Ex02/index.html#limitations",
     "href": "Take-home_Ex02/index.html#limitations",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "6.3 Limitations",
-    "text": "6.3 Limitations\n\nLimited temporal data for edges prevents full career trajectory analysis\nGenre information missing for many artists\nPrediction model relies on network metrics without content analysis"
+    "text": "6.3 Limitations\n\nLimited temporal data for edges prevents full career trajectory analysis\nGenre information missing for 73.5% of nodes\nPrediction model relies on network metrics without content analysis\nOnly 3% of artists have stage names, limiting brand analysis"
   },
   {
     "objectID": "Take-home_Ex02/index.html#data-quality-assessment",

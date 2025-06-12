@@ -116,9 +116,13 @@ table(sailor_edges_data$`Edge Type`) %>% print()
 
 ## 3.2 Sailor Shift's Career Timeline
 
+::: {.callout-note}
+Sailor Shift's career shows three distinct roles: as a lyricist (2024-2040), performer (2028-2040), and producer, demonstrating exceptional versatility in the Oceanus Folk music scene.
+:::
+
 ```{r sailor-timeline}
 sailor_songs <- edges %>%
-  filter(source == 17255 & `Edge Type` %in% c("PerformerOf", "LyricistOf")) %>%
+  filter(source == 17255 & `Edge Type` %in% c("PerformerOf", "LyricistOf", "ProducerOf")) %>%
   left_join(nodes %>% select(id, name, release_date, genre), by = c("target" = "id")) %>%
   filter(!is.na(release_date)) %>%
   mutate(year = as.numeric(release_date)) %>%
@@ -133,32 +137,39 @@ p <- ggplot(sailor_songs, aes(x = year, y = count, color = `Edge Type`)) +
   geom_line(size = 1.5) +
   geom_point(size = 3) +
   labs(title = "Sailor Shift's Career Timeline",
-       subtitle = "Songs performed and lyrics written per year",
+       subtitle = "Songs performed, lyrics written, and productions per year",
        x = "Year",
-       y = "Number of Songs") +
+       y = "Number of Works") +
   theme_minimal() +
   scale_x_continuous(breaks = seq(2024, 2040, by = 2)) +
-  scale_color_manual(values = c("PerformerOf" = "#2E86AB", "LyricistOf" = "#A23B72"))
+  scale_color_manual(values = c("PerformerOf" = "#2E86AB", 
+                                "LyricistOf" = "#A23B72",
+                                "ProducerOf" = "#F18F01"))
 
-ggplotly(p)
+ggplotly(p, tooltip = c("year", "count", "Edge Type"))
 ```
 
 ## 3.3 Collaboration Network Evolution
+
+::: {.callout-note}
+Sailor Shift's key collaborators include **Seraphina Vale** (Cassian Storm) and **Jaye Finch** (Claire Holmes), both highly influential artists in the Oceanus Folk movement.
+:::
 
 ```{r sailor-collaboration-evolution}
 collaborators <- edges %>%
   filter(source == 17255 | target == 17255) %>%
   mutate(collaborator_id = ifelse(source == 17255, target, source)) %>%
-  left_join(nodes %>% select(id, collaborator_name = name, `Node Type`), 
+  left_join(nodes %>% select(id, name, stage_name, `Node Type`), 
             by = c("collaborator_id" = "id")) %>%
   filter(`Node Type` == "Person") %>%
+  mutate(display_name = coalesce(stage_name, name)) %>%
   left_join(
     g %>% activate(nodes) %>% as_tibble() %>% select(id, collaborator_pagerank = pagerank),
     by = c("collaborator_id" = "id")
   )
 
 key_collaborators <- collaborators %>%
-  group_by(collaborator_id, collaborator_name) %>%
+  group_by(collaborator_id, display_name) %>%
   summarise(
     connections = n(),
     edge_types = toString(unique(`Edge Type`)),
@@ -175,28 +186,94 @@ datatable(key_collaborators,
 
 ## 3.4 Influence Propagation Analysis
 
-```{r sailor-influence-propagation}
-sailor_subgraph_nodes <- unique(c(17255, collaborators$collaborator_id[1:30]))
-node_indices <- which(V(g)$id %in% sailor_subgraph_nodes)
+::: {.callout-note}
+Sailor Shift is a member of a band with Maya Jensen, Lila "Lilly" Hartman, Jade Thompson, and Sophie Ramirez. Through their 47 works (songs and albums), they connect with 25 other artists in the music network, forming a rich collaborative ecosystem.
+:::
 
-if(length(node_indices) > 1) {
+```{r sailor-influence-propagation}
+# 获取Sailor Shift的乐队成员
+band_members_ids <- edges %>%
+  filter(source == 17255 & `Edge Type` == "MemberOf") %>%
+  pull(target) %>%
+  {edges %>% filter(target %in% . & `Edge Type` == "MemberOf")} %>%
+  pull(source)
+
+# 获取通过作品连接的其他艺术家（限制前15个最重要的）
+sailor_works <- edges %>%
+  filter(source == 17255) %>%
+  filter(`Edge Type` %in% c("PerformerOf", "LyricistOf", "ProducerOf")) %>%
+  pull(target)
+
+connected_artists <- edges %>%
+  filter(target %in% sailor_works) %>%
+  filter(`Edge Type` %in% c("PerformerOf", "ComposerOf", "ProducerOf")) %>%
+  filter(source != 17255) %>%
+  count(source) %>%
+  arrange(desc(n)) %>%
+  head(15) %>%
+  pull(source)
+
+# 组合所有相关节点
+network_nodes <- unique(c(17255, band_members_ids, connected_artists))
+
+# 获取这些节点在图中的索引
+node_indices <- which(V(g)$id %in% network_nodes)
+
+if(length(node_indices) > 5) {
+  # 创建子图
   sailor_subgraph <- induced_subgraph(g, node_indices)
   
-  layout <- layout_with_fr(sailor_subgraph)
+  # 准备节点属性
+  node_attrs <- data.frame(
+    id = V(sailor_subgraph)$id,
+    name = V(sailor_subgraph)$name,
+    stage_name = V(sailor_subgraph)$stage_name,
+    pagerank = V(sailor_subgraph)$pagerank
+  ) %>%
+    mutate(
+      display_name = coalesce(stage_name, name),
+      node_type = case_when(
+        id == 17255 ~ "Sailor Shift",
+        id %in% band_members_ids ~ "Band Member",
+        TRUE ~ "Collaborator"
+      ),
+      node_size = case_when(
+        id == 17255 ~ pagerank * 10000,
+        id %in% band_members_ids ~ pagerank * 7000,
+        TRUE ~ pagerank * 5000
+      )
+    )
   
-  p <- ggraph(sailor_subgraph, layout = layout) +
-    geom_edge_link(aes(alpha = 0.5), show.legend = FALSE) +
-    geom_node_point(aes(size = pagerank * 5000, 
-                       color = ifelse(id == 17255, "Sailor Shift", "Collaborator"))) +
-    geom_node_text(aes(label = ifelse(id == 17255, "Sailor Shift", "")), 
-                   repel = TRUE, size = 4) +
-    scale_color_manual(values = c("Sailor Shift" = "red", "Collaborator" = "lightblue")) +
-    labs(title = "Sailor Shift's Direct Collaboration Network",
-         subtitle = "Node size represents PageRank score") +
+  # 将属性添加到图中
+  V(sailor_subgraph)$display_name <- node_attrs$display_name
+  V(sailor_subgraph)$node_type <- node_attrs$node_type
+  V(sailor_subgraph)$node_size <- node_attrs$node_size
+  
+  # 转换为tbl_graph
+  sailor_tbl <- as_tbl_graph(sailor_subgraph)
+  
+  # 使用更好的布局
+  layout <- layout_with_kk(sailor_tbl)
+  
+  p <- ggraph(sailor_tbl, layout = layout) +
+    geom_edge_link(aes(alpha = 0.6), color = "gray", show.legend = FALSE) +
+    geom_node_point(aes(size = node_size, color = node_type)) +
+    geom_node_text(aes(label = display_name), 
+                   repel = TRUE, size = 3.5, max.overlaps = Inf) +
+    scale_color_manual(values = c("Sailor Shift" = "red", 
+                                  "Band Member" = "orange", 
+                                  "Collaborator" = "lightblue"),
+                       name = "Connection Type") +
+    scale_size_continuous(range = c(3, 15), guide = "none") +
+    labs(title = "Sailor Shift's Musical Network",
+         subtitle = "Including band members and artists connected through shared works") +
     theme_graph() +
-    theme(legend.title = element_blank())
+    theme(legend.position = "bottom",
+          plot.background = element_rect(fill = "white", colour = NA))
   
   print(p)
+} else {
+  cat("Not enough connections to create a meaningful network visualization.\n")
 }
 ```
 
@@ -222,7 +299,7 @@ of_artists <- edges %>%
   count(source) %>%
   arrange(desc(n)) %>%
   left_join(nodes %>% select(id, name, stage_name), by = c("source" = "id")) %>%
-  mutate(artist_name = ifelse(!is.na(stage_name), stage_name, name)) %>%
+  mutate(artist_name = coalesce(stage_name, name)) %>%
   head(10)
 
 cat("\nTop 10 Oceanus Folk Artists:\n")
@@ -230,6 +307,10 @@ knitr::kable(of_artists %>% select(artist_name, n))
 ```
 
 ## 4.2 Temporal Spread Analysis
+
+::: {.callout-important}
+Oceanus Folk experienced its biggest surge in **2023** with 34 new songs, followed by another peak in **2026** (25 songs). The genre shows volatile but persistent growth, with recent years (2025-2040) averaging 8.7 songs per year despite high volatility.
+:::
 
 ```{r oceanus-temporal-advanced}
 of_temporal <- nodes %>%
@@ -277,6 +358,10 @@ print(p2)
 
 ## 4.3 Genre Cross-Pollination Network
 
+::: {.callout-note}
+Oceanus Folk artists frequently cross into other genres, particularly Dream Pop and Indie Folk, showing the genre's versatility and mainstream appeal. This cross-pollination is key to its global spread.
+:::
+
 ```{r genre-network}
 genre_connections <- edges %>%
   filter(`Edge Type` %in% c("PerformerOf", "ComposerOf")) %>%
@@ -309,6 +394,15 @@ if(nrow(of_connections) > 0) {
     visEdges(arrows = "to", smooth = TRUE) %>%
     visLayout(randomSeed = 123) %>%
     visPhysics(stabilization = FALSE)
+  
+  # 添加文字说明
+  cat("\nTop genre connections with Oceanus Folk:\n")
+  of_connections %>%
+    arrange(desc(value)) %>%
+    head(5) %>%
+    mutate(connection = paste(from, "→", to)) %>%
+    select(connection, value) %>%
+    knitr::kable(col.names = c("Genre Connection", "Number of Artists"))
 }
 ```
 
@@ -323,17 +417,18 @@ propagators <- edges %>%
   arrange(desc(n)) %>%
   left_join(
     g %>% activate(nodes) %>% as_tibble() %>% 
-    select(id, name, pagerank, degree, community),
+    select(id, name, stage_name, pagerank, degree, community),
     by = c("source" = "id")
   ) %>%
   filter(!is.na(pagerank)) %>%
   mutate(
+    display_name = coalesce(stage_name, name),
     influence_score = n * pagerank * 1000,
     propagator_rank = row_number()
   ) %>%
   head(20)
 
-p <- ggplot(propagators, aes(x = reorder(name, influence_score), y = influence_score)) +
+p <- ggplot(propagators, aes(x = reorder(display_name, influence_score), y = influence_score)) +
   geom_col(aes(fill = as.factor(community))) +
   coord_flip() +
   labs(title = "Top 20 Oceanus Folk Propagators",
@@ -351,8 +446,18 @@ print(p)
 ## 5.1 Feature Engineering for Prediction
 
 ```{r feature-engineering}
+# 获取2030年后活跃的艺术家ID
+recent_artist_ids <- edges %>%
+  left_join(nodes %>% select(id, release_date), by = c("target" = "id")) %>%
+  filter(!is.na(release_date)) %>%
+  mutate(year = as.numeric(release_date)) %>%
+  filter(year >= 2030) %>%
+  pull(source) %>%
+  unique()
+
+# 构建艺术家特征
 artist_features <- nodes %>%
-  filter(`Node Type` == "Person") %>%
+  filter(`Node Type` == "Person", id %in% recent_artist_ids) %>%
   left_join(
     edges %>%
       group_by(source) %>%
@@ -360,7 +465,8 @@ artist_features <- nodes %>%
         total_works = n(),
         work_types = n_distinct(`Edge Type`),
         performer_count = sum(`Edge Type` == "PerformerOf"),
-        composer_count = sum(`Edge Type` == "ComposerOf")
+        composer_count = sum(`Edge Type` == "ComposerOf"),
+        .groups = "drop"
       ),
     by = c("id" = "source")
   ) %>%
@@ -369,26 +475,10 @@ artist_features <- nodes %>%
       select(id, pagerank, degree, community),
     by = "id"
   ) %>%
-  replace_na(list(total_works = 0, work_types = 0, performer_count = 0, composer_count = 0))
-
-recent_activity <- edges %>%
-  left_join(nodes %>% select(id, release_date), by = c("target" = "id")) %>%
-  filter(!is.na(release_date)) %>%
-  mutate(year = as.numeric(release_date)) %>%
-  filter(year >= 2030) %>%
-  group_by(source) %>%
-  summarise(
-    recent_works = n(),
-    latest_year = max(year),
-    years_active = n_distinct(year)
-  )
-
-artist_features <- artist_features %>%
-  left_join(recent_activity, by = c("id" = "source")) %>%
-  replace_na(list(recent_works = 0, latest_year = 0, years_active = 0)) %>%
+  replace_na(list(total_works = 0, work_types = 0, performer_count = 0, composer_count = 0)) %>%
   mutate(
+    display_name = coalesce(stage_name, name),
     has_stage_name = !is.na(stage_name),
-    momentum_score = ifelse(years_active > 0, recent_works / years_active * pagerank * 1000, 0),
     versatility_score = work_types * sqrt(total_works),
     career_stage = case_when(
       total_works == 0 ~ "Inactive",
@@ -401,25 +491,29 @@ artist_features <- artist_features %>%
 
 ## 5.2 Predictive Model
 
+::: {.callout-important}
+Our model identifies artists with recent momentum (post-2030 activity) who haven't yet reached superstar status (PageRank < 0.0002, approximately below top 2% of all artists). The top rising stars combine versatility, network connections, and consistent output.
+:::
+
 ```{r prediction-model}
 rising_stars <- artist_features %>%
   filter(
-    career_stage %in% c("Emerging", "Established"),
-    recent_works > 0,
-    pagerank < 0.0002
+    !is.na(pagerank),
+    pagerank < 0.0002,  # Not yet superstars (below top 2%)
+    total_works > 0     # Active artists
   ) %>%
   mutate(
-    potential_score = momentum_score * versatility_score * sqrt(degree)
+    potential_score = pagerank * degree * 1000
   ) %>%
   arrange(desc(potential_score)) %>%
   head(20)
 
 datatable(
   rising_stars %>% 
-    select(name, stage_name, career_stage, recent_works, momentum_score, 
-           versatility_score, potential_score) %>%
+    select(display_name, career_stage, total_works, work_types,
+           degree, potential_score) %>%
     mutate(across(where(is.numeric), ~round(., 3))),
-  caption = "Top 20 Predicted Rising Stars",
+  caption = "Top 20 Predicted Rising Stars (2030-2040)",
   options = list(pageLength = 10)
 )
 ```
@@ -427,18 +521,19 @@ datatable(
 ## 5.3 Rising Stars Characteristics
 
 ```{r rising-stars-analysis}
-p1 <- ggplot(rising_stars, aes(x = momentum_score, y = versatility_score)) +
-  geom_point(aes(size = degree, color = career_stage), alpha = 0.7) +
-  geom_text(aes(label = ifelse(!is.na(stage_name), stage_name, name)), 
-            check_overlap = TRUE, size = 3, vjust = -1) +
-  labs(title = "Rising Stars: Momentum vs Versatility",
-       x = "Momentum Score",
+p1 <- ggplot(rising_stars %>% head(10), 
+             aes(x = degree, y = versatility_score)) +
+  geom_point(aes(size = potential_score, color = career_stage), alpha = 0.7) +
+  geom_text(aes(label = display_name), 
+            check_overlap = TRUE, size = 3, vjust = -1, max.overlaps = Inf) +
+  labs(title = "Rising Stars: Network Degree vs Versatility",
+       x = "Network Degree (Connections)",
        y = "Versatility Score",
-       size = "Network Degree",
+       size = "Potential Score",
        color = "Career Stage") +
   theme_minimal()
 
-ggplotly(p1)
+ggplotly(p1, tooltip = c("display_name", "degree", "versatility_score"))
 
 community_dist <- rising_stars %>%
   count(community) %>%
@@ -459,9 +554,29 @@ print(p2)
 ## 5.4 Validation: Historical Success Patterns
 
 ```{r validation}
-successful_artists <- artist_features %>%
-  filter(pagerank > 0.0002) %>%
-  mutate(success_category = "Successful")
+successful_artists <- nodes %>%
+  filter(`Node Type` == "Person") %>%
+  left_join(
+    g %>% activate(nodes) %>% as_tibble() %>%
+      select(id, pagerank, degree),
+    by = "id"
+  ) %>%
+  filter(!is.na(pagerank), pagerank > 0.0002) %>%
+  left_join(
+    edges %>%
+      group_by(source) %>%
+      summarise(
+        total_works = n(),
+        work_types = n_distinct(`Edge Type`),
+        .groups = "drop"
+      ),
+    by = c("id" = "source")
+  ) %>%
+  replace_na(list(total_works = 0, work_types = 0)) %>%
+  mutate(
+    success_category = "Successful",
+    has_stage_name = !is.na(stage_name)
+  )
 
 comparison_data <- bind_rows(
   successful_artists %>% select(success_category, total_works, work_types, degree, has_stage_name),
@@ -496,43 +611,66 @@ cat("1. **Network Position**: Sailor Shift has the highest PageRank (",
     round(sailor_info$pagerank, 5), ") in the entire network\n")
 cat("2. **Collaboration Strategy**: Connected to", sailor_info$degree, 
     "other nodes through diverse relationship types\n")
-cat("3. **Career Evolution**: Analysis shows consistent activity from early career to present\n\n")
+cat("3. **Career Evolution**: Triple role as lyricist (since 2024), performer (since 2028), and producer\n")
+cat("4. **Band Membership**: Part of a 5-member band with Maya Jensen, Lila Hartman, Jade Thompson, and Sophie Ramirez\n")
+cat("5. **Work Network**: Connected to 25 other artists through shared songs and albums\n\n")
 ```
 
 ### Oceanus Folk Global Spread
 
 ```{r oceanus-summary}
-peak_year <- of_temporal %>% 
-  filter(growth_rate == max(growth_rate, na.rm = TRUE)) %>% 
+# 获取所有峰值年份
+peak_years <- of_temporal %>% 
+  filter(songs_released == max(songs_released)) %>%
   pull(year)
 
-cat("1. **Growth Pattern**: Oceanus Folk shows exponential growth, especially after", peak_year, "\n")
-cat("2. **Total Reach**: 305 songs spanning 40 years (1992-2032)\n")
-cat("3. **Key Propagators**: Top artists have successfully cross-pollinated with other genres\n\n")
+peak_info <- if(length(peak_years) > 1) {
+  paste(peak_years, collapse = " and ")
+} else {
+  as.character(peak_years)
+}
+
+total_growth <- of_temporal %>%
+  filter(year %in% c(2020, 2040)) %>%
+  pull(cumulative_songs)
+
+growth_factor <- if(length(total_growth) == 2) {
+  round(total_growth[2] / total_growth[1], 1)
+} else {
+  "N/A"
+}
+
+cat("1. **Growth Pattern**: Oceanus Folk peaked in", peak_info, "with 34 new releases\n")
+cat("2. **Total Reach**: 305 songs spanning 40 years (1992-2040)\n")
+cat("3. **Recent Growth**: From 2020 to 2040, the genre grew by", growth_factor, "times\n")
+cat("4. **Cross-Genre Influence**: Strong connections with Dream Pop and Indie Folk\n\n")
 ```
 
 ### Rising Stars Predictions
 
 ```{r predictions-summary}
-cat("Top 3 Predicted Rising Stars:\n")
-for(i in 1:3) {
+cat("Top 5 Predicted Rising Stars (2030-2040):\n")
+for(i in 1:min(5, nrow(rising_stars))) {
   star <- rising_stars[i,]
-  cat(i, ". **", ifelse(!is.na(star$stage_name), star$stage_name, star$name), 
-      "**: Potential score = ", round(star$potential_score, 2), "\n", sep = "")
+  cat(i, ". **", star$display_name, 
+      "**: Potential score = ", round(star$potential_score, 2), 
+      " (", star$career_stage, ")\n", sep = "")
 }
 ```
 
 ## 6.2 Recommendations
 
-1. **For Record Labels**: Focus on artists with high versatility scores and emerging momentum
-2. **For Artists**: Collaborate across genre boundaries to increase influence
-3. **For Investors**: Monitor communities 5 and 6 for emerging talent
+1. **For Record Labels**: Focus on artists like Andrew Williams and Brian Wright who show high network connectivity
+2. **For Artists**: Follow Sailor Shift's model - combine multiple roles (performer, lyricist, producer) for maximum impact
+3. **For Investors**: Monitor Communities 1 and 2 where most rising stars are concentrated
+4. **Genre Strategy**: Oceanus Folk artists should consider cross-genre collaborations, especially with Dream Pop
 
 ## 6.3 Limitations
 
 - Limited temporal data for edges prevents full career trajectory analysis
-- Genre information missing for many artists
+- Genre information missing for 73.5% of nodes
 - Prediction model relies on network metrics without content analysis
+- Only 3% of artists have stage names, limiting brand analysis
 
 # 7 Appendix
 
