@@ -25,8 +25,8 @@ library(ggraph)
 library(visNetwork)
 library(plotly)
 library(DT)
-source("R/load_data.R")
-source("R/build_graph.R")
+source("./R/load_data.R")
+source("./R/build_graph.R")
 ```
 
 # 2 Data Overview

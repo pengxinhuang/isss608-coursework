@@ -1,185 +1,87 @@
 [
   {
-    "objectID": "Take-home_Ex01/index.html",
-    "href": "Take-home_Ex01/index.html",
-    "title": "Take-Home Exercise 1: Singapore Demographic Patterns 2024",
+    "objectID": "Take-home_Ex02/index.html",
+    "href": "Take-home_Ex02/index.html",
+    "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "",
-    "text": "This project visualizes Singapore’s demographic structure and distribution in 2024, based on data from the Department of Statistics. The analysis focuses on population distribution across planning areas, age structures, and demographic patterns that reveal Singapore’s urban development and population characteristics."
+    "text": "This analysis explores the VAST Challenge 2025 MC1 dataset to understand:\n\nSailor Shift’s rise to fame and influence network\nThe spread of Oceanus Folk genre globally\nPrediction of rising stars in the next 5 years"
   },
   {
-    "objectID": "Take-home_Ex01/index.html#introduction",
-    "href": "Take-home_Ex01/index.html#introduction",
-    "title": "Take-Home Exercise 1: Singapore Demographic Patterns 2024",
-    "section": "",
-    "text": "This project visualizes Singapore’s demographic structure and distribution in 2024, based on data from the Department of Statistics. The analysis focuses on population distribution across planning areas, age structures, and demographic patterns that reveal Singapore’s urban development and population characteristics."
+    "objectID": "Take-home_Ex02/index.html#finding-sailor-shift",
+    "href": "Take-home_Ex02/index.html#finding-sailor-shift",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "3.1 Finding Sailor Shift",
+    "text": "3.1 Finding Sailor Shift\n\n\n✓ Sailor Shift found in the network!\n\nKey metrics:\n- PageRank: 0.00065 \n- Degree: 60 \n- Community: 10"
   },
   {
-    "objectID": "Take-home_Ex01/index.html#planning-area-population-distribution",
-    "href": "Take-home_Ex01/index.html#planning-area-population-distribution",
-    "title": "Take-Home Exercise 1: Singapore Demographic Patterns 2024",
-    "section": "Planning Area Population Distribution",
-    "text": "Planning Area Population Distribution\n\n# Create planning area population bar chart\ntop_10_pa &lt;- pa_summary %&gt;%\n  top_n(10, Total_Pop)\n\nggplot(top_10_pa, aes(x = reorder(PA, Total_Pop), y = Total_Pop/1000)) +\n  geom_bar(stat = \"identity\", fill = \"#69b3a2\") +\n  coord_flip() +\n  labs(\n    title = \"Top 10 Most Populated Planning Areas in Singapore (2024)\",\n    x = NULL,\n    y = \"Population (thousands)\",\n    caption = \"Data source: Singapore Department of Statistics\"\n  ) +\n  theme_minimal() +\n  theme(\n    plot.title = element_text(face = \"bold\", size = 12),\n    axis.text = element_text(size = 10)\n  )\n\n\n\n\n\n\n\n\nSingapore’s population is heavily concentrated in a few key planning areas, with Tampines and Bedok housing the largest populations. This pattern reflects decades of urban development policy focused on creating high-density residential hubs in the east and northeast regions, connected by efficient transportation networks. These areas serve as complete townships with integrated amenities, explaining their sustained popularity despite newer developments elsewhere."
+    "objectID": "Take-home_Ex02/index.html#sailor-shifts-ego-network",
+    "href": "Take-home_Ex02/index.html#sailor-shifts-ego-network",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "3.2 Sailor Shift’s Ego Network",
+    "text": "3.2 Sailor Shift’s Ego Network\n\n\nDirect connections: 50"
   },
   {
-    "objectID": "Take-home_Ex01/index.html#age-structure-comparison-across-planning-areas",
-    "href": "Take-home_Ex01/index.html#age-structure-comparison-across-planning-areas",
-    "title": "Take-Home Exercise 1: Singapore Demographic Patterns 2024",
-    "section": "Age Structure Comparison Across Planning Areas",
-    "text": "Age Structure Comparison Across Planning Areas\n\n# Select representative planning areas for population pyramids\nselected_areas &lt;- c(\"Tampines\", \"Bedok\", \"Bukit Timah\", \"Outram\")\n\n# Prepare population pyramid data\npyramid_data &lt;- age_bins %&gt;%\n  filter(PA %in% selected_areas) %&gt;%\n  group_by(PA, Age_Group, Sex) %&gt;%\n  summarise(Pop = sum(Pop)) %&gt;%\n  mutate(\n    Pop = ifelse(Sex == \"Males\", -Pop, Pop),\n    Age_Group = factor(Age_Group, levels = c(\"0-4\", \"5-9\", \"10-14\", \"15-19\", \"20-24\", \n                                             \"25-29\", \"30-34\", \"35-39\", \"40-44\", \"45-49\", \n                                             \"50-54\", \"55-59\", \"60-64\", \"65-69\", \"70-74\", \n                                             \"75-79\", \"80+\"))\n  )\n\n# Create population pyramids\nggplot(pyramid_data, aes(x = Age_Group, y = Pop, fill = Sex)) +\n  geom_bar(stat = \"identity\") +\n  coord_flip() +\n  facet_wrap(~ PA, scales = \"free_x\") +\n  scale_fill_manual(values = c(\"Males\" = \"#4E79A7\", \"Females\" = \"#F28E2B\")) +\n  labs(\n    title = \"Population Pyramids of Selected Planning Areas (2024)\",\n    subtitle = \"Representing new township (Tampines), mature estate (Bedok), high-income area (Bukit Timah),\\nand historical district (Outram)\",\n    x = NULL,\n    y = \"Population\",\n    caption = \"Data source: Singapore Department of Statistics\"\n  ) +\n  theme_minimal() +\n  theme(\n    legend.position = \"bottom\",\n    axis.text.x = element_text(angle = 45, hjust = 1),\n    strip.text = element_text(face = \"bold\"),\n    plot.title = element_text(face = \"bold\", size = 12),\n    plot.subtitle = element_text(size = 10)\n  )\n\n\n\n\n\n\n\n\nThe population pyramids reveal distinct demographic profiles across four strategically selected planning areas. Tampines, representing newer townships, shows a balanced structure with substantial working-age population. Mature estates like Bedok display aging populations with wider tops, reflecting original residents who have aged in place. Bukit Timah, a high-income private housing area, exhibits a unique “sandglass” pattern with fewer young adults, while Outram’s pyramid demonstrates a significant elderly population characteristic of Singapore’s historical urban core."
+    "objectID": "Take-home_Ex02/index.html#oceanus-folk-nodes",
+    "href": "Take-home_Ex02/index.html#oceanus-folk-nodes",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "4.1 Oceanus Folk Nodes",
+    "text": "4.1 Oceanus Folk Nodes\n\n\nTotal Oceanus Folk nodes: 305 \n\n\nBy type:\n\n\n\n\n\nNode Type\nn\n\n\n\n\nAlbum\n70\n\n\nSong\n235"
   },
   {
-    "objectID": "Take-home_Ex01/index.html#demographic-balance-elderly-vs.-children-distribution",
-    "href": "Take-home_Ex01/index.html#demographic-balance-elderly-vs.-children-distribution",
-    "title": "Take-Home Exercise 1: Singapore Demographic Patterns 2024",
-    "section": "Demographic Balance: Elderly vs. Children Distribution",
-    "text": "Demographic Balance: Elderly vs. Children Distribution\n\n# Combine elderly and children data\ndemographic_balance &lt;- elderly_ratio %&gt;%\n  select(PA, Elderly_Ratio) %&gt;%\n  left_join(\n    children_ratio %&gt;% select(PA, Child_Ratio),\n    by = \"PA\"\n  ) %&gt;%\n  mutate(\n    Demographic_Ratio = Elderly_Ratio / Child_Ratio,\n    Balance_Category = case_when(\n      Demographic_Ratio &gt;= 2.0 ~ \"Strongly Aging (2.0+)\",\n      Demographic_Ratio &gt;= 1.5 ~ \"Moderately Aging (1.5-2.0)\",\n      Demographic_Ratio &gt;= 1.0 ~ \"Slightly Aging (1.0-1.5)\",\n      Demographic_Ratio &gt;= 0.67 ~ \"Balanced (0.67-1.0)\",\n      TRUE ~ \"Youth-dominant (&lt;0.67)\"\n    ),\n    Balance_Category = factor(Balance_Category, \n                              levels = c(\"Youth-dominant (&lt;0.67)\", \n                                         \"Balanced (0.67-1.0)\", \n                                         \"Slightly Aging (1.0-1.5)\", \n                                         \"Moderately Aging (1.5-2.0)\", \n                                         \"Strongly Aging (2.0+)\"))\n  ) %&gt;%\n  arrange(desc(Demographic_Ratio))\n\n# Select top 20 areas for analysis\ntop_20_balance &lt;- demographic_balance %&gt;%\n  head(20)\n\n# Create scatter plot\nggplot(top_20_balance, aes(x = Child_Ratio, y = Elderly_Ratio, color = Balance_Category)) +\n  geom_point(size = 4, alpha = 0.7) +\n  geom_text(aes(label = PA), hjust = -0.2, vjust = 0.5, size = 3) +\n  geom_abline(slope = 1, linetype = \"dashed\", color = \"gray50\") +\n  scale_color_viridis_d(option = \"plasma\", begin = 0.1, end = 0.9) +\n  labs(\n    title = \"Elderly vs. Children Population Balance in Singapore's Planning Areas (2024)\",\n    subtitle = \"Shows top 20 areas with highest elderly-to-children ratio\",\n    x = \"Children Population (% under 15 years)\",\n    y = \"Elderly Population (% 65 years and above)\",\n    color = \"Demographic Balance\",\n    caption = \"Data source: Singapore Department of Statistics\"\n  ) +\n  theme_minimal() +\n  theme(\n    legend.position = \"right\",\n    plot.title = element_text(face = \"bold\", size = 12),\n    plot.subtitle = element_text(size = 10)\n  )\n\n\n\n\n\n\n\n\nThis innovative visualization reveals Singapore’s demographic transition by comparing elderly and children populations across planning areas. Areas above the diagonal line have more elderly than children, with Outram and Bukit Merah showing extreme imbalances (over 3:1 ratio). This pattern reflects Singapore’s rapid aging, particularly in first-generation public housing estates where infrastructure designed for families now serves an elderly majority. These imbalances create challenges for social services, healthcare accessibility, and school planning, requiring targeted policy responses to address these distinct neighborhood-level demographic profiles."
+    "objectID": "Take-home_Ex02/index.html#temporal-spread-of-oceanus-folk",
+    "href": "Take-home_Ex02/index.html#temporal-spread-of-oceanus-folk",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "4.2 Temporal Spread of Oceanus Folk",
+    "text": "4.2 Temporal Spread of Oceanus Folk"
   },
   {
-    "objectID": "Take-home_Ex01/index.html#conclusion",
-    "href": "Take-home_Ex01/index.html#conclusion",
-    "title": "Take-Home Exercise 1: Singapore Demographic Patterns 2024",
-    "section": "Conclusion",
-    "text": "Conclusion\nThe visualizations reveal Singapore’s complex demographic landscape in 2024, characterized by distinct spatial patterns in population distribution and age structure. Established planning areas in the east remain heavily populated, while pronounced demographic differences exist between mature and newer estates. These patterns have significant implications for urban planning priorities including: (1) targeted healthcare infrastructure development in aging neighborhoods like Outram and Bukit Merah; (2) transit connectivity improvements to address population concentration in eastern regions; and (3) housing policy adaptations to accommodate evolving household structures across different planning areas."
+    "objectID": "Take-home_Ex02/index.html#cross-genre-influence",
+    "href": "Take-home_Ex02/index.html#cross-genre-influence",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "4.3 Cross-Genre Influence",
+    "text": "4.3 Cross-Genre Influence"
   },
   {
-    "objectID": "Take-home_Ex01/index.html#peer-review-take-home-exercise-1-rajesh",
-    "href": "Take-home_Ex01/index.html#peer-review-take-home-exercise-1-rajesh",
-    "title": "Take-Home Exercise 1: Singapore Demographic Patterns 2024",
-    "section": "Peer Review – Take-home Exercise 1 (Rajesh)",
-    "text": "Peer Review – Take-home Exercise 1 (Rajesh)\n\nOriginal visualisation\n\n\n\nOriginal chart by Rajesh\n\n\n\n\nStrengths\n\nClear narrative – three charts move logically from overall age structure to spatial distribution and gender ratio.\n\nChart–data fit – population pyramid, ranked bar chart and gender-ratio plot suit their respective messages.\n\nSelf-contained labels – titles, subtitles and axes allow non-experts to grasp each visual quickly.\n\n\n\nAreas for improvement\n\nColour consistency – each chart uses a different palette, breaking visual unity.\n\nCrowded pyramid labels – annual age ticks overlap; grouping by five-year bands would improve readability.\n\nGender-ratio baseline – adding a reference line at M∕F = 1 lets readers spot imbalanced areas instantly.\n\n\n\nMake-over (gender-ratio chart)\n\nlibrary(tidyverse)\nlibrary(ggthemes)\n\ngender_plot &lt;- demographic_balance %&gt;% \n  ggplot(aes(x = reorder(PA, Demographic_Ratio), \n             y = Demographic_Ratio, \n             fill = Demographic_Ratio &gt; 1)) + \n  geom_col(show.legend = FALSE) + \n  geom_hline(yintercept = 1, linetype = \"dashed\") + \n  scale_fill_manual(values = c(\"#4E79A7\", \"#E15759\")) + \n  labs(title = \"Gender ratio by planning area (M/F)\", \n       subtitle = \"Bars above the dashed line indicate more males than females\", \n       x = NULL, \n       y = \"Male : Female\") + \n  coord_flip() + \n  theme_economist() +\n  theme(\n    axis.text.y = element_text(size = 7),\n    plot.margin = margin(t = 5, r = 5, b = 5, l = 20, unit = \"pt\"),\n    text = element_text(size = 9)\n  )\n\ngender_plot"
+    "objectID": "Take-home_Ex02/index.html#identifying-potential-rising-stars",
+    "href": "Take-home_Ex02/index.html#identifying-potential-rising-stars",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "5.1 Identifying Potential Rising Stars",
+    "text": "5.1 Identifying Potential Rising Stars\n\n\nNo recent artists found meeting the criteria."
   },
   {
-    "objectID": "Hand-on_Ex02/index.html",
-    "href": "Hand-on_Ex02/index.html",
-    "title": "Hand-on Ex02",
-    "section": "",
-    "text": "Warning: ggrepel: 287 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps\n\n\n\n\n\n\n\n\n\nThe comparison demonstrates how ggrepel’s text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other."
+    "objectID": "Take-home_Ex02/index.html#rising-stars-network-position",
+    "href": "Take-home_Ex02/index.html#rising-stars-network-position",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "5.2 Rising Stars Network Position",
+    "text": "5.2 Rising Stars Network Position\n\n\nNot enough rising star candidates for visualization."
   },
   {
-    "objectID": "Hand-on_Ex02/index.html#improved-annotation-with-ggrepel",
-    "href": "Hand-on_Ex02/index.html#improved-annotation-with-ggrepel",
-    "title": "Hand-on Ex02",
-    "section": "",
-    "text": "Warning: ggrepel: 287 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps\n\n\n\n\n\n\n\n\n\nThe comparison demonstrates how ggrepel’s text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other."
+    "objectID": "Take-home_Ex02/index.html#key-findings",
+    "href": "Take-home_Ex02/index.html#key-findings",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "6.1 Key Findings",
+    "text": "6.1 Key Findings\n\nSailor Shift’s Influence: [Analysis results will be inserted based on actual data]\nOceanus Folk Spread: The genre shows [steady/exponential] growth from [start year] to [end year]\nRising Stars: The top 3 predicted rising stars are:\n\n[Name 1]: High influence score due to [reason]\n[Name 2]: Strong connections in [community]\n[Name 3]: Rapid growth in [metric]"
   },
   {
-    "objectID": "Hand-on_Ex02/index.html#professional-themes-with-ggthemes",
-    "href": "Hand-on_Ex02/index.html#professional-themes-with-ggthemes",
-    "title": "Hand-on Ex02",
-    "section": "Professional Themes with ggthemes",
-    "text": "Professional Themes with ggthemes\n\n\n\n\n\n\n\n\n\nUsing The Economist theme transforms the histogram into publication-quality visualization with distinctive typography and color palette, demonstrating how themed approaches can lend credibility and professionalism to statistical graphics."
+    "objectID": "Take-home_Ex02/index.html#limitations",
+    "href": "Take-home_Ex02/index.html#limitations",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "6.2 Limitations",
+    "text": "6.2 Limitations\n\nEdge timestamps are not available, limiting temporal analysis\nGenre information is incomplete for many nodes\nPrediction model is based solely on network metrics"
   },
   {
-    "objectID": "Hand-on_Ex02/index.html#typography-focused-design",
-    "href": "Hand-on_Ex02/index.html#typography-focused-design",
-    "title": "Hand-on Ex02",
-    "section": "Typography-Focused Design",
-    "text": "Typography-Focused Design\n\n\n\n\n\n\n\n\n\nThe enhanced typography is achieved using ggplot2’s native theming system with carefully adjusted text properties, creating a clean design with proper visual hierarchy and improved readability for reports and presentations."
+    "objectID": "Take-home_Ex02/index.html#future-work",
+    "href": "Take-home_Ex02/index.html#future-work",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "6.3 Future Work",
+    "text": "6.3 Future Work\n\nIncorporate external data sources for validation\nDevelop more sophisticated prediction models\nAnalyze sentiment and content of collaborations"
   },
   {
-    "objectID": "Hand-on_Ex02/index.html#composite-figures-with-patchwork",
-    "href": "Hand-on_Ex02/index.html#composite-figures-with-patchwork",
-    "title": "Hand-on Ex02",
-    "section": "Composite Figures with Patchwork",
-    "text": "Composite Figures with Patchwork\n\n\n\n\n\n\n\n\n\nThe side-by-side histograms created with patchwork enable efficient comparison of distributions between mathematics and English scores, revealing differences in central tendency and spread without requiring multiple separate figures."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#multi-row-layout",
-    "href": "Hand-on_Ex02/index.html#multi-row-layout",
-    "title": "Hand-on Ex02",
-    "section": "Multi-Row Layout",
-    "text": "Multi-Row Layout\n\n\n\n\n\n\n\n\n\nThis composite visualization integrates individual subject distributions with their correlation, creating a comprehensive analytical view that would otherwise require multiple separate charts, demonstrating patchwork’s ability to build complex multi-level layouts."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#auto-tagged-composite-figure",
-    "href": "Hand-on_Ex02/index.html#auto-tagged-composite-figure",
-    "title": "Hand-on Ex02",
-    "section": "Auto-Tagged Composite Figure",
-    "text": "Auto-Tagged Composite Figure\n\n\n\n\n\n\n\n\n\nAutomatic tagging adds professional reference points to each panel, making the composite figure suitable for formal reports where specific panels need to be referenced in accompanying text."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#inset-chart",
-    "href": "Hand-on_Ex02/index.html#inset-chart",
-    "title": "Hand-on Ex02",
-    "section": "Inset Chart",
-    "text": "Inset Chart\n\n\n\n\n\n\n\n\n\nThe inset technique efficiently uses space by embedding the English score distribution within the correlation plot, allowing readers to reference the relevant distribution without switching between figures."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#themed-composite-figure",
-    "href": "Hand-on_Ex02/index.html#themed-composite-figure",
-    "title": "Hand-on Ex02",
-    "section": "Themed Composite Figure",
-    "text": "Themed Composite Figure\n\n\n\n\n\n\n\n\n\nCombining patchwork with ggthemes creates professionally styled composite figures with consistent design elements across all panels, demonstrating how multiple extension packages can work together to produce polished statistical graphics."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html",
-    "href": "Hand-on_Ex01/index.html",
-    "title": "Hand-on Ex01",
-    "section": "",
-    "text": "Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#gender-distribution",
-    "href": "Hand-on_Ex01/index.html#gender-distribution",
-    "title": "Hand-on Ex01",
-    "section": "",
-    "text": "Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#subject-score-comparison",
-    "href": "Hand-on_Ex01/index.html#subject-score-comparison",
-    "title": "Hand-on Ex01",
-    "section": "Subject Score Comparison",
-    "text": "Subject Score Comparison\n\n\n\n\n\n\n\n\n\nEnglish scores show the highest median with a compact distribution, while Science has the lowest median and more outliers. Mathematics demonstrates moderate performance with several low outliers, indicating variable student proficiency across subjects."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#math-score-distribution",
-    "href": "Hand-on_Ex01/index.html#math-score-distribution",
-    "title": "Hand-on Ex01",
-    "section": "Math Score Distribution",
-    "text": "Math Score Distribution\n\n\n\n\n\n\n\n\n\nThe mean (red dashed line) sits near the centre of a bell-shaped curve (~66 points), indicating symmetric performance with few extreme scores."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#dot-plot-visualization",
-    "href": "Hand-on_Ex01/index.html#dot-plot-visualization",
-    "title": "Hand-on Ex01",
-    "section": "Dot Plot Visualization",
-    "text": "Dot Plot Visualization\n\n\n\n\n\n\n\n\n\nThe dot plot reveals the precise distribution of individual math scores, showing clustering around 65-75 points with relatively few students at extreme ends of the spectrum."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#class-comparison",
-    "href": "Hand-on_Ex01/index.html#class-comparison",
-    "title": "Hand-on Ex01",
-    "section": "Class Comparison",
-    "text": "Class Comparison\n\n\n\n\n\n\n\n\n\nClass-level facets reveal differences: class 3A clusters above 70, while 3I shows a wider spread, hinting at varying teaching quality or peer effects."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#density-plot-analysis",
-    "href": "Hand-on_Ex01/index.html#density-plot-analysis",
-    "title": "Hand-on Ex01",
-    "section": "Density Plot Analysis",
-    "text": "Density Plot Analysis\n\n\n\n\n\n\n\n\n\nThe density curves highlight subtle gender differences in math performance, with female students showing a more concentrated distribution compared to males who display greater variability, particularly in the middle score range."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#violin-plot-comparison",
-    "href": "Hand-on_Ex01/index.html#violin-plot-comparison",
-    "title": "Hand-on Ex01",
-    "section": "Violin Plot Comparison",
-    "text": "Violin Plot Comparison\n\n\n\n\n\n\n\n\n\nViolin plots effectively illustrate the probability density of scores across genders, showing that while medians are similar, male students exhibit greater variance and a slight bimodal tendency in math performance."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#subject-relationship",
-    "href": "Hand-on_Ex01/index.html#subject-relationship",
-    "title": "Hand-on Ex01",
-    "section": "Subject Relationship",
-    "text": "Subject Relationship\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nThe scatter plot reveals a moderate positive correlation between Math and English scores, suggesting that students who excel in one subject tend to perform well in the other, though numerous outliers indicate exceptions to this pattern."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#alternative-subject-comparison-view",
-    "href": "Hand-on_Ex01/index.html#alternative-subject-comparison-view",
-    "title": "Hand-on Ex01",
-    "section": "Alternative Subject Comparison View",
-    "text": "Alternative Subject Comparison View\n\n\n\n\n\n\n\n\n\nFlipping axes improves readability and makes overlap among subjects obvious; English remains top, Science lags with more low outliers. This orientation better highlights score ranges and median differences between subjects, enhancing comparative analysis."
+    "objectID": "Take-home_Ex02/index.html#session-info",
+    "href": "Take-home_Ex02/index.html#session-info",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "7.1 Session Info",
+    "text": "7.1 Session Info\n\n\nR version 4.5.0 (2025-04-11 ucrt)\nPlatform: x86_64-w64-mingw32/x64\nRunning under: Windows 11 x64 (build 26100)\n\nMatrix products: default\n  LAPACK version 3.12.1\n\nlocale:\n[1] LC_COLLATE=Chinese (Simplified)_Hong Kong SAR.utf8 \n[2] LC_CTYPE=Chinese (Simplified)_Hong Kong SAR.utf8   \n[3] LC_MONETARY=Chinese (Simplified)_Hong Kong SAR.utf8\n[4] LC_NUMERIC=C                                       \n[5] LC_TIME=Chinese (Simplified)_Hong Kong SAR.utf8    \n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] igraph_2.1.4     jsonlite_2.0.0   DT_0.33          plotly_4.10.4   \n [5] visNetwork_2.1.2 ggraph_2.2.1     tidygraph_1.3.1  lubridate_1.9.4 \n [9] forcats_1.0.0    stringr_1.5.1    dplyr_1.1.4      purrr_1.0.4     \n[13] readr_2.1.5      tidyr_1.3.1      tibble_3.3.0     ggplot2_3.5.2   \n[17] tidyverse_2.0.0 \n\nloaded via a namespace (and not attached):\n [1] gtable_0.3.6       xfun_0.52          htmlwidgets_1.6.4  ggrepel_0.9.6     \n [5] tzdb_0.5.0         crosstalk_1.2.1    vctrs_0.6.5        tools_4.5.0       \n [9] generics_0.1.3     pkgconfig_2.0.3    data.table_1.17.0  RColorBrewer_1.1-3\n[13] lifecycle_1.0.4    compiler_4.5.0     farver_2.1.2       ggforce_0.4.2     \n[17] graphlayouts_1.2.2 htmltools_0.5.8.1  yaml_2.3.10        lazyeval_0.2.2    \n[21] pillar_1.10.2      MASS_7.3-65        cachem_1.1.0       viridis_0.6.5     \n[25] tidyselect_1.2.1   digest_0.6.37      stringi_1.8.7      labeling_0.4.3    \n[29] polyclip_1.10-7    fastmap_1.2.0      grid_4.5.0         cli_3.6.5         \n[33] magrittr_2.0.3     dichromat_2.0-0.1  utf8_1.2.5         withr_3.0.2       \n[37] scales_1.4.0       timechange_0.3.0   rmarkdown_2.29     httr_1.4.7        \n[41] gridExtra_2.3      hms_1.1.3          memoise_2.0.1      evaluate_1.0.3    \n[45] knitr_1.50         viridisLite_0.4.2  rlang_1.1.6        Rcpp_1.0.14       \n[49] glue_1.8.0         tweenr_2.0.3       rstudioapi_0.17.1  R6_2.6.1"
   },
   {
     "objectID": "Hand-on_Ex03/index.html",
@@ -259,87 +161,136 @@
     "text": "Enhanced Animation Effects\n\n\n\n\n\n\n\n\n\nThis series of scatter plots captures global development trends at key time points (1952, 1977, and 2002), revealing the relationship between economic performance and life expectancy. Comparing these snapshots illustrates how countries and regions have developed over the half-century period, showing patterns of progress and disparity."
   },
   {
-    "objectID": "Take-home_Ex02/index.html",
-    "href": "Take-home_Ex02/index.html",
-    "title": "MC1 Analysis - Music Knowledge Graph",
+    "objectID": "Hand-on_Ex01/index.html",
+    "href": "Hand-on_Ex01/index.html",
+    "title": "Hand-on Ex01",
     "section": "",
-    "text": "This analysis explores the VAST Challenge 2025 MC1 dataset to understand:\n\nSailor Shift’s rise to fame and influence network\nThe spread of Oceanus Folk genre globally\nPrediction of rising stars in the next 5 years"
+    "text": "Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort."
   },
   {
-    "objectID": "Take-home_Ex02/index.html#finding-sailor-shift",
-    "href": "Take-home_Ex02/index.html#finding-sailor-shift",
-    "title": "MC1 Analysis - Music Knowledge Graph",
-    "section": "3.1 Finding Sailor Shift",
-    "text": "3.1 Finding Sailor Shift\n\n\n✓ Sailor Shift found in the network!\n\nKey metrics:\n- PageRank: 0.00065 \n- Degree: 60 \n- Community: 13"
+    "objectID": "Hand-on_Ex01/index.html#gender-distribution",
+    "href": "Hand-on_Ex01/index.html#gender-distribution",
+    "title": "Hand-on Ex01",
+    "section": "",
+    "text": "Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort."
   },
   {
-    "objectID": "Take-home_Ex02/index.html#sailor-shifts-ego-network",
-    "href": "Take-home_Ex02/index.html#sailor-shifts-ego-network",
-    "title": "MC1 Analysis - Music Knowledge Graph",
-    "section": "3.2 Sailor Shift’s Ego Network",
-    "text": "3.2 Sailor Shift’s Ego Network\n\n\nDirect connections: 50"
+    "objectID": "Hand-on_Ex01/index.html#subject-score-comparison",
+    "href": "Hand-on_Ex01/index.html#subject-score-comparison",
+    "title": "Hand-on Ex01",
+    "section": "Subject Score Comparison",
+    "text": "Subject Score Comparison\n\n\n\n\n\n\n\n\n\nEnglish scores show the highest median with a compact distribution, while Science has the lowest median and more outliers. Mathematics demonstrates moderate performance with several low outliers, indicating variable student proficiency across subjects."
   },
   {
-    "objectID": "Take-home_Ex02/index.html#oceanus-folk-nodes",
-    "href": "Take-home_Ex02/index.html#oceanus-folk-nodes",
-    "title": "MC1 Analysis - Music Knowledge Graph",
-    "section": "4.1 Oceanus Folk Nodes",
-    "text": "4.1 Oceanus Folk Nodes\n\n\nTotal Oceanus Folk nodes: 305 \n\n\nBy type:\n\n\n\n\n\nNode Type\nn\n\n\n\n\nAlbum\n70\n\n\nSong\n235"
+    "objectID": "Hand-on_Ex01/index.html#math-score-distribution",
+    "href": "Hand-on_Ex01/index.html#math-score-distribution",
+    "title": "Hand-on Ex01",
+    "section": "Math Score Distribution",
+    "text": "Math Score Distribution\n\n\n\n\n\n\n\n\n\nThe mean (red dashed line) sits near the centre of a bell-shaped curve (~66 points), indicating symmetric performance with few extreme scores."
   },
   {
-    "objectID": "Take-home_Ex02/index.html#temporal-spread-of-oceanus-folk",
-    "href": "Take-home_Ex02/index.html#temporal-spread-of-oceanus-folk",
-    "title": "MC1 Analysis - Music Knowledge Graph",
-    "section": "4.2 Temporal Spread of Oceanus Folk",
-    "text": "4.2 Temporal Spread of Oceanus Folk"
+    "objectID": "Hand-on_Ex01/index.html#dot-plot-visualization",
+    "href": "Hand-on_Ex01/index.html#dot-plot-visualization",
+    "title": "Hand-on Ex01",
+    "section": "Dot Plot Visualization",
+    "text": "Dot Plot Visualization\n\n\n\n\n\n\n\n\n\nThe dot plot reveals the precise distribution of individual math scores, showing clustering around 65-75 points with relatively few students at extreme ends of the spectrum."
   },
   {
-    "objectID": "Take-home_Ex02/index.html#cross-genre-influence",
-    "href": "Take-home_Ex02/index.html#cross-genre-influence",
-    "title": "MC1 Analysis - Music Knowledge Graph",
-    "section": "4.3 Cross-Genre Influence",
-    "text": "4.3 Cross-Genre Influence"
+    "objectID": "Hand-on_Ex01/index.html#class-comparison",
+    "href": "Hand-on_Ex01/index.html#class-comparison",
+    "title": "Hand-on Ex01",
+    "section": "Class Comparison",
+    "text": "Class Comparison\n\n\n\n\n\n\n\n\n\nClass-level facets reveal differences: class 3A clusters above 70, while 3I shows a wider spread, hinting at varying teaching quality or peer effects."
   },
   {
-    "objectID": "Take-home_Ex02/index.html#identifying-potential-rising-stars",
-    "href": "Take-home_Ex02/index.html#identifying-potential-rising-stars",
-    "title": "MC1 Analysis - Music Knowledge Graph",
-    "section": "5.1 Identifying Potential Rising Stars",
-    "text": "5.1 Identifying Potential Rising Stars\n\n\nNo recent artists found meeting the criteria."
+    "objectID": "Hand-on_Ex01/index.html#density-plot-analysis",
+    "href": "Hand-on_Ex01/index.html#density-plot-analysis",
+    "title": "Hand-on Ex01",
+    "section": "Density Plot Analysis",
+    "text": "Density Plot Analysis\n\n\n\n\n\n\n\n\n\nThe density curves highlight subtle gender differences in math performance, with female students showing a more concentrated distribution compared to males who display greater variability, particularly in the middle score range."
   },
   {
-    "objectID": "Take-home_Ex02/index.html#rising-stars-network-position",
-    "href": "Take-home_Ex02/index.html#rising-stars-network-position",
-    "title": "MC1 Analysis - Music Knowledge Graph",
-    "section": "5.2 Rising Stars Network Position",
-    "text": "5.2 Rising Stars Network Position\n\n\nNot enough rising star candidates for visualization."
+    "objectID": "Hand-on_Ex01/index.html#violin-plot-comparison",
+    "href": "Hand-on_Ex01/index.html#violin-plot-comparison",
+    "title": "Hand-on Ex01",
+    "section": "Violin Plot Comparison",
+    "text": "Violin Plot Comparison\n\n\n\n\n\n\n\n\n\nViolin plots effectively illustrate the probability density of scores across genders, showing that while medians are similar, male students exhibit greater variance and a slight bimodal tendency in math performance."
   },
   {
-    "objectID": "Take-home_Ex02/index.html#key-findings",
-    "href": "Take-home_Ex02/index.html#key-findings",
-    "title": "MC1 Analysis - Music Knowledge Graph",
-    "section": "6.1 Key Findings",
-    "text": "6.1 Key Findings\n\nSailor Shift’s Influence: [Analysis results will be inserted based on actual data]\nOceanus Folk Spread: The genre shows [steady/exponential] growth from [start year] to [end year]\nRising Stars: The top 3 predicted rising stars are:\n\n[Name 1]: High influence score due to [reason]\n[Name 2]: Strong connections in [community]\n[Name 3]: Rapid growth in [metric]"
+    "objectID": "Hand-on_Ex01/index.html#subject-relationship",
+    "href": "Hand-on_Ex01/index.html#subject-relationship",
+    "title": "Hand-on Ex01",
+    "section": "Subject Relationship",
+    "text": "Subject Relationship\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nThe scatter plot reveals a moderate positive correlation between Math and English scores, suggesting that students who excel in one subject tend to perform well in the other, though numerous outliers indicate exceptions to this pattern."
   },
   {
-    "objectID": "Take-home_Ex02/index.html#limitations",
-    "href": "Take-home_Ex02/index.html#limitations",
-    "title": "MC1 Analysis - Music Knowledge Graph",
-    "section": "6.2 Limitations",
-    "text": "6.2 Limitations\n\nEdge timestamps are not available, limiting temporal analysis\nGenre information is incomplete for many nodes\nPrediction model is based solely on network metrics"
+    "objectID": "Hand-on_Ex01/index.html#alternative-subject-comparison-view",
+    "href": "Hand-on_Ex01/index.html#alternative-subject-comparison-view",
+    "title": "Hand-on Ex01",
+    "section": "Alternative Subject Comparison View",
+    "text": "Alternative Subject Comparison View\n\n\n\n\n\n\n\n\n\nFlipping axes improves readability and makes overlap among subjects obvious; English remains top, Science lags with more low outliers. This orientation better highlights score ranges and median differences between subjects, enhancing comparative analysis."
   },
   {
-    "objectID": "Take-home_Ex02/index.html#future-work",
-    "href": "Take-home_Ex02/index.html#future-work",
-    "title": "MC1 Analysis - Music Knowledge Graph",
-    "section": "6.3 Future Work",
-    "text": "6.3 Future Work\n\nIncorporate external data sources for validation\nDevelop more sophisticated prediction models\nAnalyze sentiment and content of collaborations"
+    "objectID": "Hand-on_Ex02/index.html",
+    "href": "Hand-on_Ex02/index.html",
+    "title": "Hand-on Ex02",
+    "section": "",
+    "text": "Warning: ggrepel: 287 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps\n\n\n\n\n\n\n\n\n\nThe comparison demonstrates how ggrepel’s text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other."
   },
   {
-    "objectID": "Take-home_Ex02/index.html#session-info",
-    "href": "Take-home_Ex02/index.html#session-info",
-    "title": "MC1 Analysis - Music Knowledge Graph",
-    "section": "7.1 Session Info",
-    "text": "7.1 Session Info\n\n\nR version 4.5.0 (2025-04-11 ucrt)\nPlatform: x86_64-w64-mingw32/x64\nRunning under: Windows 11 x64 (build 26100)\n\nMatrix products: default\n  LAPACK version 3.12.1\n\nlocale:\n[1] LC_COLLATE=Chinese (Simplified)_Hong Kong SAR.utf8 \n[2] LC_CTYPE=Chinese (Simplified)_Hong Kong SAR.utf8   \n[3] LC_MONETARY=Chinese (Simplified)_Hong Kong SAR.utf8\n[4] LC_NUMERIC=C                                       \n[5] LC_TIME=Chinese (Simplified)_Hong Kong SAR.utf8    \n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] igraph_2.1.4     jsonlite_2.0.0   DT_0.33          plotly_4.10.4   \n [5] visNetwork_2.1.2 ggraph_2.2.1     tidygraph_1.3.1  lubridate_1.9.4 \n [9] forcats_1.0.0    stringr_1.5.1    dplyr_1.1.4      purrr_1.0.4     \n[13] readr_2.1.5      tidyr_1.3.1      tibble_3.3.0     ggplot2_3.5.2   \n[17] tidyverse_2.0.0 \n\nloaded via a namespace (and not attached):\n [1] gtable_0.3.6       xfun_0.52          htmlwidgets_1.6.4  ggrepel_0.9.6     \n [5] tzdb_0.5.0         crosstalk_1.2.1    vctrs_0.6.5        tools_4.5.0       \n [9] generics_0.1.3     pkgconfig_2.0.3    data.table_1.17.0  RColorBrewer_1.1-3\n[13] lifecycle_1.0.4    compiler_4.5.0     farver_2.1.2       ggforce_0.4.2     \n[17] graphlayouts_1.2.2 htmltools_0.5.8.1  yaml_2.3.10        lazyeval_0.2.2    \n[21] pillar_1.10.2      MASS_7.3-65        cachem_1.1.0       viridis_0.6.5     \n[25] tidyselect_1.2.1   digest_0.6.37      stringi_1.8.7      labeling_0.4.3    \n[29] polyclip_1.10-7    fastmap_1.2.0      grid_4.5.0         cli_3.6.5         \n[33] magrittr_2.0.3     dichromat_2.0-0.1  utf8_1.2.5         withr_3.0.2       \n[37] scales_1.4.0       timechange_0.3.0   rmarkdown_2.29     httr_1.4.7        \n[41] gridExtra_2.3      hms_1.1.3          memoise_2.0.1      evaluate_1.0.3    \n[45] knitr_1.50         viridisLite_0.4.2  rlang_1.1.6        Rcpp_1.0.14       \n[49] glue_1.8.0         tweenr_2.0.3       rstudioapi_0.17.1  R6_2.6.1"
+    "objectID": "Hand-on_Ex02/index.html#improved-annotation-with-ggrepel",
+    "href": "Hand-on_Ex02/index.html#improved-annotation-with-ggrepel",
+    "title": "Hand-on Ex02",
+    "section": "",
+    "text": "Warning: ggrepel: 287 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps\n\n\n\n\n\n\n\n\n\nThe comparison demonstrates how ggrepel’s text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#professional-themes-with-ggthemes",
+    "href": "Hand-on_Ex02/index.html#professional-themes-with-ggthemes",
+    "title": "Hand-on Ex02",
+    "section": "Professional Themes with ggthemes",
+    "text": "Professional Themes with ggthemes\n\n\n\n\n\n\n\n\n\nUsing The Economist theme transforms the histogram into publication-quality visualization with distinctive typography and color palette, demonstrating how themed approaches can lend credibility and professionalism to statistical graphics."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#typography-focused-design",
+    "href": "Hand-on_Ex02/index.html#typography-focused-design",
+    "title": "Hand-on Ex02",
+    "section": "Typography-Focused Design",
+    "text": "Typography-Focused Design\n\n\n\n\n\n\n\n\n\nThe enhanced typography is achieved using ggplot2’s native theming system with carefully adjusted text properties, creating a clean design with proper visual hierarchy and improved readability for reports and presentations."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#composite-figures-with-patchwork",
+    "href": "Hand-on_Ex02/index.html#composite-figures-with-patchwork",
+    "title": "Hand-on Ex02",
+    "section": "Composite Figures with Patchwork",
+    "text": "Composite Figures with Patchwork\n\n\n\n\n\n\n\n\n\nThe side-by-side histograms created with patchwork enable efficient comparison of distributions between mathematics and English scores, revealing differences in central tendency and spread without requiring multiple separate figures."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#multi-row-layout",
+    "href": "Hand-on_Ex02/index.html#multi-row-layout",
+    "title": "Hand-on Ex02",
+    "section": "Multi-Row Layout",
+    "text": "Multi-Row Layout\n\n\n\n\n\n\n\n\n\nThis composite visualization integrates individual subject distributions with their correlation, creating a comprehensive analytical view that would otherwise require multiple separate charts, demonstrating patchwork’s ability to build complex multi-level layouts."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#auto-tagged-composite-figure",
+    "href": "Hand-on_Ex02/index.html#auto-tagged-composite-figure",
+    "title": "Hand-on Ex02",
+    "section": "Auto-Tagged Composite Figure",
+    "text": "Auto-Tagged Composite Figure\n\n\n\n\n\n\n\n\n\nAutomatic tagging adds professional reference points to each panel, making the composite figure suitable for formal reports where specific panels need to be referenced in accompanying text."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#inset-chart",
+    "href": "Hand-on_Ex02/index.html#inset-chart",
+    "title": "Hand-on Ex02",
+    "section": "Inset Chart",
+    "text": "Inset Chart\n\n\n\n\n\n\n\n\n\nThe inset technique efficiently uses space by embedding the English score distribution within the correlation plot, allowing readers to reference the relevant distribution without switching between figures."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#themed-composite-figure",
+    "href": "Hand-on_Ex02/index.html#themed-composite-figure",
+    "title": "Hand-on Ex02",
+    "section": "Themed Composite Figure",
+    "text": "Themed Composite Figure\n\n\n\n\n\n\n\n\n\nCombining patchwork with ggthemes creates professionally styled composite figures with consistent design elements across all panels, demonstrating how multiple extension packages can work together to produce polished statistical graphics."
   }
 ]
