@@ -104,7 +104,7 @@ sailor_info <- g %>%
 sailor_edges_data <- edges %>%
   filter(source == 17255 | target == 17255)
 
-cat("✓ Sailor Shift found in the network!\n\n")
+cat("Sailor Shift found in the network!\n\n")
 cat("Key metrics:\n")
 cat("- PageRank:", round(sailor_info$pagerank, 5), "(Rank #1 in network)\n")
 cat("- Degree:", sailor_info$degree, "\n")
@@ -152,7 +152,7 @@ ggplotly(p, tooltip = c("year", "count", "Edge Type"))
 ## 3.3 Collaboration Network Evolution
 
 ::: {.callout-note}
-Sailor Shift's key collaborators include **Seraphina Vale** (Cassian Storm) and **Jaye Finch** (Claire Holmes), both highly influential artists in the Oceanus Folk movement.
+Sailor Shift's key collaborators include Seraphina Vale (Cassian Storm) and Jaye Finch (Claire Holmes), both highly influential artists in the Oceanus Folk movement.
 :::
 
 ```{r sailor-collaboration-evolution}
@@ -191,14 +191,14 @@ Sailor Shift is a member of a band with Maya Jensen, Lila "Lilly" Hartman, Jade 
 :::
 
 ```{r sailor-influence-propagation}
-# 获取Sailor Shift的乐队成员
+# Get Sailor Shift's band members
 band_members_ids <- edges %>%
   filter(source == 17255 & `Edge Type` == "MemberOf") %>%
   pull(target) %>%
   {edges %>% filter(target %in% . & `Edge Type` == "MemberOf")} %>%
   pull(source)
 
-# 获取通过作品连接的其他艺术家（限制前15个最重要的）
+# Get artists connected through works (limit to top 15)
 sailor_works <- edges %>%
   filter(source == 17255) %>%
   filter(`Edge Type` %in% c("PerformerOf", "LyricistOf", "ProducerOf")) %>%
@@ -213,17 +213,17 @@ connected_artists <- edges %>%
   head(15) %>%
   pull(source)
 
-# 组合所有相关节点
+# Combine all relevant nodes
 network_nodes <- unique(c(17255, band_members_ids, connected_artists))
 
-# 获取这些节点在图中的索引
+# Get indices of these nodes in the graph
 node_indices <- which(V(g)$id %in% network_nodes)
 
 if(length(node_indices) > 5) {
-  # 创建子图
+  # Create subgraph
   sailor_subgraph <- induced_subgraph(g, node_indices)
   
-  # 准备节点属性
+  # Prepare node attributes
   node_attrs <- data.frame(
     id = V(sailor_subgraph)$id,
     name = V(sailor_subgraph)$name,
@@ -244,15 +244,15 @@ if(length(node_indices) > 5) {
       )
     )
   
-  # 将属性添加到图中
+  # Add attributes to graph
   V(sailor_subgraph)$display_name <- node_attrs$display_name
   V(sailor_subgraph)$node_type <- node_attrs$node_type
   V(sailor_subgraph)$node_size <- node_attrs$node_size
   
-  # 转换为tbl_graph
+  # Convert to tbl_graph
   sailor_tbl <- as_tbl_graph(sailor_subgraph)
   
-  # 使用更好的布局
+  # Use better layout
   layout <- layout_with_kk(sailor_tbl)
   
   p <- ggraph(sailor_tbl, layout = layout) +
@@ -309,7 +309,7 @@ knitr::kable(of_artists %>% select(artist_name, n))
 ## 4.2 Temporal Spread Analysis
 
 ::: {.callout-important}
-Oceanus Folk experienced its biggest surge in **2023** with 34 new songs, followed by another peak in **2026** (25 songs). The genre shows volatile but persistent growth, with recent years (2025-2040) averaging 8.7 songs per year despite high volatility.
+Oceanus Folk experienced its biggest surge in 2023 with 34 new songs, followed by another peak in 2026 (25 songs). The genre shows volatile but persistent growth, with recent years (2025-2040) averaging 8.7 songs per year despite high volatility.
 :::
 
 ```{r oceanus-temporal-advanced}
@@ -341,7 +341,7 @@ p1 <- ggplot(of_temporal, aes(x = year)) +
 
 ggplotly(p1)
 
-# 修复fill参数问题
+# Fix fill parameter issue
 of_temporal_filtered <- of_temporal %>% filter(!is.na(growth_rate))
 
 p2 <- ggplot(of_temporal_filtered, aes(x = year, y = growth_rate)) +
@@ -395,12 +395,12 @@ if(nrow(of_connections) > 0) {
     visLayout(randomSeed = 123) %>%
     visPhysics(stabilization = FALSE)
   
-  # 添加文字说明
+  # Add text description
   cat("\nTop genre connections with Oceanus Folk:\n")
   of_connections %>%
     arrange(desc(value)) %>%
     head(5) %>%
-    mutate(connection = paste(from, "→", to)) %>%
+    mutate(connection = paste(from, "to", to)) %>%
     select(connection, value) %>%
     knitr::kable(col.names = c("Genre Connection", "Number of Artists"))
 }
@@ -446,7 +446,7 @@ print(p)
 ## 5.1 Feature Engineering for Prediction
 
 ```{r feature-engineering}
-# 获取2030年后活跃的艺术家ID
+# Get artists active after 2030
 recent_artist_ids <- edges %>%
   left_join(nodes %>% select(id, release_date), by = c("target" = "id")) %>%
   filter(!is.na(release_date)) %>%
@@ -455,7 +455,7 @@ recent_artist_ids <- edges %>%
   pull(source) %>%
   unique()
 
-# 构建艺术家特征
+# Build artist features
 artist_features <- nodes %>%
   filter(`Node Type` == "Person", id %in% recent_artist_ids) %>%
   left_join(
@@ -607,19 +607,19 @@ print(p)
 ### Sailor Shift's Success Factors
 
 ```{r sailor-summary}
-cat("1. **Network Position**: Sailor Shift has the highest PageRank (", 
+cat("1. Network Position: Sailor Shift has the highest PageRank (", 
     round(sailor_info$pagerank, 5), ") in the entire network\n")
-cat("2. **Collaboration Strategy**: Connected to", sailor_info$degree, 
+cat("2. Collaboration Strategy: Connected to", sailor_info$degree, 
     "other nodes through diverse relationship types\n")
-cat("3. **Career Evolution**: Triple role as lyricist (since 2024), performer (since 2028), and producer\n")
-cat("4. **Band Membership**: Part of a 5-member band with Maya Jensen, Lila Hartman, Jade Thompson, and Sophie Ramirez\n")
-cat("5. **Work Network**: Connected to 25 other artists through shared songs and albums\n\n")
+cat("3. Career Evolution: Triple role as lyricist (since 2024), performer (since 2028), and producer\n")
+cat("4. Band Membership: Part of a 5-member band with Maya Jensen, Lila Hartman, Jade Thompson, and Sophie Ramirez\n")
+cat("5. Work Network: Connected to 25 other artists through shared songs and albums\n\n")
 ```
 
 ### Oceanus Folk Global Spread
 
 ```{r oceanus-summary}
-# 获取所有峰值年份
+# Get all peak years
 peak_years <- of_temporal %>% 
   filter(songs_released == max(songs_released)) %>%
   pull(year)
@@ -640,10 +640,10 @@ growth_factor <- if(length(total_growth) == 2) {
   "N/A"
 }
 
-cat("1. **Growth Pattern**: Oceanus Folk peaked in", peak_info, "with 34 new releases\n")
-cat("2. **Total Reach**: 305 songs spanning 40 years (1992-2040)\n")
-cat("3. **Recent Growth**: From 2020 to 2040, the genre grew by", growth_factor, "times\n")
-cat("4. **Cross-Genre Influence**: Strong connections with Dream Pop and Indie Folk\n\n")
+cat("1. Growth Pattern: Oceanus Folk peaked in", peak_info, "with 34 new releases\n")
+cat("2. Total Reach: 305 songs spanning 40 years (1992-2040)\n")
+cat("3. Recent Growth: From 2020 to 2040, the genre grew by", growth_factor, "times\n")
+cat("4. Cross-Genre Influence: Strong connections with Dream Pop and Indie Folk\n\n")
 ```
 
 ### Rising Stars Predictions
@@ -652,18 +652,18 @@ cat("4. **Cross-Genre Influence**: Strong connections with Dream Pop and Indie F
 cat("Top 5 Predicted Rising Stars (2030-2040):\n")
 for(i in 1:min(5, nrow(rising_stars))) {
   star <- rising_stars[i,]
-  cat(i, ". **", star$display_name, 
-      "**: Potential score = ", round(star$potential_score, 2), 
+  cat(i, ". ", star$display_name, 
+      ": Potential score = ", round(star$potential_score, 2), 
       " (", star$career_stage, ")\n", sep = "")
 }
 ```
 
 ## 6.2 Recommendations
 
-1. **For Record Labels**: Focus on artists like Andrew Williams and Brian Wright who show high network connectivity
-2. **For Artists**: Follow Sailor Shift's model - combine multiple roles (performer, lyricist, producer) for maximum impact
-3. **For Investors**: Monitor Communities 1 and 2 where most rising stars are concentrated
-4. **Genre Strategy**: Oceanus Folk artists should consider cross-genre collaborations, especially with Dream Pop
+1. For Record Labels: Focus on artists like Andrew Williams and Brian Wright who show high network connectivity
+2. For Artists: Follow Sailor Shift's model - combine multiple roles (performer, lyricist, producer) for maximum impact
+3. For Investors: Monitor Communities 1 and 2 where most rising stars are concentrated
+4. Genre Strategy: Oceanus Folk artists should consider cross-genre collaborations, especially with Dream Pop
 
 ## 6.3 Limitations
 
