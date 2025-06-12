@@ -29,6 +29,7 @@ library(plotly)
 library(DT)
 library(igraph)
 library(lubridate)
+library(knitr)
 source("./R/load_data.R")
 source("./R/build_graph.R")
 ```
@@ -50,7 +51,7 @@ stats <- tibble(
   )
 )
 
-knitr::kable(stats, caption = "Graph Statistics")
+kable(stats, caption = "Graph Statistics")
 ```
 
 ```{r node-type-distribution}
@@ -291,7 +292,7 @@ cat("Total Oceanus Folk nodes:", nrow(of_nodes), "\n")
 cat("By type:\n")
 of_nodes %>%
   count(`Node Type`) %>%
-  knitr::kable()
+  kable()
 
 of_artists <- edges %>%
   filter(`Edge Type` %in% c("PerformerOf", "ComposerOf")) %>%
@@ -303,7 +304,7 @@ of_artists <- edges %>%
   head(10)
 
 cat("\nTop 10 Oceanus Folk Artists:\n")
-knitr::kable(of_artists %>% select(artist_name, n))
+kable(of_artists %>% select(artist_name, n))
 ```
 
 ## 4.2 Temporal Spread Analysis
@@ -402,7 +403,7 @@ if(nrow(of_connections) > 0) {
     head(5) %>%
     mutate(connection = paste(from, "to", to)) %>%
     select(connection, value) %>%
-    knitr::kable(col.names = c("Genre Connection", "Number of Artists"))
+    kable(col.names = c("Genre Connection", "Number of Artists"))
 }
 ```
 
@@ -604,22 +605,8 @@ print(p)
 
 ## 6.1 Key Findings
 
-### Sailor Shift's Success Factors
-
-```{r sailor-summary}
-cat("1. Network Position: Sailor Shift has the highest PageRank (", 
-    round(sailor_info$pagerank, 5), ") in the entire network\n")
-cat("2. Collaboration Strategy: Connected to", sailor_info$degree, 
-    "other nodes through diverse relationship types\n")
-cat("3. Career Evolution: Triple role as lyricist (since 2024), performer (since 2028), and producer\n")
-cat("4. Band Membership: Part of a 5-member band with Maya Jensen, Lila Hartman, Jade Thompson, and Sophie Ramirez\n")
-cat("5. Work Network: Connected to 25 other artists through shared songs and albums\n\n")
-```
-
-### Oceanus Folk Global Spread
-
-```{r oceanus-summary}
-# Get all peak years
+```{r findings-setup, include=FALSE}
+# Prepare data for findings
 peak_years <- of_temporal %>% 
   filter(songs_released == max(songs_released)) %>%
   pull(year)
@@ -639,38 +626,86 @@ growth_factor <- if(length(total_growth) == 2) {
 } else {
   "N/A"
 }
+```
 
-cat("1. Growth Pattern: Oceanus Folk peaked in", peak_info, "with 34 new releases\n")
-cat("2. Total Reach: 305 songs spanning 40 years (1992-2040)\n")
-cat("3. Recent Growth: From 2020 to 2040, the genre grew by", growth_factor, "times\n")
-cat("4. Cross-Genre Influence: Strong connections with Dream Pop and Indie Folk\n\n")
+### Sailor Shift's Success Factors
+
+```{r sailor-summary, results='asis'}
+findings_sailor <- tibble(
+  Finding = c(
+    paste0("Network Position: Sailor Shift has the highest PageRank (", round(sailor_info$pagerank, 5), ") in the entire network"),
+    paste0("Collaboration Strategy: Connected to ", sailor_info$degree, " other nodes through diverse relationship types"),
+    "Career Evolution: Triple role as lyricist (since 2024), performer (since 2028), and producer",
+    "Band Membership: Part of a 5-member band with Maya Jensen, Lila Hartman, Jade Thompson, and Sophie Ramirez",
+    "Work Network: Connected to 25 other artists through shared songs and albums"
+  )
+)
+
+for(i in 1:nrow(findings_sailor)) {
+  cat(paste0(i, ". <b>", findings_sailor$Finding[i], "</b><br>\n"))
+}
+```
+
+### Oceanus Folk Global Spread
+
+```{r oceanus-summary, results='asis'}
+findings_oceanus <- tibble(
+  Finding = c(
+    paste0("Growth Pattern: Oceanus Folk peaked in ", peak_info, " with 34 new releases"),
+    "Total Reach: 305 songs spanning 40 years (1992-2040)",
+    paste0("Recent Growth: From 2020 to 2040, the genre grew by ", growth_factor, " times"),
+    "Cross-Genre Influence: Strong connections with Dream Pop and Indie Folk"
+  )
+)
+
+for(i in 1:nrow(findings_oceanus)) {
+  cat(paste0(i, ". <b>", findings_oceanus$Finding[i], "</b><br>\n"))
+}
 ```
 
 ### Rising Stars Predictions
 
-```{r predictions-summary}
-cat("Top 5 Predicted Rising Stars (2030-2040):\n")
+```{r predictions-summary, results='asis'}
+cat("<b>Top 5 Predicted Rising Stars (2030-2040):</b><br><br>\n")
 for(i in 1:min(5, nrow(rising_stars))) {
   star <- rising_stars[i,]
-  cat(i, ". ", star$display_name, 
-      ": Potential score = ", round(star$potential_score, 2), 
-      " (", star$career_stage, ")\n", sep = "")
+  cat(paste0(i, ". <b>", star$display_name, "</b>: Potential score = ", 
+             round(star$potential_score, 2), " (", star$career_stage, ")<br>\n"))
 }
 ```
 
 ## 6.2 Recommendations
 
-1. For Record Labels: Focus on artists like Andrew Williams and Brian Wright who show high network connectivity
-2. For Artists: Follow Sailor Shift's model - combine multiple roles (performer, lyricist, producer) for maximum impact
-3. For Investors: Monitor Communities 1 and 2 where most rising stars are concentrated
-4. Genre Strategy: Oceanus Folk artists should consider cross-genre collaborations, especially with Dream Pop
+```{r recommendations, results='asis'}
+recommendations <- tibble(
+  Target = c("For Record Labels", "For Artists", "For Investors", "Genre Strategy"),
+  Recommendation = c(
+    "Focus on artists like Andrew Williams and Brian Wright who show high network connectivity",
+    "Follow Sailor Shift's model - combine multiple roles (performer, lyricist, producer) for maximum impact",
+    "Monitor Communities 1 and 2 where most rising stars are concentrated",
+    "Oceanus Folk artists should consider cross-genre collaborations, especially with Dream Pop"
+  )
+)
+
+for(i in 1:nrow(recommendations)) {
+  cat(paste0(i, ". <b>", recommendations$Target[i], "</b>: ", recommendations$Recommendation[i], "<br>\n"))
+}
+```
 
 ## 6.3 Limitations
 
-- Limited temporal data for edges prevents full career trajectory analysis
-- Genre information missing for 73.5% of nodes
-- Prediction model relies on network metrics without content analysis
-- Only 3% of artists have stage names, limiting brand analysis
+```{r limitations, results='asis'}
+limitations <- c(
+  "Limited temporal data for edges prevents full career trajectory analysis",
+  "Genre information missing for 73.5% of nodes",
+  "Prediction model relies on network metrics without content analysis",
+  "Only 3% of artists have stage names, limiting brand analysis"
+)
+
+for(i in 1:length(limitations)) {
+  cat(paste0("- ", limitations[i], "<br>\n"))
+}
+```
 
 # 7 Appendix
 
@@ -689,7 +724,7 @@ quality_metrics <- tibble(
   Percentage = round(Count / c(nrow(nodes), nrow(nodes), nrow(nodes), nrow(edges)) * 100, 2)
 )
 
-knitr::kable(quality_metrics, caption = "Data Completeness Metrics")
+kable(quality_metrics, caption = "Data Completeness Metrics")
 ```
 
 ## 7.2 Session Info
