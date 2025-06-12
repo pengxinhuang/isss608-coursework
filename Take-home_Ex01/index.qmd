@@ -1,6 +1,6 @@
 ---
 title: "Take-Home Exercise 1: Singapore Demographic Patterns 2024"
-format: html
+format: docx
 editor: visual
 execute:
   echo: true

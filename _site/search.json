@@ -257,5 +257,89 @@
     "title": "Hand-on Ex03",
     "section": "Enhanced Animation Effects",
     "text": "Enhanced Animation Effects\n\n\n\n\n\n\n\n\n\nThis series of scatter plots captures global development trends at key time points (1952, 1977, and 2002), revealing the relationship between economic performance and life expectancy. Comparing these snapshots illustrates how countries and regions have developed over the half-century period, showing patterns of progress and disparity."
+  },
+  {
+    "objectID": "Take-home_Ex02/index.html",
+    "href": "Take-home_Ex02/index.html",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "",
+    "text": "This analysis explores the VAST Challenge 2025 MC1 dataset to understand:\n\nSailor Shift’s rise to fame and influence network\nThe spread of Oceanus Folk genre globally\nPrediction of rising stars in the next 5 years"
+  },
+  {
+    "objectID": "Take-home_Ex02/index.html#finding-sailor-shift",
+    "href": "Take-home_Ex02/index.html#finding-sailor-shift",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "3.1 Finding Sailor Shift",
+    "text": "3.1 Finding Sailor Shift\n\n\n✓ Sailor Shift found in the network!\n\nKey metrics:\n- PageRank: 0.00065 \n- Degree: 60 \n- Community: 13"
+  },
+  {
+    "objectID": "Take-home_Ex02/index.html#sailor-shifts-ego-network",
+    "href": "Take-home_Ex02/index.html#sailor-shifts-ego-network",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "3.2 Sailor Shift’s Ego Network",
+    "text": "3.2 Sailor Shift’s Ego Network\n\n\nDirect connections: 50"
+  },
+  {
+    "objectID": "Take-home_Ex02/index.html#oceanus-folk-nodes",
+    "href": "Take-home_Ex02/index.html#oceanus-folk-nodes",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "4.1 Oceanus Folk Nodes",
+    "text": "4.1 Oceanus Folk Nodes\n\n\nTotal Oceanus Folk nodes: 305 \n\n\nBy type:\n\n\n\n\n\nNode Type\nn\n\n\n\n\nAlbum\n70\n\n\nSong\n235"
+  },
+  {
+    "objectID": "Take-home_Ex02/index.html#temporal-spread-of-oceanus-folk",
+    "href": "Take-home_Ex02/index.html#temporal-spread-of-oceanus-folk",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "4.2 Temporal Spread of Oceanus Folk",
+    "text": "4.2 Temporal Spread of Oceanus Folk"
+  },
+  {
+    "objectID": "Take-home_Ex02/index.html#cross-genre-influence",
+    "href": "Take-home_Ex02/index.html#cross-genre-influence",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "4.3 Cross-Genre Influence",
+    "text": "4.3 Cross-Genre Influence"
+  },
+  {
+    "objectID": "Take-home_Ex02/index.html#identifying-potential-rising-stars",
+    "href": "Take-home_Ex02/index.html#identifying-potential-rising-stars",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "5.1 Identifying Potential Rising Stars",
+    "text": "5.1 Identifying Potential Rising Stars\n\n\nNo recent artists found meeting the criteria."
+  },
+  {
+    "objectID": "Take-home_Ex02/index.html#rising-stars-network-position",
+    "href": "Take-home_Ex02/index.html#rising-stars-network-position",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "5.2 Rising Stars Network Position",
+    "text": "5.2 Rising Stars Network Position\n\n\nNot enough rising star candidates for visualization."
+  },
+  {
+    "objectID": "Take-home_Ex02/index.html#key-findings",
+    "href": "Take-home_Ex02/index.html#key-findings",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "6.1 Key Findings",
+    "text": "6.1 Key Findings\n\nSailor Shift’s Influence: [Analysis results will be inserted based on actual data]\nOceanus Folk Spread: The genre shows [steady/exponential] growth from [start year] to [end year]\nRising Stars: The top 3 predicted rising stars are:\n\n[Name 1]: High influence score due to [reason]\n[Name 2]: Strong connections in [community]\n[Name 3]: Rapid growth in [metric]"
+  },
+  {
+    "objectID": "Take-home_Ex02/index.html#limitations",
+    "href": "Take-home_Ex02/index.html#limitations",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "6.2 Limitations",
+    "text": "6.2 Limitations\n\nEdge timestamps are not available, limiting temporal analysis\nGenre information is incomplete for many nodes\nPrediction model is based solely on network metrics"
+  },
+  {
+    "objectID": "Take-home_Ex02/index.html#future-work",
+    "href": "Take-home_Ex02/index.html#future-work",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "6.3 Future Work",
+    "text": "6.3 Future Work\n\nIncorporate external data sources for validation\nDevelop more sophisticated prediction models\nAnalyze sentiment and content of collaborations"
+  },
+  {
+    "objectID": "Take-home_Ex02/index.html#session-info",
+    "href": "Take-home_Ex02/index.html#session-info",
+    "title": "MC1 Analysis - Music Knowledge Graph",
+    "section": "7.1 Session Info",
+    "text": "7.1 Session Info\n\n\nR version 4.5.0 (2025-04-11 ucrt)\nPlatform: x86_64-w64-mingw32/x64\nRunning under: Windows 11 x64 (build 26100)\n\nMatrix products: default\n  LAPACK version 3.12.1\n\nlocale:\n[1] LC_COLLATE=Chinese (Simplified)_Hong Kong SAR.utf8 \n[2] LC_CTYPE=Chinese (Simplified)_Hong Kong SAR.utf8   \n[3] LC_MONETARY=Chinese (Simplified)_Hong Kong SAR.utf8\n[4] LC_NUMERIC=C                                       \n[5] LC_TIME=Chinese (Simplified)_Hong Kong SAR.utf8    \n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] igraph_2.1.4     jsonlite_2.0.0   DT_0.33          plotly_4.10.4   \n [5] visNetwork_2.1.2 ggraph_2.2.1     tidygraph_1.3.1  lubridate_1.9.4 \n [9] forcats_1.0.0    stringr_1.5.1    dplyr_1.1.4      purrr_1.0.4     \n[13] readr_2.1.5      tidyr_1.3.1      tibble_3.3.0     ggplot2_3.5.2   \n[17] tidyverse_2.0.0 \n\nloaded via a namespace (and not attached):\n [1] gtable_0.3.6       xfun_0.52          htmlwidgets_1.6.4  ggrepel_0.9.6     \n [5] tzdb_0.5.0         crosstalk_1.2.1    vctrs_0.6.5        tools_4.5.0       \n [9] generics_0.1.3     pkgconfig_2.0.3    data.table_1.17.0  RColorBrewer_1.1-3\n[13] lifecycle_1.0.4    compiler_4.5.0     farver_2.1.2       ggforce_0.4.2     \n[17] graphlayouts_1.2.2 htmltools_0.5.8.1  yaml_2.3.10        lazyeval_0.2.2    \n[21] pillar_1.10.2      MASS_7.3-65        cachem_1.1.0       viridis_0.6.5     \n[25] tidyselect_1.2.1   digest_0.6.37      stringi_1.8.7      labeling_0.4.3    \n[29] polyclip_1.10-7    fastmap_1.2.0      grid_4.5.0         cli_3.6.5         \n[33] magrittr_2.0.3     dichromat_2.0-0.1  utf8_1.2.5         withr_3.0.2       \n[37] scales_1.4.0       timechange_0.3.0   rmarkdown_2.29     httr_1.4.7        \n[41] gridExtra_2.3      hms_1.1.3          memoise_2.0.1      evaluate_1.0.3    \n[45] knitr_1.50         viridisLite_0.4.2  rlang_1.1.6        Rcpp_1.0.14       \n[49] glue_1.8.0         tweenr_2.0.3       rstudioapi_0.17.1  R6_2.6.1"
   }
 ]

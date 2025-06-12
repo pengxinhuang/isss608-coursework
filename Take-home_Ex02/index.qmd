@@ -1,0 +1,345 @@
+---
+title: "MC1 Analysis - Music Knowledge Graph"
+author: "HOPE"
+date: today
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    theme: cosmo
+---
+
+# 1 Introduction
+
+This analysis explores the VAST Challenge 2025 MC1 dataset to understand:
+
+1. Sailor Shift's rise to fame and influence network
+2. The spread of Oceanus Folk genre globally
+3. Prediction of rising stars in the next 5 years
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 10, fig.height = 8)
+library(tidyverse)
+library(tidygraph)
+library(ggraph)
+library(visNetwork)
+library(plotly)
+library(DT)
+source("R/load_data.R")
+source("R/build_graph.R")
+```
+
+# 2 Data Overview
+
+```{r data-summary}
+# Graph summary
+cat("Graph structure:\n")
+print(g)
+
+# Basic statistics
+stats <- tibble(
+  Metric = c("Total Nodes", "Total Edges", "Number of Communities", "Graph Density"),
+  Value = c(
+    vcount(g),
+    ecount(g),
+    length(unique(V(g)$community)),
+    round(edge_density(g), 4)
+  )
+)
+
+knitr::kable(stats, caption = "Graph Statistics")
+```
+
+```{r node-type-distribution}
+# Node type distribution
+node_dist <- g %>%
+  activate(nodes) %>%
+  as_tibble() %>%
+  count(`Node Type`) %>%
+  arrange(desc(n))
+
+ggplot(node_dist, aes(x = reorder(`Node Type`, n), y = n, fill = `Node Type`)) +
+  geom_col() +
+  coord_flip() +
+  labs(title = "Distribution of Node Types",
+       x = "Node Type",
+       y = "Count") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+# 3 Sailor Shift Analysis
+
+## 3.1 Finding Sailor Shift
+
+```{r sailor-identify}
+# Find Sailor Shift
+sailor_info <- g %>%
+  activate(nodes) %>%
+  as_tibble() %>%
+  filter(id == 17255)
+
+if(nrow(sailor_info) > 0) {
+  cat("✓ Sailor Shift found in the network!\n\n")
+  cat("Key metrics:\n")
+  cat("- PageRank:", round(sailor_info$pagerank, 5), "\n")
+  cat("- Degree:", sailor_info$degree, "\n")
+  cat("- Community:", sailor_info$community, "\n")
+} else {
+  cat("✗ Sailor Shift not found in the network.\n")
+}
+```
+
+## 3.2 Sailor Shift's Ego Network
+
+```{r sailor-ego-network}
+# Extract Sailor Shift's 2-hop ego network
+sailor_id <- 17255
+
+# Get all edges connected to Sailor
+sailor_edges <- edges %>%
+  filter(source == sailor_id | target == sailor_id)
+
+# Get 2-hop neighbors
+neighbors_1 <- unique(c(sailor_edges$source, sailor_edges$target))
+neighbors_1 <- setdiff(neighbors_1, sailor_id)
+
+if(length(neighbors_1) > 0) {
+  cat("Direct connections:", length(neighbors_1), "\n")
+  
+  # Create subgraph - limit to manageable size
+  if(length(neighbors_1) > 50) {
+    neighbors_1 <- neighbors_1[1:50]
+    cat("(Showing first 50 connections)\n")
+  }
+  
+  # Get node indices in graph
+  node_indices <- which(V(g)$id %in% c(sailor_id, neighbors_1))
+  
+  if(length(node_indices) > 0) {
+    sailor_subgraph <- induced_subgraph(g, node_indices)
+    
+    # Prepare node data directly from subgraph
+    nodes_vis <- data.frame(
+      id = V(sailor_subgraph)$id,
+      label = V(sailor_subgraph)$name,
+      value = V(sailor_subgraph)$pagerank * 10000,
+      group = V(sailor_subgraph)$community,
+      color = ifelse(V(sailor_subgraph)$id == sailor_id, "red", "lightblue"),
+      title = paste("Type:", V(sailor_subgraph)$`Node Type`, "<br>",
+                    "Genre:", ifelse(is.na(V(sailor_subgraph)$genre), "N/A", V(sailor_subgraph)$genre))
+    )
+    
+    # Prepare edge data
+    edges_vis <- as_data_frame(sailor_subgraph, what = "edges")
+    
+    visNetwork(nodes_vis, edges_vis) %>%
+      visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
+      visLayout(randomSeed = 123) %>%
+      visPhysics(stabilization = FALSE)
+  }
+} else {
+  cat("No direct connections found for Sailor Shift.\n")
+}
+```
+
+# 4 Oceanus Folk Influence Analysis
+
+## 4.1 Oceanus Folk Nodes
+
+```{r oceanus-overview}
+# Find all Oceanus Folk nodes
+of_nodes <- g %>%
+  activate(nodes) %>%
+  as_tibble() %>%
+  filter(genre == "Oceanus Folk")
+
+cat("Total Oceanus Folk nodes:", nrow(of_nodes), "\n")
+cat("By type:\n")
+of_nodes %>%
+  count(`Node Type`) %>%
+  knitr::kable()
+```
+
+## 4.2 Temporal Spread of Oceanus Folk
+
+```{r oceanus-temporal}
+# Analyze temporal spread
+# First get OF nodes from the graph with release_date
+of_nodes_with_date <- g %>%
+  activate(nodes) %>%
+  as_tibble() %>%
+  filter(genre == "Oceanus Folk", !is.na(release_date))
+
+# Extract year from release_date
+of_temporal <- of_nodes_with_date %>%
+  mutate(year = as.integer(substr(release_date, 1, 4))) %>%
+  filter(!is.na(year)) %>%
+  count(year) %>%
+  arrange(year)
+
+# Create cumulative plot
+if(nrow(of_temporal) > 0) {
+  of_temporal <- of_temporal %>%
+    mutate(cumulative = cumsum(n))
+  
+  p <- ggplot(of_temporal, aes(x = year)) +
+    geom_line(aes(y = cumulative), size = 1.5, color = "darkblue") +
+    geom_point(aes(y = cumulative), size = 3, color = "darkblue") +
+    labs(title = "Cumulative Growth of Oceanus Folk Genre",
+         x = "Year",
+         y = "Cumulative Number of Works") +
+    theme_minimal() +
+    scale_x_continuous(breaks = seq(1975, 2040, by = 5))
+  
+  ggplotly(p)
+} else {
+  cat("No temporal data available for Oceanus Folk nodes.\n")
+}
+```
+
+## 4.3 Cross-Genre Influence
+
+```{r cross-genre-influence}
+# Find edges from OF nodes to other genres
+of_node_ids <- of_nodes$id
+
+# Get edges from OF nodes
+of_edges <- edges %>%
+  filter(source %in% of_node_ids) %>%
+  left_join(nodes %>% select(id, target_genre = genre), by = c("target" = "id"))
+
+# Count influences by target genre
+genre_influence <- of_edges %>%
+  filter(!is.na(target_genre), target_genre != "Oceanus Folk") %>%
+  count(target_genre, `Edge Type`) %>%
+  arrange(desc(n)) %>%
+  head(20)
+
+# Visualize
+if(nrow(genre_influence) > 0) {
+  ggplot(genre_influence, aes(x = reorder(target_genre, n), y = n, fill = `Edge Type`)) +
+    geom_col() +
+    coord_flip() +
+    labs(title = "Oceanus Folk Influence on Other Genres",
+         x = "Target Genre",
+         y = "Number of Connections") +
+    theme_minimal() +
+    scale_fill_brewer(palette = "Set3")
+} else {
+  cat("No cross-genre influences found.\n")
+}
+```
+
+# 5 Rising Stars Prediction
+
+## 5.1 Identifying Potential Rising Stars
+
+```{r rising-stars-criteria}
+# Define criteria for rising stars
+# Get all nodes with release_date to calculate year
+nodes_with_year <- g %>%
+  activate(nodes) %>%
+  as_tibble() %>%
+  filter(!is.na(release_date)) %>%
+  mutate(year = as.integer(substr(release_date, 1, 4)))
+
+# Filter recent artists
+recent_artists <- nodes_with_year %>%
+  filter(
+    `Node Type` == "Person",
+    year >= 2035,
+    !is.na(pagerank)
+  ) %>%
+  mutate(
+    years_active = 2040 - year,
+    pagerank_per_year = pagerank / years_active,
+    influence_score = pagerank * degree
+  ) %>%
+  arrange(desc(influence_score))
+
+# Top 10 candidates
+if(nrow(recent_artists) > 0) {
+  top_candidates <- recent_artists %>%
+    head(10) %>%
+    select(id, name, year, pagerank, degree, community, influence_score)
+  
+  datatable(top_candidates, 
+            caption = "Top 10 Rising Star Candidates",
+            options = list(pageLength = 10))
+} else {
+  cat("No recent artists found meeting the criteria.\n")
+  top_candidates <- tibble()
+}
+```
+
+## 5.2 Rising Stars Network Position
+
+```{r rising-stars-viz}
+# Get top 3 candidates
+if(nrow(top_candidates) >= 3) {
+  top3_ids <- top_candidates$id[1:3]
+  
+  # Get node indices
+  node_indices <- which(V(g)$id %in% top3_ids)
+  
+  if(length(node_indices) >= 3) {
+    # Get 1-hop neighbors for these nodes
+    neighbors <- unique(unlist(adjacent_vertices(g, node_indices, mode = "all")))
+    all_indices <- unique(c(node_indices, neighbors))
+    
+    # Limit size
+    if(length(all_indices) > 100) {
+      all_indices <- all_indices[1:100]
+    }
+    
+    # Create subgraph
+    top3_subgraph <- induced_subgraph(g, all_indices)
+    
+    # Plot
+    ggraph(top3_subgraph, layout = "fr") +
+      geom_edge_link(alpha = 0.5) +
+      geom_node_point(aes(size = pagerank, color = as.factor(community))) +
+      geom_node_text(aes(label = name), repel = TRUE, size = 3) +
+      labs(title = "Network Position of Top 3 Rising Stars",
+           subtitle = "Node size = PageRank, Color = Community") +
+      theme_graph() +
+      theme(legend.position = "bottom")
+  }
+} else {
+  cat("Not enough rising star candidates for visualization.\n")
+}
+```
+
+# 6 Insights and Conclusions
+
+## 6.1 Key Findings
+
+1. **Sailor Shift's Influence**: [Analysis results will be inserted based on actual data]
+
+2. **Oceanus Folk Spread**: The genre shows [steady/exponential] growth from [start year] to [end year]
+
+3. **Rising Stars**: The top 3 predicted rising stars are:
+   - [Name 1]: High influence score due to [reason]
+   - [Name 2]: Strong connections in [community]
+   - [Name 3]: Rapid growth in [metric]
+
+## 6.2 Limitations
+
+- Edge timestamps are not available, limiting temporal analysis
+- Genre information is incomplete for many nodes
+- Prediction model is based solely on network metrics
+
+## 6.3 Future Work
+
+- Incorporate external data sources for validation
+- Develop more sophisticated prediction models
+- Analyze sentiment and content of collaborations
+
+# 7 Appendix
+
+## 7.1 Session Info
+
+```{r session-info}
+sessionInfo()
+```
