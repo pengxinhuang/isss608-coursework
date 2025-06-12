@@ -4,14 +4,14 @@
     "href": "Take-home_Ex02/index.html",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "",
-    "text": "This analysis explores the VAST Challenge 2025 MC1 dataset to understand:\n\nSailor Shift’s rise to fame and influence network\nThe spread of Oceanus Folk genre globally\nPrediction of rising stars in the next 5 years"
+    "text": "This analysis explores the VAST Challenge 2025 MC1 dataset to understand:\n\nSailor Shift’s rise to fame and influence network\nThe spread of Oceanus Folk genre globally\n\nPrediction of rising stars in the next 5 years"
   },
   {
     "objectID": "Take-home_Ex02/index.html#sailor-shifts-profile",
     "href": "Take-home_Ex02/index.html#sailor-shifts-profile",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "3.1 Sailor Shift’s Profile",
-    "text": "3.1 Sailor Shift’s Profile\n\n\nSailor Shift found in the network!\n\n\nKey metrics:\n\n\n- PageRank: 0.00065 (Rank #1 in network)\n\n\n- Degree: 60 \n\n\n- Community: 10 \n\n\n- Total connections: 60 \n\n\n- Connection types:\n\n\n\n   DirectlySamples          InStyleOf   InterpolatesFrom LyricalReferenceTo \n                 2                  4                  2                  3 \n        LyricistOf           MemberOf        PerformerOf         ProducerOf \n                21                  1                 26                  1"
+    "text": "3.1 Sailor Shift’s Profile\n\n\nSailor Shift found in the network!\n\n\nKey metrics:\n\n\n- PageRank: 0.00065 (Rank #1 in network)\n\n\n- Degree: 60 \n\n\n- Community: 7 \n\n\n- Total connections: 60 \n\n\n- Connection types:\n\n\n\n   DirectlySamples          InStyleOf   InterpolatesFrom LyricalReferenceTo \n                 2                  4                  2                  3 \n        LyricistOf           MemberOf        PerformerOf         ProducerOf \n                21                  1                 26                  1"
   },
   {
     "objectID": "Take-home_Ex02/index.html#sailor-shifts-career-timeline",
@@ -95,21 +95,21 @@
     "href": "Take-home_Ex02/index.html#key-findings",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "6.1 Key Findings",
-    "text": "6.1 Key Findings\n\nSailor Shift’s Success Factors\n\nNetwork Position: Sailor Shift has the highest PageRank (0.00065) in the entire network\nCollaboration Strategy: Connected to 60 other nodes through diverse relationship types\nCareer Evolution: Triple role as lyricist (since 2024), performer (since 2028), and producer\nBand Membership: Part of a 5-member band with Maya Jensen, Lila Hartman, Jade Thompson, and Sophie Ramirez\nWork Network: Connected to 25 other artists through shared songs and albums\n\n\n\nOceanus Folk Global Spread\n\nGrowth Pattern: Oceanus Folk peaked in 2023 with 34 new releases\nTotal Reach: 305 songs spanning 40 years (1992-2040)\nRecent Growth: From 2020 to 2040, the genre grew by 2.7 times\nCross-Genre Influence: Strong connections with Dream Pop and Indie Folk\n\n\n\nRising Stars Predictions\nTop 5 Predicted Rising Stars (2030-2040): 1. Andrew Williams: Potential score = 3.55 (Veteran) 2. Brian Wright: Potential score = 3.2 (Veteran) 3. Kael Storm: Potential score = 2.67 (Established) 4. Bea Azure: Potential score = 2.36 (Established) 5. Jaye Finch: Potential score = 2.34 (Established)"
+    "text": "6.1 Key Findings\n\nSailor Shift’s Success Factors\n\n\n\n\n\n\n\n\n\nAspect\nDetails\n\n\n\n\nNetwork Position\nSailor Shift has the highest PageRank (0.00065) in the entire network\n\n\nCollaboration Strategy\nConnected to 60 other nodes through diverse relationship types\n\n\nCareer Evolution\nTriple role as lyricist (since 2024), performer (since 2028), and producer\n\n\nBand Membership\nPart of a 5-member band with Maya Jensen, Lila Hartman, Jade Thompson, and Sophie Ramirez\n\n\nWork Network\nConnected to 25 other artists through shared songs and albums\n\n\n\n\n\n\n\nOceanus Folk Global Spread\n\n\n\n\n\n\n\n\n\nAspect\nDetails\n\n\n\n\nGrowth Pattern\nOceanus Folk peaked in 2023 with 34 new releases\n\n\nTotal Reach\n305 songs spanning 40 years (1992-2040)\n\n\nRecent Growth\nFrom 2020 to 2040, the genre grew by 2.7 times\n\n\nCross-Genre Influence\nStrong connections with Dream Pop and Indie Folk\n\n\n\n\n\n\n\nRising Stars Predictions\n\n\n\nTop 5 Predicted Rising Stars (2030-2040)\n\n\nRank\nArtist\nStage\nScore\n\n\n\n\n1\nAndrew Williams\nVeteran\n3.55\n\n\n2\nBrian Wright\nVeteran\n3.20\n\n\n3\nKael Storm\nEstablished\n2.67\n\n\n4\nBea Azure\nEstablished\n2.36\n\n\n5\nJaye Finch\nEstablished\n2.34"
   },
   {
     "objectID": "Take-home_Ex02/index.html#recommendations",
     "href": "Take-home_Ex02/index.html#recommendations",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "6.2 Recommendations",
-    "text": "6.2 Recommendations\n\nFor Record Labels: Focus on artists like Andrew Williams and Brian Wright who show high network connectivity\nFor Artists: Follow Sailor Shift’s model - combine multiple roles (performer, lyricist, producer) for maximum impact\nFor Investors: Monitor Communities 1 and 2 where most rising stars are concentrated\nGenre Strategy: Oceanus Folk artists should consider cross-genre collaborations, especially with Dream Pop"
+    "text": "6.2 Recommendations\n\n\n\n\n\n\n\n\n\nFor\nRecommendation\n\n\n\n\nRecord Labels\nFocus on artists like Andrew Williams and Brian Wright who show high network connectivity\n\n\nArtists\nFollow Sailor Shift’s model - combine multiple roles (performer, lyricist, producer) for maximum impact\n\n\nInvestors\nMonitor Communities 1 and 2 where most rising stars are concentrated\n\n\nGenre Strategy\nOceanus Folk artists should consider cross-genre collaborations, especially with Dream Pop"
   },
   {
     "objectID": "Take-home_Ex02/index.html#limitations",
     "href": "Take-home_Ex02/index.html#limitations",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "6.3 Limitations",
-    "text": "6.3 Limitations\n\nLimited temporal data for edges prevents full career trajectory analysis\nGenre information missing for 73.5% of nodes\nPrediction model relies on network metrics without content analysis\nOnly 3% of artists have stage names, limiting brand analysis"
+    "text": "6.3 Limitations\n\nLimited temporal data for edges prevents full career trajectory analysis\nGenre information missing for 73.5% of nodes\n\nPrediction model relies on network metrics without content analysis\nOnly 3% of artists have stage names, limiting brand analysis"
   },
   {
     "objectID": "Take-home_Ex02/index.html#data-quality-assessment",
