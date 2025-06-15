@@ -1,5 +1,250 @@
 [
   {
+    "objectID": "Take-home_Ex03/take_homeExercise3.html",
+    "href": "Take-home_Ex03/take_homeExercise3.html",
+    "title": "Take_home Exercise3",
+    "section": "",
+    "text": "This storyboard presents a design prototype for a Shiny dashboard that allows users to explore the influence and evolution of the Oceanus Folk music genre, with a focus on emerging artists and shifting patterns of musical collaboration. The visual analytics features are derived from the MC1 knowledge graph and aim to offer meaningful insights into the genre’s reach, trajectory, and cultural impact.\nThe purpose of this storyboard is twofold:\nTo showcase the key user interface (UI) components and visualizations that would be included in the Shiny app. To guide the user experience by explaining what each chart reveals and how it helps answer specific analytical questions.\nWhile this prototype does not require working code, it reflects the logic, visual design, and interactivity that a functional Shiny app would offer. Each section corresponds to a specific insight goal from Mini-Challenge 1 (MC1) and is structured with:\nA heading indicating the analytical question addressed A screenshot or sketch of the visualization A short narrative explaining the insight and how a user might interact with the component\nThis storyboard focuses on the following key analytical goals:\n\nTracking how the Oceanus Folk genre spread over time and into other musical styles\nUnderstanding whether the influence was intermittent or steady\nIdentifying the top genres and artists influenced by Oceanus Folk\nExploring how Sailor Shift’s rise contributed to the genre’s transformation\nProfiling rising stars based on influence metrics\nComparing the career trajectories of three selected artists\nPredicting future Oceanus Folk stars based on influence patterns\n\nTogether, these sections simulate a user’s journey through the dashboard, enabling exploration of complex musical data through intuitive and insightful visual design.\n\n\n\n\nThis visualization transforms the static career timeline from Take-home 2 into an interactive exploration tool.\n \nCurrent Static Visualization: The profile shows Sailor Shift as the #1 PageRank artist with 60 total connections across multiple edge types. The timeline displays her work output across three roles (Performer, Lyricist, Producer) from 2024-2040.\nInteractive Enhancements: - Year Range Slider: Users can zoom into specific periods (e.g., 2028-2032 breakthrough years) - Role Checkboxes: Toggle visibility of Performer/Lyricist/Producer lines - Hover Details: Display exact counts and potentially song titles - Click Actions: Click a point to see all works from that year\nKey Insight: The timeline reveals Sailor’s evolution from lyricist (2024) to multi-role artist, with peak productivity in the LyricistOf role throughout her career. Notable peaks occur in 2030 (5 performances) and 2034 (4 performances).\n\n\n\n\n\n\nThis section visualizes how the Oceanus Folk genre has expanded its influence over the years through stylistic, lyrical, and compositional connections.\nThe line graph demonstrates the number of songs or artists influenced by Oceanus Folk each year, based on relationships such as InStyleOf, LyricalReferenceTo, and InterpolatesFrom.\nThis timeline allows users to: Observe the rate of genre adoption across decades, Detect spikes in influence (e.g., due to major album releases), Understand whether influence was gradual or intermittent.\n\n\n\n\nInterpretation: The influence of Oceanus Folk shows a significant rise post-2005 and maintains consistent outreach, suggesting steady integration into mainstream and niche genres alike.\n\n\n\nThis panel visualizes how the Oceanus Folk genre gradually spread its influence through the music world over time. Using the knowledge graph’s relationship edges such as InStyleOf, LyricalReferenceTo, and InterpolatesFrom, we identify songs and artists that stylistically or lyrically reflect Oceanus Folk traditions.\nThe timeline is plotted as a year-by-year count of influenced songs/artists, allowing users to trace patterns of genre adoption.\nUser Interaction Features (Storyboard Design): A sidebar with section tabs for Overview, Influencer Timeline, and Genre Trends. The active chart window displays the line plot of influenced works by year. In a real dashboard, users could apply genre filters or node type switches (e.g., “songs only”, “artists only”) to explore influence depth.\nInterpretation: The timeline reveals that Oceanus Folk’s influence began modestly in the 1980s, followed by a noticeable rise post-2000. This growth is consistent with a genre that evolved organically, gaining popularity through indirect influence rather than sudden viral trends.\nThe peak around 2006–2010 suggests a period of cultural saturation, after which the influence remained steady with periodic spikes — possibly due to standout albums or collaborative trends.\nThis visualization supports the insight that Oceanus Folk’s spread was gradual and sustained, rather than intermittent or random.\n\n\n\nThis section highlights which genres have been most influenced by Oceanus Folk. The visualization shows the top 10 genres connected through stylistic and lyrical influence, as derived from edges like InStyleOf, LyricalReferenceTo, and InterpolatesFrom.\nThe horizontal bar chart helps users: Identify stylistic overlaps between Oceanus Folk and other genres, Understand cross-genre evolution of the music ecosystem, Focus on genres like Indie Folk, Synthwave, and Pop, which absorbed Oceanus Folk’s stylistic DNA.\n\n\n\n\n\n\nTop Genres Influenced\n\n\n\n\n\nOceanus Folk’s influence is far-reaching — while it originated as a niche genre, it has clearly shaped more mainstream and experimental sounds. Genres like Indie Folk, Synthwave, and Pop exhibit the strongest influence links.\nThis genre-level spread reflects Oceanus Folk’s adaptability and emotional resonance, making it an inspirational source for composers across stylistic boundaries.\n\n\n\nThis section explores which genres most influenced the development of Oceanus Folk. It analyzes incoming stylistic and lyrical relationships using edge types such as influencedBy, InterpolatesFrom, InStyleOf, and LyricalReferenceTo.\nThe bar chart shows: Genres from which Oceanus Folk inherited musical elements The stylistic DNA Oceanus Folk was built upon How Oceanus Folk serves as a fusion genre, blending diverse inspirations\n\n\n\n\n\n\n\nThe chart reveals that Oceanus Folk was primarily shaped by genres such as: Desert Rock Indie Folk Dream Pop Synthwave Jazz Surf Rock\nThese genres likely influenced the ambient tones, lyrical depth, and experimental sound design that Oceanus Folk is known for. Interestingly, Oceanus Folk is also shown influencing itself in a feedback loop, suggesting internal evolution and sub-style development.\nThe takeaway: Oceanus Folk is not a standalone creation, but rather a genre deeply rooted in acoustic, electronic, and atmospheric traditions, allowing it to be both familiar and innovative.\n\n\n\n\n\n\nThis section compares the influence footprint of three selected artists — Daniel O’Connell, Claire Holmes, and Beatrice Albright — based on the number of stylistic influence edges connected to them.\nBy visualizing the number of outgoing influence links, we gain insight into:\nHow prolifically each artist contributed to shaping others in the music scene, Their relative impact on genre propagation or artistic inspiration, Patterns of stylistic transmission over time, even in the absence of detailed time-series metadata.\n\n\n\n\n\n\n\nAll three artists show a comparable influence count, suggesting they played meaningful roles in spreading stylistic motifs within the Oceanus Folk ecosystem.\nWhile we may not have detailed timelines or awards metadata, this visualization acts as a proxy for career reach. Artists like Daniel O’Connell and Claire Holmes may represent emerging talents, whereas Beatrice Albright’s consistent stylistic connections suggest a steady artistic influence.\nThis view enables quick comparative assessment when deeper metrics (e.g., chart positions or collaborations) are unavailable.\n\n\n\nThis section transforms the static rising stars prediction from Take-home 2 into an interactive exploration tool for identifying the next Oceanus Folk superstars.\n\n\n\nRising Stars Table\n\n\n\n\n\nRising Stars Network vs Versatility\n\n\nCurrent Static Visualization: The prediction model identifies top rising stars based on recent activity (post-2030), PageRank &lt; 0.0002, and a composite potential score. The scatter plot reveals the relationship between network connections and artistic versatility.\n\n\n\n1. Andrew Williams (Potential Score: 3.548) - Profile: Veteran artist with 26 total works across 4 different roles - Key Strength: Highest network degree (26 connections) combined with strong versatility - Prediction Rationale: His extensive network and multi-role experience position him to become the next major Oceanus Folk influencer\n2. Brian Wright (Potential Score: 3.197) - Profile: Veteran artist with 22 works across 3 roles - Key Strength: Balanced network connections (22) with focused expertise - Prediction Rationale: Similar trajectory to successful artists - strong connections with specialized skills\n3. Kael Storm (Potential Score: 2.668) - Profile: Established artist with 14 works across 5 different roles - Key Strength: Highest versatility score among top candidates - Prediction Rationale: His diverse skill set across 5 roles mirrors Sailor Shift’s multi-faceted approach\n\n\n\n\n\n\nRising Stars by Community\n\n\nCommunity Insights: Rising stars are concentrated in Communities 9 (8 artists) and 4 (2 artists), suggesting these are the emerging hubs for Oceanus Folk innovation.\n\n\n\n\n\n\nRising vs Successful Artists Comparison\n\n\nValidation Insights: Rising stars show similar patterns to successful artists in degree and work types, but with lower total works - indicating they are on the right trajectory but earlier in their careers.\n\n\n\n1. Predictive Dashboard Controls: - Threshold Sliders: Adjust PageRank, activity period, and minimum works to see how predictions change - Weight Adjustment: Modify the importance of network connections vs. versatility vs. output - Time Window: Slide forward to predict 10-year or 15-year horizons\n2. Artist Deep Dive: - Click any artist: Expand to see full career trajectory, collaborations, and influence network - Compare Mode: Select multiple artists to see side-by-side career comparisons - What-If Analysis: Simulate how new collaborations might affect potential scores\n3. Community Explorer: - Filter by Community: Focus predictions on specific music communities - Migration Patterns: Visualize how artists move between communities over time - Community Health Metrics: Show which communities are growing vs. declining\n4. Real-time Model Updates: - Live Scoring: As new data arrives, see how artist rankings change - Confidence Intervals: Display prediction uncertainty for each artist - Alert System: Notify when an artist’s trajectory significantly changes\nKey Takeaway: The model successfully identifies artists who combine Sailor Shift’s key success factors: strong network connections, multi-role versatility, and active recent output. The interactive features will allow users to explore different scenarios and understand what drives success in the Oceanus Folk genre."
+  },
+  {
+    "objectID": "Take-home_Ex03/take_homeExercise3.html#mc1-question-1-sailor-shift-career-profile-analysis",
+    "href": "Take-home_Ex03/take_homeExercise3.html#mc1-question-1-sailor-shift-career-profile-analysis",
+    "title": "Take_home Exercise3",
+    "section": "",
+    "text": "This visualization transforms the static career timeline from Take-home 2 into an interactive exploration tool.\n \nCurrent Static Visualization: The profile shows Sailor Shift as the #1 PageRank artist with 60 total connections across multiple edge types. The timeline displays her work output across three roles (Performer, Lyricist, Producer) from 2024-2040.\nInteractive Enhancements: - Year Range Slider: Users can zoom into specific periods (e.g., 2028-2032 breakthrough years) - Role Checkboxes: Toggle visibility of Performer/Lyricist/Producer lines - Hover Details: Display exact counts and potentially song titles - Click Actions: Click a point to see all works from that year\nKey Insight: The timeline reveals Sailor’s evolution from lyricist (2024) to multi-role artist, with peak productivity in the LyricistOf role throughout her career. Notable peaks occur in 2030 (5 performances) and 2034 (4 performances)."
+  },
+  {
+    "objectID": "Take-home_Ex03/take_homeExercise3.html#mc1-question-2-spread-of-oceanus-folk-influence-over-time",
+    "href": "Take-home_Ex03/take_homeExercise3.html#mc1-question-2-spread-of-oceanus-folk-influence-over-time",
+    "title": "Take_home Exercise3",
+    "section": "",
+    "text": "This section visualizes how the Oceanus Folk genre has expanded its influence over the years through stylistic, lyrical, and compositional connections.\nThe line graph demonstrates the number of songs or artists influenced by Oceanus Folk each year, based on relationships such as InStyleOf, LyricalReferenceTo, and InterpolatesFrom.\nThis timeline allows users to: Observe the rate of genre adoption across decades, Detect spikes in influence (e.g., due to major album releases), Understand whether influence was gradual or intermittent.\n\n\n\n\nInterpretation: The influence of Oceanus Folk shows a significant rise post-2005 and maintains consistent outreach, suggesting steady integration into mainstream and niche genres alike.\n\n\n\nThis panel visualizes how the Oceanus Folk genre gradually spread its influence through the music world over time. Using the knowledge graph’s relationship edges such as InStyleOf, LyricalReferenceTo, and InterpolatesFrom, we identify songs and artists that stylistically or lyrically reflect Oceanus Folk traditions.\nThe timeline is plotted as a year-by-year count of influenced songs/artists, allowing users to trace patterns of genre adoption.\nUser Interaction Features (Storyboard Design): A sidebar with section tabs for Overview, Influencer Timeline, and Genre Trends. The active chart window displays the line plot of influenced works by year. In a real dashboard, users could apply genre filters or node type switches (e.g., “songs only”, “artists only”) to explore influence depth.\nInterpretation: The timeline reveals that Oceanus Folk’s influence began modestly in the 1980s, followed by a noticeable rise post-2000. This growth is consistent with a genre that evolved organically, gaining popularity through indirect influence rather than sudden viral trends.\nThe peak around 2006–2010 suggests a period of cultural saturation, after which the influence remained steady with periodic spikes — possibly due to standout albums or collaborative trends.\nThis visualization supports the insight that Oceanus Folk’s spread was gradual and sustained, rather than intermittent or random.\n\n\n\nThis section highlights which genres have been most influenced by Oceanus Folk. The visualization shows the top 10 genres connected through stylistic and lyrical influence, as derived from edges like InStyleOf, LyricalReferenceTo, and InterpolatesFrom.\nThe horizontal bar chart helps users: Identify stylistic overlaps between Oceanus Folk and other genres, Understand cross-genre evolution of the music ecosystem, Focus on genres like Indie Folk, Synthwave, and Pop, which absorbed Oceanus Folk’s stylistic DNA.\n\n\n\n\n\n\nTop Genres Influenced\n\n\n\n\n\nOceanus Folk’s influence is far-reaching — while it originated as a niche genre, it has clearly shaped more mainstream and experimental sounds. Genres like Indie Folk, Synthwave, and Pop exhibit the strongest influence links.\nThis genre-level spread reflects Oceanus Folk’s adaptability and emotional resonance, making it an inspirational source for composers across stylistic boundaries.\n\n\n\nThis section explores which genres most influenced the development of Oceanus Folk. It analyzes incoming stylistic and lyrical relationships using edge types such as influencedBy, InterpolatesFrom, InStyleOf, and LyricalReferenceTo.\nThe bar chart shows: Genres from which Oceanus Folk inherited musical elements The stylistic DNA Oceanus Folk was built upon How Oceanus Folk serves as a fusion genre, blending diverse inspirations\n\n\n\n\n\n\n\nThe chart reveals that Oceanus Folk was primarily shaped by genres such as: Desert Rock Indie Folk Dream Pop Synthwave Jazz Surf Rock\nThese genres likely influenced the ambient tones, lyrical depth, and experimental sound design that Oceanus Folk is known for. Interestingly, Oceanus Folk is also shown influencing itself in a feedback loop, suggesting internal evolution and sub-style development.\nThe takeaway: Oceanus Folk is not a standalone creation, but rather a genre deeply rooted in acoustic, electronic, and atmospheric traditions, allowing it to be both familiar and innovative."
+  },
+  {
+    "objectID": "Take-home_Ex03/take_homeExercise3.html#mc1-question-3-rising-stars-analysis-and-prediction",
+    "href": "Take-home_Ex03/take_homeExercise3.html#mc1-question-3-rising-stars-analysis-and-prediction",
+    "title": "Take_home Exercise3",
+    "section": "",
+    "text": "This section compares the influence footprint of three selected artists — Daniel O’Connell, Claire Holmes, and Beatrice Albright — based on the number of stylistic influence edges connected to them.\nBy visualizing the number of outgoing influence links, we gain insight into:\nHow prolifically each artist contributed to shaping others in the music scene, Their relative impact on genre propagation or artistic inspiration, Patterns of stylistic transmission over time, even in the absence of detailed time-series metadata.\n\n\n\n\n\n\n\nAll three artists show a comparable influence count, suggesting they played meaningful roles in spreading stylistic motifs within the Oceanus Folk ecosystem.\nWhile we may not have detailed timelines or awards metadata, this visualization acts as a proxy for career reach. Artists like Daniel O’Connell and Claire Holmes may represent emerging talents, whereas Beatrice Albright’s consistent stylistic connections suggest a steady artistic influence.\nThis view enables quick comparative assessment when deeper metrics (e.g., chart positions or collaborations) are unavailable.\n\n\n\nThis section transforms the static rising stars prediction from Take-home 2 into an interactive exploration tool for identifying the next Oceanus Folk superstars.\n\n\n\nRising Stars Table\n\n\n\n\n\nRising Stars Network vs Versatility\n\n\nCurrent Static Visualization: The prediction model identifies top rising stars based on recent activity (post-2030), PageRank &lt; 0.0002, and a composite potential score. The scatter plot reveals the relationship between network connections and artistic versatility.\n\n\n\n1. Andrew Williams (Potential Score: 3.548) - Profile: Veteran artist with 26 total works across 4 different roles - Key Strength: Highest network degree (26 connections) combined with strong versatility - Prediction Rationale: His extensive network and multi-role experience position him to become the next major Oceanus Folk influencer\n2. Brian Wright (Potential Score: 3.197) - Profile: Veteran artist with 22 works across 3 roles - Key Strength: Balanced network connections (22) with focused expertise - Prediction Rationale: Similar trajectory to successful artists - strong connections with specialized skills\n3. Kael Storm (Potential Score: 2.668) - Profile: Established artist with 14 works across 5 different roles - Key Strength: Highest versatility score among top candidates - Prediction Rationale: His diverse skill set across 5 roles mirrors Sailor Shift’s multi-faceted approach\n\n\n\n\n\n\nRising Stars by Community\n\n\nCommunity Insights: Rising stars are concentrated in Communities 9 (8 artists) and 4 (2 artists), suggesting these are the emerging hubs for Oceanus Folk innovation.\n\n\n\n\n\n\nRising vs Successful Artists Comparison\n\n\nValidation Insights: Rising stars show similar patterns to successful artists in degree and work types, but with lower total works - indicating they are on the right trajectory but earlier in their careers.\n\n\n\n1. Predictive Dashboard Controls: - Threshold Sliders: Adjust PageRank, activity period, and minimum works to see how predictions change - Weight Adjustment: Modify the importance of network connections vs. versatility vs. output - Time Window: Slide forward to predict 10-year or 15-year horizons\n2. Artist Deep Dive: - Click any artist: Expand to see full career trajectory, collaborations, and influence network - Compare Mode: Select multiple artists to see side-by-side career comparisons - What-If Analysis: Simulate how new collaborations might affect potential scores\n3. Community Explorer: - Filter by Community: Focus predictions on specific music communities - Migration Patterns: Visualize how artists move between communities over time - Community Health Metrics: Show which communities are growing vs. declining\n4. Real-time Model Updates: - Live Scoring: As new data arrives, see how artist rankings change - Confidence Intervals: Display prediction uncertainty for each artist - Alert System: Notify when an artist’s trajectory significantly changes\nKey Takeaway: The model successfully identifies artists who combine Sailor Shift’s key success factors: strong network connections, multi-role versatility, and active recent output. The interactive features will allow users to explore different scenarios and understand what drives success in the Oceanus Folk genre."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html",
+    "href": "Hand-on_Ex02/index.html",
+    "title": "Hand-on Ex02",
+    "section": "",
+    "text": "Warning: ggrepel: 287 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps\n\n\n\n\n\n\n\n\n\nThe comparison demonstrates how ggrepel’s text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#improved-annotation-with-ggrepel",
+    "href": "Hand-on_Ex02/index.html#improved-annotation-with-ggrepel",
+    "title": "Hand-on Ex02",
+    "section": "",
+    "text": "Warning: ggrepel: 287 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps\n\n\n\n\n\n\n\n\n\nThe comparison demonstrates how ggrepel’s text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#professional-themes-with-ggthemes",
+    "href": "Hand-on_Ex02/index.html#professional-themes-with-ggthemes",
+    "title": "Hand-on Ex02",
+    "section": "Professional Themes with ggthemes",
+    "text": "Professional Themes with ggthemes\n\n\n\n\n\n\n\n\n\nUsing The Economist theme transforms the histogram into publication-quality visualization with distinctive typography and color palette, demonstrating how themed approaches can lend credibility and professionalism to statistical graphics."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#typography-focused-design",
+    "href": "Hand-on_Ex02/index.html#typography-focused-design",
+    "title": "Hand-on Ex02",
+    "section": "Typography-Focused Design",
+    "text": "Typography-Focused Design\n\n\n\n\n\n\n\n\n\nThe enhanced typography is achieved using ggplot2’s native theming system with carefully adjusted text properties, creating a clean design with proper visual hierarchy and improved readability for reports and presentations."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#composite-figures-with-patchwork",
+    "href": "Hand-on_Ex02/index.html#composite-figures-with-patchwork",
+    "title": "Hand-on Ex02",
+    "section": "Composite Figures with Patchwork",
+    "text": "Composite Figures with Patchwork\n\n\n\n\n\n\n\n\n\nThe side-by-side histograms created with patchwork enable efficient comparison of distributions between mathematics and English scores, revealing differences in central tendency and spread without requiring multiple separate figures."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#multi-row-layout",
+    "href": "Hand-on_Ex02/index.html#multi-row-layout",
+    "title": "Hand-on Ex02",
+    "section": "Multi-Row Layout",
+    "text": "Multi-Row Layout\n\n\n\n\n\n\n\n\n\nThis composite visualization integrates individual subject distributions with their correlation, creating a comprehensive analytical view that would otherwise require multiple separate charts, demonstrating patchwork’s ability to build complex multi-level layouts."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#auto-tagged-composite-figure",
+    "href": "Hand-on_Ex02/index.html#auto-tagged-composite-figure",
+    "title": "Hand-on Ex02",
+    "section": "Auto-Tagged Composite Figure",
+    "text": "Auto-Tagged Composite Figure\n\n\n\n\n\n\n\n\n\nAutomatic tagging adds professional reference points to each panel, making the composite figure suitable for formal reports where specific panels need to be referenced in accompanying text."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#inset-chart",
+    "href": "Hand-on_Ex02/index.html#inset-chart",
+    "title": "Hand-on Ex02",
+    "section": "Inset Chart",
+    "text": "Inset Chart\n\n\n\n\n\n\n\n\n\nThe inset technique efficiently uses space by embedding the English score distribution within the correlation plot, allowing readers to reference the relevant distribution without switching between figures."
+  },
+  {
+    "objectID": "Hand-on_Ex02/index.html#themed-composite-figure",
+    "href": "Hand-on_Ex02/index.html#themed-composite-figure",
+    "title": "Hand-on Ex02",
+    "section": "Themed Composite Figure",
+    "text": "Themed Composite Figure\n\n\n\n\n\n\n\n\n\nCombining patchwork with ggthemes creates professionally styled composite figures with consistent design elements across all panels, demonstrating how multiple extension packages can work together to produce polished statistical graphics."
+  },
+  {
+    "objectID": "data/Hands-on_Ex08/data/geospatial/MPSZ-2019.html",
+    "href": "data/Hands-on_Ex08/data/geospatial/MPSZ-2019.html",
+    "title": "ISSS608-VAA",
+    "section": "",
+    "text": "&lt;!DOCTYPE qgis PUBLIC ‘http://mrcc.com/qgis.dtd’ ‘SYSTEM’&gt;     dataset\n\n\n        0 0     false"
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html",
+    "href": "Hand-on_Ex01/index.html",
+    "title": "Hand-on Ex01",
+    "section": "",
+    "text": "Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#gender-distribution",
+    "href": "Hand-on_Ex01/index.html#gender-distribution",
+    "title": "Hand-on Ex01",
+    "section": "",
+    "text": "Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#subject-score-comparison",
+    "href": "Hand-on_Ex01/index.html#subject-score-comparison",
+    "title": "Hand-on Ex01",
+    "section": "Subject Score Comparison",
+    "text": "Subject Score Comparison\n\n\n\n\n\n\n\n\n\nEnglish scores show the highest median with a compact distribution, while Science has the lowest median and more outliers. Mathematics demonstrates moderate performance with several low outliers, indicating variable student proficiency across subjects."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#math-score-distribution",
+    "href": "Hand-on_Ex01/index.html#math-score-distribution",
+    "title": "Hand-on Ex01",
+    "section": "Math Score Distribution",
+    "text": "Math Score Distribution\n\n\n\n\n\n\n\n\n\nThe mean (red dashed line) sits near the centre of a bell-shaped curve (~66 points), indicating symmetric performance with few extreme scores."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#dot-plot-visualization",
+    "href": "Hand-on_Ex01/index.html#dot-plot-visualization",
+    "title": "Hand-on Ex01",
+    "section": "Dot Plot Visualization",
+    "text": "Dot Plot Visualization\n\n\n\n\n\n\n\n\n\nThe dot plot reveals the precise distribution of individual math scores, showing clustering around 65-75 points with relatively few students at extreme ends of the spectrum."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#class-comparison",
+    "href": "Hand-on_Ex01/index.html#class-comparison",
+    "title": "Hand-on Ex01",
+    "section": "Class Comparison",
+    "text": "Class Comparison\n\n\n\n\n\n\n\n\n\nClass-level facets reveal differences: class 3A clusters above 70, while 3I shows a wider spread, hinting at varying teaching quality or peer effects."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#density-plot-analysis",
+    "href": "Hand-on_Ex01/index.html#density-plot-analysis",
+    "title": "Hand-on Ex01",
+    "section": "Density Plot Analysis",
+    "text": "Density Plot Analysis\n\n\n\n\n\n\n\n\n\nThe density curves highlight subtle gender differences in math performance, with female students showing a more concentrated distribution compared to males who display greater variability, particularly in the middle score range."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#violin-plot-comparison",
+    "href": "Hand-on_Ex01/index.html#violin-plot-comparison",
+    "title": "Hand-on Ex01",
+    "section": "Violin Plot Comparison",
+    "text": "Violin Plot Comparison\n\n\n\n\n\n\n\n\n\nViolin plots effectively illustrate the probability density of scores across genders, showing that while medians are similar, male students exhibit greater variance and a slight bimodal tendency in math performance."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#subject-relationship",
+    "href": "Hand-on_Ex01/index.html#subject-relationship",
+    "title": "Hand-on Ex01",
+    "section": "Subject Relationship",
+    "text": "Subject Relationship\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nThe scatter plot reveals a moderate positive correlation between Math and English scores, suggesting that students who excel in one subject tend to perform well in the other, though numerous outliers indicate exceptions to this pattern."
+  },
+  {
+    "objectID": "Hand-on_Ex01/index.html#alternative-subject-comparison-view",
+    "href": "Hand-on_Ex01/index.html#alternative-subject-comparison-view",
+    "title": "Hand-on Ex01",
+    "section": "Alternative Subject Comparison View",
+    "text": "Alternative Subject Comparison View\n\n\n\n\n\n\n\n\n\nFlipping axes improves readability and makes overlap among subjects obvious; English remains top, Science lags with more low outliers. This orientation better highlights score ranges and median differences between subjects, enhancing comparative analysis."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html",
+    "href": "Hand-on_Ex03/index.html",
+    "title": "Hand-on Ex03",
+    "section": "",
+    "text": "This interactive scatter plot reveals student IDs on hover, enabling precise identification of individual performance without cluttering the visualization with permanent labels, enhancing analysis efficiency."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#interactive-tooltip-visualization",
+    "href": "Hand-on_Ex03/index.html#interactive-tooltip-visualization",
+    "title": "Hand-on Ex03",
+    "section": "",
+    "text": "This interactive scatter plot reveals student IDs on hover, enabling precise identification of individual performance without cluttering the visualization with permanent labels, enhancing analysis efficiency."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#custom-tooltip-styling",
+    "href": "Hand-on_Ex03/index.html#custom-tooltip-styling",
+    "title": "Hand-on Ex03",
+    "section": "Custom Tooltip Styling",
+    "text": "Custom Tooltip Styling\n\n\n\n\n\n\nEnhanced tooltips provide comprehensive student information on hover, combining multiple data fields in a styled format for improved context and readability during exploratory data analysis."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#hover-highlighting-effect",
+    "href": "Hand-on_Ex03/index.html#hover-highlighting-effect",
+    "title": "Hand-on Ex03",
+    "section": "Hover Highlighting Effect",
+    "text": "Hover Highlighting Effect\n\n\n\n\n\n\nClass-based highlighting visually groups students when hovering over any class member, facilitating pattern recognition across the distribution and enabling instant identification of class performance characteristics."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#coordinated-multiple-views",
+    "href": "Hand-on_Ex03/index.html#coordinated-multiple-views",
+    "title": "Hand-on Ex03",
+    "section": "Coordinated Multiple Views",
+    "text": "Coordinated Multiple Views\n\n\n\n\n\n\nThese coordinated views enable cross-subject analysis by highlighting the same student across both distributions simultaneously, facilitating pattern identification and outlier detection across subjects at the individual level."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#plotly-interactive-visualization",
+    "href": "Hand-on_Ex03/index.html#plotly-interactive-visualization",
+    "title": "Hand-on Ex03",
+    "section": "Plotly Interactive Visualization",
+    "text": "Plotly Interactive Visualization\n\n\n\n\n\n\nUsing ggplotly transforms static visualizations into interactive ones with minimal code changes, adding tooltips, zoom capabilities, and filtering options that enhance exploratory data analysis beyond what’s possible with static displays."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#plotly-coordinated-views",
+    "href": "Hand-on_Ex03/index.html#plotly-coordinated-views",
+    "title": "Hand-on Ex03",
+    "section": "Plotly Coordinated Views",
+    "text": "Plotly Coordinated Views\n\n\n\n\n\n\nThis linked visualization allows selection in one plot to highlight corresponding points in the other, enabling multi-dimensional performance analysis across subjects and revealing relationships that might be missed in single-view analysis."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#interactive-data-table",
+    "href": "Hand-on_Ex03/index.html#interactive-data-table",
+    "title": "Hand-on Ex03",
+    "section": "Interactive Data Table",
+    "text": "Interactive Data Table\n\n\n\n\n\n\nThe interactive data table allows sorting, filtering, and paginating through the complete dataset, complementing visualizations with the ability to inspect and analyze individual records in detail."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#basic-animation",
+    "href": "Hand-on_Ex03/index.html#basic-animation",
+    "title": "Hand-on Ex03",
+    "section": "Basic Animation",
+    "text": "Basic Animation\n\n\n\n\n\n\n\n\n\nThis multi-panel visualization shows class performance across different subjects, allowing comparison of achievement patterns between classes. The charts reveal which classes maintain consistent performance across disciplines versus those showing significant subject-specific strengths or weaknesses."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#animated-scatter-plot",
+    "href": "Hand-on_Ex03/index.html#animated-scatter-plot",
+    "title": "Hand-on Ex03",
+    "section": "Animated Scatter Plot",
+    "text": "Animated Scatter Plot\n\n\n\n\n\n\nThe animated scatter plot visualizes global development trends over time, revealing the dynamic relationship between economic performance and quality of life metrics while enabling interactive exploration of specific countries and regions."
+  },
+  {
+    "objectID": "Hand-on_Ex03/index.html#enhanced-animation-effects",
+    "href": "Hand-on_Ex03/index.html#enhanced-animation-effects",
+    "title": "Hand-on Ex03",
+    "section": "Enhanced Animation Effects",
+    "text": "Enhanced Animation Effects\n\n\n\n\n\n\n\n\n\nThis series of scatter plots captures global development trends at key time points (1952, 1977, and 2002), revealing the relationship between economic performance and life expectancy. Comparing these snapshots illustrates how countries and regions have developed over the half-century period, showing patterns of progress and disparity."
+  },
+  {
     "objectID": "Take-home_Ex02/index.html",
     "href": "Take-home_Ex02/index.html",
     "title": "MC1 Analysis - Music Knowledge Graph",
@@ -11,7 +256,7 @@
     "href": "Take-home_Ex02/index.html#sailor-shifts-profile",
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "3.1 Sailor Shift’s Profile",
-    "text": "3.1 Sailor Shift’s Profile\n\n\nSailor Shift found in the network!\n\n\nKey metrics:\n\n\n- PageRank: 0.00065 (Rank #1 in network)\n\n\n- Degree: 60 \n\n\n- Community: 9 \n\n\n- Total connections: 60 \n\n\n- Connection types:\n\n\n\n   DirectlySamples          InStyleOf   InterpolatesFrom LyricalReferenceTo \n                 2                  4                  2                  3 \n        LyricistOf           MemberOf        PerformerOf         ProducerOf \n                21                  1                 26                  1"
+    "text": "3.1 Sailor Shift’s Profile\n\n\nSailor Shift found in the network!\n\n\nKey metrics:\n\n\n- PageRank: 0.00065 (Rank #1 in network)\n\n\n- Degree: 60 \n\n\n- Community: 11 \n\n\n- Total connections: 60 \n\n\n- Connection types:\n\n\n\n   DirectlySamples          InStyleOf   InterpolatesFrom LyricalReferenceTo \n                 2                  4                  2                  3 \n        LyricistOf           MemberOf        PerformerOf         ProducerOf \n                21                  1                 26                  1"
   },
   {
     "objectID": "Take-home_Ex02/index.html#sailor-shifts-career-timeline",
@@ -124,215 +369,5 @@
     "title": "MC1 Analysis - Music Knowledge Graph",
     "section": "7.2 Session Info",
     "text": "7.2 Session Info\n\n\nR version 4.5.0 (2025-04-11 ucrt)\nPlatform: x86_64-w64-mingw32/x64\nRunning under: Windows 11 x64 (build 26100)\n\nMatrix products: default\n  LAPACK version 3.12.1\n\nlocale:\n[1] LC_COLLATE=Chinese (Simplified)_Hong Kong SAR.utf8 \n[2] LC_CTYPE=Chinese (Simplified)_Hong Kong SAR.utf8   \n[3] LC_MONETARY=Chinese (Simplified)_Hong Kong SAR.utf8\n[4] LC_NUMERIC=C                                       \n[5] LC_TIME=Chinese (Simplified)_Hong Kong SAR.utf8    \n\ntime zone: Asia/Shanghai\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n [1] jsonlite_2.0.0   knitr_1.50       igraph_2.1.4     DT_0.33         \n [5] plotly_4.10.4    visNetwork_2.1.2 ggraph_2.2.1     tidygraph_1.3.1 \n [9] lubridate_1.9.4  forcats_1.0.0    stringr_1.5.1    dplyr_1.1.4     \n[13] purrr_1.0.4      readr_2.1.5      tidyr_1.3.1      tibble_3.3.0    \n[17] ggplot2_3.5.2    tidyverse_2.0.0 \n\nloaded via a namespace (and not attached):\n [1] gtable_0.3.6       bslib_0.9.0        xfun_0.52          htmlwidgets_1.6.4 \n [5] ggrepel_0.9.6      tzdb_0.5.0         crosstalk_1.2.1    vctrs_0.6.5       \n [9] tools_4.5.0        generics_0.1.3     pkgconfig_2.0.3    data.table_1.17.0 \n[13] RColorBrewer_1.1-3 lifecycle_1.0.4    compiler_4.5.0     farver_2.1.2      \n[17] ggforce_0.4.2      graphlayouts_1.2.2 sass_0.4.10        htmltools_0.5.8.1 \n[21] yaml_2.3.10        lazyeval_0.2.2     jquerylib_0.1.4    pillar_1.10.2     \n[25] MASS_7.3-65        cachem_1.1.0       viridis_0.6.5      tidyselect_1.2.1  \n[29] digest_0.6.37      stringi_1.8.7      labeling_0.4.3     polyclip_1.10-7   \n[33] fastmap_1.2.0      grid_4.5.0         cli_3.6.5          magrittr_2.0.3    \n[37] dichromat_2.0-0.1  utf8_1.2.5         withr_3.0.2        scales_1.4.0      \n[41] timechange_0.3.0   rmarkdown_2.29     httr_1.4.7         gridExtra_2.3     \n[45] hms_1.1.3          memoise_2.0.1      evaluate_1.0.3     viridisLite_0.4.2 \n[49] rlang_1.1.6        Rcpp_1.0.14        glue_1.8.0         tweenr_2.0.3      \n[53] rstudioapi_0.17.1  R6_2.6.1"
-  },
-  {
-    "objectID": "Hand-on_Ex03/index.html",
-    "href": "Hand-on_Ex03/index.html",
-    "title": "Hand-on Ex03",
-    "section": "",
-    "text": "This interactive scatter plot reveals student IDs on hover, enabling precise identification of individual performance without cluttering the visualization with permanent labels, enhancing analysis efficiency."
-  },
-  {
-    "objectID": "Hand-on_Ex03/index.html#interactive-tooltip-visualization",
-    "href": "Hand-on_Ex03/index.html#interactive-tooltip-visualization",
-    "title": "Hand-on Ex03",
-    "section": "",
-    "text": "This interactive scatter plot reveals student IDs on hover, enabling precise identification of individual performance without cluttering the visualization with permanent labels, enhancing analysis efficiency."
-  },
-  {
-    "objectID": "Hand-on_Ex03/index.html#custom-tooltip-styling",
-    "href": "Hand-on_Ex03/index.html#custom-tooltip-styling",
-    "title": "Hand-on Ex03",
-    "section": "Custom Tooltip Styling",
-    "text": "Custom Tooltip Styling\n\n\n\n\n\n\nEnhanced tooltips provide comprehensive student information on hover, combining multiple data fields in a styled format for improved context and readability during exploratory data analysis."
-  },
-  {
-    "objectID": "Hand-on_Ex03/index.html#hover-highlighting-effect",
-    "href": "Hand-on_Ex03/index.html#hover-highlighting-effect",
-    "title": "Hand-on Ex03",
-    "section": "Hover Highlighting Effect",
-    "text": "Hover Highlighting Effect\n\n\n\n\n\n\nClass-based highlighting visually groups students when hovering over any class member, facilitating pattern recognition across the distribution and enabling instant identification of class performance characteristics."
-  },
-  {
-    "objectID": "Hand-on_Ex03/index.html#coordinated-multiple-views",
-    "href": "Hand-on_Ex03/index.html#coordinated-multiple-views",
-    "title": "Hand-on Ex03",
-    "section": "Coordinated Multiple Views",
-    "text": "Coordinated Multiple Views\n\n\n\n\n\n\nThese coordinated views enable cross-subject analysis by highlighting the same student across both distributions simultaneously, facilitating pattern identification and outlier detection across subjects at the individual level."
-  },
-  {
-    "objectID": "Hand-on_Ex03/index.html#plotly-interactive-visualization",
-    "href": "Hand-on_Ex03/index.html#plotly-interactive-visualization",
-    "title": "Hand-on Ex03",
-    "section": "Plotly Interactive Visualization",
-    "text": "Plotly Interactive Visualization\n\n\n\n\n\n\nUsing ggplotly transforms static visualizations into interactive ones with minimal code changes, adding tooltips, zoom capabilities, and filtering options that enhance exploratory data analysis beyond what’s possible with static displays."
-  },
-  {
-    "objectID": "Hand-on_Ex03/index.html#plotly-coordinated-views",
-    "href": "Hand-on_Ex03/index.html#plotly-coordinated-views",
-    "title": "Hand-on Ex03",
-    "section": "Plotly Coordinated Views",
-    "text": "Plotly Coordinated Views\n\n\n\n\n\n\nThis linked visualization allows selection in one plot to highlight corresponding points in the other, enabling multi-dimensional performance analysis across subjects and revealing relationships that might be missed in single-view analysis."
-  },
-  {
-    "objectID": "Hand-on_Ex03/index.html#interactive-data-table",
-    "href": "Hand-on_Ex03/index.html#interactive-data-table",
-    "title": "Hand-on Ex03",
-    "section": "Interactive Data Table",
-    "text": "Interactive Data Table\n\n\n\n\n\n\nThe interactive data table allows sorting, filtering, and paginating through the complete dataset, complementing visualizations with the ability to inspect and analyze individual records in detail."
-  },
-  {
-    "objectID": "Hand-on_Ex03/index.html#basic-animation",
-    "href": "Hand-on_Ex03/index.html#basic-animation",
-    "title": "Hand-on Ex03",
-    "section": "Basic Animation",
-    "text": "Basic Animation\n\n\n\n\n\n\n\n\n\nThis multi-panel visualization shows class performance across different subjects, allowing comparison of achievement patterns between classes. The charts reveal which classes maintain consistent performance across disciplines versus those showing significant subject-specific strengths or weaknesses."
-  },
-  {
-    "objectID": "Hand-on_Ex03/index.html#animated-scatter-plot",
-    "href": "Hand-on_Ex03/index.html#animated-scatter-plot",
-    "title": "Hand-on Ex03",
-    "section": "Animated Scatter Plot",
-    "text": "Animated Scatter Plot\n\n\n\n\n\n\nThe animated scatter plot visualizes global development trends over time, revealing the dynamic relationship between economic performance and quality of life metrics while enabling interactive exploration of specific countries and regions."
-  },
-  {
-    "objectID": "Hand-on_Ex03/index.html#enhanced-animation-effects",
-    "href": "Hand-on_Ex03/index.html#enhanced-animation-effects",
-    "title": "Hand-on Ex03",
-    "section": "Enhanced Animation Effects",
-    "text": "Enhanced Animation Effects\n\n\n\n\n\n\n\n\n\nThis series of scatter plots captures global development trends at key time points (1952, 1977, and 2002), revealing the relationship between economic performance and life expectancy. Comparing these snapshots illustrates how countries and regions have developed over the half-century period, showing patterns of progress and disparity."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html",
-    "href": "Hand-on_Ex01/index.html",
-    "title": "Hand-on Ex01",
-    "section": "",
-    "text": "Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#gender-distribution",
-    "href": "Hand-on_Ex01/index.html#gender-distribution",
-    "title": "Hand-on Ex01",
-    "section": "",
-    "text": "Male/Female numbers are similar; females are slightly more numerous (≈5% difference), suggesting no major gender imbalance in this cohort."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#subject-score-comparison",
-    "href": "Hand-on_Ex01/index.html#subject-score-comparison",
-    "title": "Hand-on Ex01",
-    "section": "Subject Score Comparison",
-    "text": "Subject Score Comparison\n\n\n\n\n\n\n\n\n\nEnglish scores show the highest median with a compact distribution, while Science has the lowest median and more outliers. Mathematics demonstrates moderate performance with several low outliers, indicating variable student proficiency across subjects."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#math-score-distribution",
-    "href": "Hand-on_Ex01/index.html#math-score-distribution",
-    "title": "Hand-on Ex01",
-    "section": "Math Score Distribution",
-    "text": "Math Score Distribution\n\n\n\n\n\n\n\n\n\nThe mean (red dashed line) sits near the centre of a bell-shaped curve (~66 points), indicating symmetric performance with few extreme scores."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#dot-plot-visualization",
-    "href": "Hand-on_Ex01/index.html#dot-plot-visualization",
-    "title": "Hand-on Ex01",
-    "section": "Dot Plot Visualization",
-    "text": "Dot Plot Visualization\n\n\n\n\n\n\n\n\n\nThe dot plot reveals the precise distribution of individual math scores, showing clustering around 65-75 points with relatively few students at extreme ends of the spectrum."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#class-comparison",
-    "href": "Hand-on_Ex01/index.html#class-comparison",
-    "title": "Hand-on Ex01",
-    "section": "Class Comparison",
-    "text": "Class Comparison\n\n\n\n\n\n\n\n\n\nClass-level facets reveal differences: class 3A clusters above 70, while 3I shows a wider spread, hinting at varying teaching quality or peer effects."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#density-plot-analysis",
-    "href": "Hand-on_Ex01/index.html#density-plot-analysis",
-    "title": "Hand-on Ex01",
-    "section": "Density Plot Analysis",
-    "text": "Density Plot Analysis\n\n\n\n\n\n\n\n\n\nThe density curves highlight subtle gender differences in math performance, with female students showing a more concentrated distribution compared to males who display greater variability, particularly in the middle score range."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#violin-plot-comparison",
-    "href": "Hand-on_Ex01/index.html#violin-plot-comparison",
-    "title": "Hand-on Ex01",
-    "section": "Violin Plot Comparison",
-    "text": "Violin Plot Comparison\n\n\n\n\n\n\n\n\n\nViolin plots effectively illustrate the probability density of scores across genders, showing that while medians are similar, male students exhibit greater variance and a slight bimodal tendency in math performance."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#subject-relationship",
-    "href": "Hand-on_Ex01/index.html#subject-relationship",
-    "title": "Hand-on Ex01",
-    "section": "Subject Relationship",
-    "text": "Subject Relationship\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\nThe scatter plot reveals a moderate positive correlation between Math and English scores, suggesting that students who excel in one subject tend to perform well in the other, though numerous outliers indicate exceptions to this pattern."
-  },
-  {
-    "objectID": "Hand-on_Ex01/index.html#alternative-subject-comparison-view",
-    "href": "Hand-on_Ex01/index.html#alternative-subject-comparison-view",
-    "title": "Hand-on Ex01",
-    "section": "Alternative Subject Comparison View",
-    "text": "Alternative Subject Comparison View\n\n\n\n\n\n\n\n\n\nFlipping axes improves readability and makes overlap among subjects obvious; English remains top, Science lags with more low outliers. This orientation better highlights score ranges and median differences between subjects, enhancing comparative analysis."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html",
-    "href": "Hand-on_Ex02/index.html",
-    "title": "Hand-on Ex02",
-    "section": "",
-    "text": "Warning: ggrepel: 287 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps\n\n\n\n\n\n\n\n\n\nThe comparison demonstrates how ggrepel’s text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#improved-annotation-with-ggrepel",
-    "href": "Hand-on_Ex02/index.html#improved-annotation-with-ggrepel",
-    "title": "Hand-on Ex02",
-    "section": "",
-    "text": "Warning: ggrepel: 287 unlabeled data points (too many overlaps). Consider\nincreasing max.overlaps\n\n\n\n\n\n\n\n\n\nThe comparison demonstrates how ggrepel’s text placement algorithm prevents overlapping labels, significantly improving readability compared to standard text annotations where labels obscure data points and each other."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#professional-themes-with-ggthemes",
-    "href": "Hand-on_Ex02/index.html#professional-themes-with-ggthemes",
-    "title": "Hand-on Ex02",
-    "section": "Professional Themes with ggthemes",
-    "text": "Professional Themes with ggthemes\n\n\n\n\n\n\n\n\n\nUsing The Economist theme transforms the histogram into publication-quality visualization with distinctive typography and color palette, demonstrating how themed approaches can lend credibility and professionalism to statistical graphics."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#typography-focused-design",
-    "href": "Hand-on_Ex02/index.html#typography-focused-design",
-    "title": "Hand-on Ex02",
-    "section": "Typography-Focused Design",
-    "text": "Typography-Focused Design\n\n\n\n\n\n\n\n\n\nThe enhanced typography is achieved using ggplot2’s native theming system with carefully adjusted text properties, creating a clean design with proper visual hierarchy and improved readability for reports and presentations."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#composite-figures-with-patchwork",
-    "href": "Hand-on_Ex02/index.html#composite-figures-with-patchwork",
-    "title": "Hand-on Ex02",
-    "section": "Composite Figures with Patchwork",
-    "text": "Composite Figures with Patchwork\n\n\n\n\n\n\n\n\n\nThe side-by-side histograms created with patchwork enable efficient comparison of distributions between mathematics and English scores, revealing differences in central tendency and spread without requiring multiple separate figures."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#multi-row-layout",
-    "href": "Hand-on_Ex02/index.html#multi-row-layout",
-    "title": "Hand-on Ex02",
-    "section": "Multi-Row Layout",
-    "text": "Multi-Row Layout\n\n\n\n\n\n\n\n\n\nThis composite visualization integrates individual subject distributions with their correlation, creating a comprehensive analytical view that would otherwise require multiple separate charts, demonstrating patchwork’s ability to build complex multi-level layouts."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#auto-tagged-composite-figure",
-    "href": "Hand-on_Ex02/index.html#auto-tagged-composite-figure",
-    "title": "Hand-on Ex02",
-    "section": "Auto-Tagged Composite Figure",
-    "text": "Auto-Tagged Composite Figure\n\n\n\n\n\n\n\n\n\nAutomatic tagging adds professional reference points to each panel, making the composite figure suitable for formal reports where specific panels need to be referenced in accompanying text."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#inset-chart",
-    "href": "Hand-on_Ex02/index.html#inset-chart",
-    "title": "Hand-on Ex02",
-    "section": "Inset Chart",
-    "text": "Inset Chart\n\n\n\n\n\n\n\n\n\nThe inset technique efficiently uses space by embedding the English score distribution within the correlation plot, allowing readers to reference the relevant distribution without switching between figures."
-  },
-  {
-    "objectID": "Hand-on_Ex02/index.html#themed-composite-figure",
-    "href": "Hand-on_Ex02/index.html#themed-composite-figure",
-    "title": "Hand-on Ex02",
-    "section": "Themed Composite Figure",
-    "text": "Themed Composite Figure\n\n\n\n\n\n\n\n\n\nCombining patchwork with ggthemes creates professionally styled composite figures with consistent design elements across all panels, demonstrating how multiple extension packages can work together to produce polished statistical graphics."
   }
 ]

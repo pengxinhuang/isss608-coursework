@@ -15,9 +15,9 @@ format:
 
 This analysis explores the VAST Challenge 2025 MC1 dataset to understand:
 
-1. Sailor Shift's rise to fame and influence network
-2. The spread of Oceanus Folk genre globally  
-3. Prediction of rising stars in the next 5 years
+1.  Sailor Shift's rise to fame and influence network
+2.  The spread of Oceanus Folk genre globally\
+3.  Prediction of rising stars in the next 5 years
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.width = 10, fig.height = 8)
@@ -117,7 +117,7 @@ table(sailor_edges_data$`Edge Type`) %>% print()
 
 ## 3.2 Sailor Shift's Career Timeline
 
-::: {.callout-note}
+::: callout-note
 Sailor Shift's career shows three distinct roles: as a lyricist (2024-2040), performer (2028-2040), and producer, demonstrating exceptional versatility in the Oceanus Folk music scene.
 :::
 
@@ -152,7 +152,7 @@ ggplotly(p, tooltip = c("year", "count", "Edge Type"))
 
 ## 3.3 Collaboration Network Evolution
 
-::: {.callout-note}
+::: callout-note
 Sailor Shift's key collaborators include Seraphina Vale (Cassian Storm) and Jaye Finch (Claire Holmes), both highly influential artists in the Oceanus Folk movement.
 :::
 
@@ -187,7 +187,7 @@ datatable(key_collaborators,
 
 ## 3.4 Influence Propagation Analysis
 
-::: {.callout-note}
+::: callout-note
 Sailor Shift is a member of a band with Maya Jensen, Lila "Lilly" Hartman, Jade Thompson, and Sophie Ramirez. Through their 47 works (songs and albums), they connect with 25 other artists in the music network, forming a rich collaborative ecosystem.
 :::
 
@@ -309,7 +309,7 @@ kable(of_artists %>% select(artist_name, n))
 
 ## 4.2 Temporal Spread Analysis
 
-::: {.callout-important}
+::: callout-important
 Oceanus Folk experienced its biggest surge in 2023 with 34 new songs, followed by another peak in 2026 (25 songs). The genre shows volatile but persistent growth, with recent years (2025-2040) averaging 8.7 songs per year despite high volatility.
 :::
 
@@ -359,7 +359,7 @@ print(p2)
 
 ## 4.3 Genre Cross-Pollination Network
 
-::: {.callout-note}
+::: callout-note
 Oceanus Folk artists frequently cross into other genres, particularly Dream Pop and Indie Folk, showing the genre's versatility and mainstream appeal. This cross-pollination is key to its global spread.
 :::
 
@@ -492,8 +492,8 @@ artist_features <- nodes %>%
 
 ## 5.2 Predictive Model
 
-::: {.callout-important}
-Our model identifies artists with recent momentum (post-2030 activity) who haven't yet reached superstar status (PageRank < 0.0002, approximately below top 2% of all artists). The top rising stars combine versatility, network connections, and consistent output.
+::: callout-important
+Our model identifies artists with recent momentum (post-2030 activity) who haven't yet reached superstar status (PageRank \< 0.0002, approximately below top 2% of all artists). The top rising stars combine versatility, network connections, and consistent output.
 :::
 
 ```{r prediction-model}
@@ -712,10 +712,10 @@ kable(recommendations, col.names = c("For", "Recommendation"))
 
 ## 6.3 Limitations
 
-- Limited temporal data for edges prevents full career trajectory analysis
-- Genre information missing for 73.5% of nodes  
-- Prediction model relies on network metrics without content analysis
-- Only 3% of artists have stage names, limiting brand analysis
+-   Limited temporal data for edges prevents full career trajectory analysis
+-   Genre information missing for 73.5% of nodes\
+-   Prediction model relies on network metrics without content analysis
+-   Only 3% of artists have stage names, limiting brand analysis
 
 # 7 Appendix
 
