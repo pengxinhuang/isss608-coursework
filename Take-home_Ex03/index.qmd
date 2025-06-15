@@ -41,11 +41,7 @@ This visualization transforms the static career timeline from Take-home 2 into a
 
 **Current Static Visualization:** The profile shows Sailor Shift as the #1 PageRank artist with 60 total connections across multiple edge types. The timeline displays her work output across three roles (Performer, Lyricist, Producer) from 2024-2040.
 
-**Interactive Enhancements:**
-- **Year Range Slider**: Users can zoom into specific periods (e.g., 2028-2032 breakthrough years)
-- **Role Checkboxes**: Toggle visibility of Performer/Lyricist/Producer lines
-- **Hover Details**: Display exact counts and potentially song titles
-- **Click Actions**: Click a point to see all works from that year
+**Interactive Enhancements:** - **Year Range Slider**: Users can zoom into specific periods (e.g., 2028-2032 breakthrough years) - **Role Checkboxes**: Toggle visibility of Performer/Lyricist/Producer lines - **Hover Details**: Display exact counts and potentially song titles - **Click Actions**: Click a point to see all works from that year
 
 **Key Insight:** The timeline reveals Sailor's evolution from lyricist (2024) to multi-role artist, with peak productivity in the LyricistOf role throughout her career. Notable peaks occur in 2030 (5 performances) and 2034 (4 performances).
 
@@ -63,8 +59,7 @@ This timeline allows users to: Observe the **rate of genre adoption** across dec
 
 ![](images/influence_timeline_ui_mockup.jpg)
 
-**Interpretation:**
-The influence of Oceanus Folk shows a significant rise post-2005 and maintains consistent outreach, suggesting steady integration into mainstream and niche genres alike.
+**Interpretation:** The influence of Oceanus Folk shows a significant rise post-2005 and maintains consistent outreach, suggesting steady integration into mainstream and niche genres alike.
 
 ### Influence Timeline: Oceanus Folk's Cultural Expansion
 
@@ -112,8 +107,7 @@ The chart reveals that Oceanus Folk was primarily shaped by genres such as: **De
 
 These genres likely influenced the **ambient tones**, **lyrical depth**, and **experimental sound design** that Oceanus Folk is known for. Interestingly, Oceanus Folk is also shown influencing itself in a feedback loop, suggesting internal evolution and sub-style development.
 
-The takeaway:
-**Oceanus Folk is not a standalone creation**, but rather a genre deeply rooted in acoustic, electronic, and atmospheric traditions, allowing it to be both familiar and innovative.
+The takeaway: **Oceanus Folk is not a standalone creation**, but rather a genre deeply rooted in acoustic, electronic, and atmospheric traditions, allowing it to be both familiar and innovative.
 
 ## MC1 Question 3: Rising Stars Analysis and Prediction
 
@@ -145,24 +139,15 @@ This section transforms the static rising stars prediction from Take-home 2 into
 
 ![Rising Stars Network vs Versatility](images/rising_stars_network_versatility.png)
 
-**Current Static Visualization:** The prediction model identifies top rising stars based on recent activity (post-2030), PageRank < 0.0002, and a composite potential score. The scatter plot reveals the relationship between network connections and artistic versatility.
+**Current Static Visualization:** The prediction model identifies top rising stars based on recent activity (post-2030), PageRank \< 0.0002, and a composite potential score. The scatter plot reveals the relationship between network connections and artistic versatility.
 
 ### Top 3 Predicted Oceanus Folk Stars (2040-2045):
 
-**1. Andrew Williams (Potential Score: 3.548)**
-- **Profile**: Veteran artist with 26 total works across 4 different roles
-- **Key Strength**: Highest network degree (26 connections) combined with strong versatility
-- **Prediction Rationale**: His extensive network and multi-role experience position him to become the next major Oceanus Folk influencer
+**1. Andrew Williams (Potential Score: 3.548)** - **Profile**: Veteran artist with 26 total works across 4 different roles - **Key Strength**: Highest network degree (26 connections) combined with strong versatility - **Prediction Rationale**: His extensive network and multi-role experience position him to become the next major Oceanus Folk influencer
 
-**2. Brian Wright (Potential Score: 3.197)**
-- **Profile**: Veteran artist with 22 works across 3 roles
-- **Key Strength**: Balanced network connections (22) with focused expertise
-- **Prediction Rationale**: Similar trajectory to successful artists - strong connections with specialized skills
+**2. Brian Wright (Potential Score: 3.197)** - **Profile**: Veteran artist with 22 works across 3 roles - **Key Strength**: Balanced network connections (22) with focused expertise - **Prediction Rationale**: Similar trajectory to successful artists - strong connections with specialized skills
 
-**3. Kael Storm (Potential Score: 2.668)**
-- **Profile**: Established artist with 14 works across 5 different roles
-- **Key Strength**: Highest versatility score among top candidates
-- **Prediction Rationale**: His diverse skill set across 5 roles mirrors Sailor Shift's multi-faceted approach
+**3. Kael Storm (Potential Score: 2.668)** - **Profile**: Established artist with 14 works across 5 different roles - **Key Strength**: Highest versatility score among top candidates - **Prediction Rationale**: His diverse skill set across 5 roles mirrors Sailor Shift's multi-faceted approach
 
 ### Community Distribution Analysis
 
@@ -178,24 +163,12 @@ This section transforms the static rising stars prediction from Take-home 2 into
 
 ### Interactive Enhancement Features:
 
-**1. Predictive Dashboard Controls:**
-- **Threshold Sliders**: Adjust PageRank, activity period, and minimum works to see how predictions change
-- **Weight Adjustment**: Modify the importance of network connections vs. versatility vs. output
-- **Time Window**: Slide forward to predict 10-year or 15-year horizons
+**1. Predictive Dashboard Controls:** - **Threshold Sliders**: Adjust PageRank, activity period, and minimum works to see how predictions change - **Weight Adjustment**: Modify the importance of network connections vs. versatility vs. output - **Time Window**: Slide forward to predict 10-year or 15-year horizons
 
-**2. Artist Deep Dive:**
-- **Click any artist**: Expand to see full career trajectory, collaborations, and influence network
-- **Compare Mode**: Select multiple artists to see side-by-side career comparisons
-- **What-If Analysis**: Simulate how new collaborations might affect potential scores
+**2. Artist Deep Dive:** - **Click any artist**: Expand to see full career trajectory, collaborations, and influence network - **Compare Mode**: Select multiple artists to see side-by-side career comparisons - **What-If Analysis**: Simulate how new collaborations might affect potential scores
 
-**3. Community Explorer:**
-- **Filter by Community**: Focus predictions on specific music communities
-- **Migration Patterns**: Visualize how artists move between communities over time
-- **Community Health Metrics**: Show which communities are growing vs. declining
+**3. Community Explorer:** - **Filter by Community**: Focus predictions on specific music communities - **Migration Patterns**: Visualize how artists move between communities over time - **Community Health Metrics**: Show which communities are growing vs. declining
 
-**4. Real-time Model Updates:**
-- **Live Scoring**: As new data arrives, see how artist rankings change
-- **Confidence Intervals**: Display prediction uncertainty for each artist
-- **Alert System**: Notify when an artist's trajectory significantly changes
+**4. Real-time Model Updates:** - **Live Scoring**: As new data arrives, see how artist rankings change - **Confidence Intervals**: Display prediction uncertainty for each artist - **Alert System**: Notify when an artist's trajectory significantly changes
 
 **Key Takeaway:** The model successfully identifies artists who combine Sailor Shift's key success factors: strong network connections, multi-role versatility, and active recent output. The interactive features will allow users to explore different scenarios and understand what drives success in the Oceanus Folk genre.
